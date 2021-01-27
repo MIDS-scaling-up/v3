@@ -4,7 +4,7 @@ The following is a simple introduction and demo to GStreamer, specfically on the
 
 The majority of this examples will be use the GStreamer tool gst-launch-1.0.
 
-Note, on Jetson devices the `automatic video sink`, `autovideosink` is mapped to a sink that is an overlay.  This means that the sink is not X-windows enabled and doesn't play well with VNC.  As most of these examples are executed on a machine that uses X-windows and potentiall accessed via VNC, this sink will not be used.  Instead, nv3dsink or nveglglessink will be used explictly.
+Note, on Jetson devices the "automatic video sink", `autovideosink` is mapped to a sink that is an overlay.  This means that the sink is not X-windows enabled and doesn't play well with VNC.  As most of these examples are executed on a machine that uses X-windows and potentiall accessed via VNC, this sink will not be used.  Instead, nv3dsink or nveglglessink will be used explictly.
 
 
 ## VNC
