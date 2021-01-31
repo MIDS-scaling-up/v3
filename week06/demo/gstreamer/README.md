@@ -8,7 +8,14 @@ Note, on Jetson devices the "automatic video sink", `autovideosink` is mapped to
 
 
 ## VNC
-This demo may be used via VNC.  If VNC is used, it is strongly recommended to us a reslution less than 4k as resolutions at 4k or higher can cause additional lag when VNC is used.  For example, I typically set my resolution to `1600x900` via the command `sudo xrandr --fb 1600x900`.
+This demo may be used via VNC.  If VNC is used, it is strongly recommended to us a reslution less than 4k as resolutions at 4k or higher can cause additional lag when VNC is used.  For example, I typically set my resolution to `1600x900` via the command `xrandr` command and have no display pluged into the nx.
+
+From your a shell:
+```
+export DISPLAY=:0
+xhost +
+sudo xrandr --fb 1600x900
+```
 
 ## JP Version
 These examples have been tested with Jetpack 4.4.  In late January 2021 JP 4.5 was released.  There is currently an issue with the nv3dsink sink and JP 4.5. The sink nveglglessink works as expected. 
