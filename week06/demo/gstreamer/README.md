@@ -53,7 +53,7 @@ Inspecting nv3dsink, we can see that it requires an input of `video/x-raw(memory
 This is not someting that videotestsrc outputs, so we'll need to use nvvidconv to convert.
 Inspecting this, we can see it can take `video/x-raw` and output  `video/x-raw(memory:NVMM)`.
 ```
-gst-launch-1.0 videotestsrc ! nvvidconv ! nv3dsink -e
+gst-launch-1.0 videotestsrc ! nvvidconv ! 'video/x-raw(memory:NVMM)' ! nv3dsink -e
 ```
 
 To use nveglglessink, we'll need to use nvvidconv and nvegltransform, to go from NVMM to EGLImage.
@@ -74,7 +74,7 @@ As before, we can take advantage of a varity of sinks.
 ```
 gst-launch-1.0 v4l2src device=/dev/video0 ! xvimagesink
 
-gst-launch-1.0 v4l2src device=/dev/video0 ! nvvidconv ! nv3dsink -e
+gst-launch-1.0 v4l2src device=/dev/video0 ! nvvidconv ! 'video/x-raw(memory:NVMM)' ! nv3dsink -e
 
 gst-launch-1.0 v4l2src device=/dev/video0 ! nvvidconv ! nvegltransform ! nveglglessink -e
 ```
@@ -142,12 +142,12 @@ Fails as we need to make sure the video is in a format that xvimagesink can unde
 
 We can do the same the Nvidia plugins:
 ```
-gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw,framerate=30/1 ! nvvidconv ! 'video/x-raw(memory:NVMM)' !  nvvidconv ! 'video/x-raw,format=GRAY8' !  nvvidconv ! nv3dsink -e
+gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw,framerate=30/1 ! nvvidconv ! 'video/x-raw(memory:NVMM)' !  nvvidconv ! 'video/x-raw,format=GRAY8' !  nvvidconv ! 'video/x-raw(memory:NVMM)' ! nv3dsink -e
 ```
 
 We can also do fun things like flip the image:
 ```
-gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw,framerate=30/1,width=160,height=120  ! nvvidconv flip-method=rotate-180 ! nv3dsink -e
+gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw,framerate=30/1,width=160,height=120  ! nvvidconv flip-method=rotate-180 ! 'video/x-raw(memory:NVMM)' ! nv3dsink -e
 ```
 
 ## Part3: Fun and games
@@ -171,7 +171,7 @@ gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw, framerate=30/1,width=16
 We can also overlay images on top of eachother.  We'll take advantage of `nvcompositor` which is accelerated.  
 
 ```
-gst-launch-1.0 nvcompositor name=mix sink_0::xpos=0 sink_0::ypos=0 sink_0::zorder=10 sink_1::xpos=0 sink_1::ypos=0 ! nvegltransform ! nveglglessink videotestsrc ! nvvidconv ! mix.sink_0 v4l2src device=/dev/video0 ! nvvidconv ! mix.sink_1
+gst-launch-1.0 nvcompositor name=mix sink_0::xpos=0 sink_0::ypos=0 sink_0::zorder=10 sink_1::xpos=0 sink_1::ypos=0 ! nvegltransform ! nveglglessink videotestsrc ! nvvidconv ! mix.sink_0 v4l2src device=/dev/video0 ! nvvidconv ! 'video/x-raw(memory:NVMM)' ! mix.sink_1
 ```
 
 ## Part 4: Encoding and Decoding
