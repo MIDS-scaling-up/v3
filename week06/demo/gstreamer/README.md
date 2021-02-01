@@ -18,7 +18,17 @@ sudo xrandr --fb 1600x900
 ```
 
 ## JP Version
-These examples have been tested with Jetpack 4.4.  In late January 2021 JP 4.5 was released.  There is currently an issue with the nv3dsink sink and JP 4.5. The sink nveglglessink works as expected. 
+The recored demo was done using Jetpack 4.4.1 and after the recording, Jetpack 4.5 was released.  There appears to been a change between the versions to either nv3dsink and/or nvvidconv.  Luckly the workaround is easy, replace:
+```
+nvvidconv ! nv3dsink
+```
+with
+```
+nvvidconv ! 'video/x-raw(memory:NVMM)' ! nv3dsink
+```
+This is backwards compatabile with 4.4.1 and the examples here have been updated to reflect this.
+
+The sink nveglglessink works as expected. 
 
 ## Part 1: 
 Our first pipeline will be a simple video test image.
