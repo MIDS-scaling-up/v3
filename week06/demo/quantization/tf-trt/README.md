@@ -3,7 +3,7 @@
 This is a very simple image classification example based on https://github.com/tensorflow/tensorrt/tree/master/tftrt/examples/image-classification updated to run on the Jetson Xavier NX.   You'll learn how to use TensorFlow 2.x to convert a Keras model to three tf-trt models, a fp32, fp16, and int8.  A simple set of test images will be used to both validate and benchmark both the native model and the three tf-trt ones.
 
 ## Jetpack Version
-At this time, Jetpack 4.5 is not supported and Jetpack 4.4 needs to be used.  Hopefully this will be addressed as Nvidia updates their Jetson Docker images.
+If using Jetpack 4.5, you'll need to build with the file Dockerfile.jp45.  Note, at this time, JP4.5 is giving about 1/2 the performance as the JP4.4.1 version.
 
 ## Running
 This demo is made available as via a Dockerfile.  The image built from this demo leverages Nvidia's TensorFlow 2.x build (see https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html ) and requires an update to Protobuf.  There appears to be an issue with the python implementation protobuf (see https://jkjung-avt.github.io/tf-trt-revisited).  The current workaround is to build and install a C++ based implemenation. The script install_protobuf-3.13.0.sh will download, build, and install protobuf 3.13.0
