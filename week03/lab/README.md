@@ -8,6 +8,7 @@ Ensure that you cloned this github repo and are in the directory for this lab (v
 ## Prerequisites
 The following prerequisites are required for this lab:
 - Docker is installed on your Jetson device.  This should have been done as part of your Jetpack install.
+- USB camera is plugged in and available.
 - A DockerHub account.  DockerHub will be used as your registry, a place to publish and share images.  You may register for the account at https://hub.docker.com.
 - Configure Docker group (optional). By default, Docker is owned by and runs as the user root. This requires commands to be executed with sudo. If you don't want to use sudo, a group may be used instead. This group group grants privileges equivalent to the root user. For details on how this impacts security in your system, see Docker Daemon Attack Surface (https://docs.docker.com/engine/security/#docker-daemon-attack-surface) . The examples will assume this has been done. If you do not do this, you'll need to prefix the docker commands with sudo.
 
@@ -119,6 +120,20 @@ In the container's shell, run some commands,  apt-get update && apt-get install 
 
 When complete, type `exit` to leave your container.
 
+### Accessing containers over the network
+In this example, we'll be working with Nginx, a robost HTTP server. 
+
+Run the command: 
+```
+docker run -d --name web --hostname web --rm -p 8080:80 nginx
+```
+
+From your Jetson's diplsay, open a brower and go to http://localhost:8080.  You should be greeted with the Nginx welcome page.  You should notice two new options in with run command, `-d` and `-p`.  First, the `-d` option runs the container in the background. Next, the `-p` is used publish a container's port(s) to the host.  In this case, mapping the host's port 8080 to the container's port 80.  You can also access this container from outside your Jetson; if you were to open a browser on your workstation and to `http://<yourJetsonsIP>:8080`, replacing `<yourJetsonsIP>` with the IP address of your device, you'll once again see the welcome page. 
+
+To stop your container, run the command `docker stop web`.
+
+You can use other ports as well, for example, you could also have used port 80, e.g. `docker run -d --name web --hostname web --rm -p 80:80 nginx`. You would then access the container via port 80.
+
 ### Using the GPU
 Nvidia has provided a runtime that enables Docker containers to leverage the GPU.  This runtime is not the default one, however for our use, let's make it the default.
 
@@ -158,4 +173,97 @@ make
 ```
 This will display a GPU powered N-body simulation, running in a container and displaying on your UI.  Close the window and exit out of your container.
 
+### Building containers
+Run existing containers from existing images is great, but you can also build your own container images. First you'll build a simple Jupyter Notebook container.  Change to the director build_example_1 and look at the file `Dockerfile`.
+```
+# Using ubuntu 18.04 as base image
+FROM ubuntu:18.04
+# update the base image
+RUN apt-get update && apt-get -y update
+# install 
+RUN apt-get install python3-pip python3-dev build-essential nodejs -y
+# make python3 -> python
+RUN ln -s /usr/bin/python3 /usr/local/bin/python 
+# update pip
+RUN pip3 install --upgrade pip
+# install jupyter and lab
+RUN pip3 install jupyter
+RUN pip3 install jupyterlab
+# set our workdir
+WORKDIR /src/notebooks
+COPY notebooks/simple.ipynb ./
+# Setup which command to run...
+# This runs jup notebook 
+CMD ["jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
+# This runs jup lab
+#CMD ["jupyter", "lab", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
+```
+This is file contains the commands that will be used to build a custom image.  
+
+The `FROM` tells Docker which base image we are using. In this case, you are using the ubuntu 18.04 base image.
+
+`RUN` runs a command in the container. The run commands here are split for readablity; best practive would be combine them where it makes sense. Here we are running a set of commands that update the base image, install python3 and install jupyter.
+
+`WORKDIR` sets up where the container is running from. The directory is created if it doesn't already exist.
+
+`COPY` enables the copying of files from host to the container.
+
+`CMD` is the command that the container will run at start up. In this example, it'll start up a notebook.
+
+`#` is a comment. Comments are not executed by Docker.
+
+To build the image, you'll use the command `docker build -t myimage .` where the `-t` is used to specify the image's name.  When the build is complete, you'll see an output similar to 
+```
+Step 10/10 : CMD ["jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
+ ---> Running in 8158469d5a5b
+Removing intermediate container 8158469d5a5b
+ ---> 2ddce619ee6c
+Successfully built 2ddce619ee6c
+Successfully tagged myimage:latest
+```
+Go ahead and launch the image with the command docker run -ti -p 8888:8888 myimage. You'll see some info with the token value displayed to stdout. Use that to login into your notebook. You can them open simple.ipynb and run it.
+
+You'll now push this image to DockerHub. If you haven't logged in yet, run the command `docker login` and follow the prompts.  Run the command `docker tag myimage <yourdockerid>/myjupyter`, replacing <yourdockerid> with your actual value. For me, it would be `docker tag myimage rdejana/myjupyter`. You'll them push the image into DockerHub using the command `docker push <yourdockerid>/myjupyter`, e.g. `docker push rdejana/myjupyter`.  When the push is completed, open a broswer and go to `https://hub.docker.com/`, login in, and you should see your newly pushed image.  Note, this image is public and may be used by anybody.  Be careful not to store any credentials in your images!
+ 
+In this next example, we'll build an image with is able to use your USB camera. Change to the directory build_example_2 and review both the Dockerfile and cam.py.
+```
+# cam.py
+# this is from https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_gui/py_video_display/py_video_display.html
+import numpy as np
+import cv2
+
+
+# the index depends on your camera setup and which one is your USB camera.
+# you may need to change to 1 depending on your local config
+cap = cv2.VideoCapture(0)
+
+while(True):
+    # Capture frame-by-frame
+    ret, frame = cap.read()
+
+    # Our operations on the frame come here
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+    # Display the resulting frame
+    cv2.imshow('frame',gray)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+# When everything done, release the capture
+cap.release()
+cv2.destroyAllWindows()
+```
+To build the container, run the command:
+```
+docker build -t camera .
+```
+To run the container: 
+```
+docker run -it --rm --device /dev/video0 --network host -e DISPLAY=$DISPLAY camera:latest
+```
+
+This run command uses two "interestig" options, first is `--device` which allows us to expose a hosts device, in this case, your camera, to the container.  Next is the `--network host`, which attaches the container to host's network.  This is needed displaying.
+
+If this example doesn't work, confirm your display is setup correctly (e.g. export DISPLAY=:0 and xhost +) and that your camera is on /dev/video0.  If you camera is not using /dev/video0, adjust both cam.py and the --device option to match your machine.
+```
  
