@@ -89,10 +89,73 @@ For more examples and ideas, visit:
  ### Interacting with a container
 The hello world container is nice to demonstrate that Docker is running, but it doesn't really show anything interesting.  Let's start a container rather than have it just display a message, let's interact with it.
 
-Run the command:
+You'll start by running the command:
 ```
-docker run --name ubuntu --rm -it ubuntu bash
+docker pull ubuntu:latest
+```  
+This will explictly download the image for you, making sure you have the most up to date version.  After the download is complete, run the command:
+
+```
+docker run --name ubuntu --hostname ubuntu --rm -it ubuntu bash
+```
+The `-it` option enable interactive mode and allocates a pseudo-TTY.  This allows us to interact with the container process.  The `--hostname` option allows us to pass in the hostname for the container. Note, this is different from just setting the container's name via `--name`. The `bash` command tells docker to run the bash shell as the container's process.   This command will give you a shell that looks similar to:
+
+```
+root@ubuntu:/# 
 ```
 
+From a separate shell on your Jetson, run the command:
+```
+docker ps
+```
+You should see something similar to
+```
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+619212052b2d        ubuntu              "bash"              4 seconds ago       Up 3 seconds                            ubuntu
+```
+This lists the containers currently running on your machine.
+
+In the container's shell, run some commands,  apt-get update && apt-get install vim, etc.  All of these command will work as exected.
+
+When complete, type `exit` to leave your container.
+
+### Using the GPU
+Nvidia has provided a runtime that enables Docker containers to leverage the GPU.  This runtime is not the default one, however for our use, let's make it the default.
+
+Edit the file `/etc/docker/daemon.json`, e.g. sudo `vi /etc/docker/daemon.json`, adding/setting the `default-runtime` to `nvidia`.
+```
+{
+    "runtimes": {
+        "nvidia": {
+            "path": "nvidia-container-runtime",
+            "runtimeArgs": []
+        }
+    },
+    "default-runtime": "nvidia"
+}
+```
+Reboot your NX and login when reboot is completed.
+
+This demo wants to use your display, so we'll need to do some additional setup to work.  Note, this requires that you are interacting your Jetson via an attached display or via VNC. If you have a display attached or are using VNC but accessing via an ssh session, you'll first need to run 
+```
+export DISPLAY=:0
+```
+To allow containers to communicate with X, run:  
+```
+sudo xhost +
+```
+Now run the command (Note, this assumes JetPack 4.5):
+```
+docker run --rm --network host -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix nvcr.io/nvidia/l4t-base:r32.5.0
+```
+Once in the shell, run the following commands:
+```
+apt-get update && apt-get install -y --no-install-recommends make g++
+cp -r /usr/local/cuda/samples /tmp
+cd /tmp/samples/5_Simulations/nbody
+make
+./nbody
+```
+This will display a GPU powered N-body simulation, running in a container and displaying on your UI.  Close the window and exit out of your container.
 
  
