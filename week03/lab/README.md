@@ -253,5 +253,17 @@ while(True):
 cap.release()
 cv2.destroyAllWindows()
 ```
- 
+To build the container, run the command:
+```
+docker build -t camera .
+```
+To run the container: 
+```
+docker run -it --rm --device /dev/video0 --network host -e DISPLAY=$DISPLAY camera:latest
+```
+
+This run command uses two "interestig" options, first is `--device` which allows us to expose a hosts device, in this case, your camera, to the container.  Next is the `--network host`, which attaches the container to host's network.  This is needed displaying.
+
+If this example doesn't work, confirm your display is setup correctly (e.g. export DISPLAY=:0 and xhost +) and that your camera is on /dev/video0.  If you camera is not using /dev/video0, adjust both cam.py and the --device option to match your machine.
+```
  
