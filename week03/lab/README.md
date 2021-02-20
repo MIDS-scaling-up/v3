@@ -22,6 +22,26 @@ sudo usermod -aG docker $USER
 ```
 Log out and log back in so that your group membership is re-evaluated.
 
+## Useful Docker commands
+| Command | Description |
+| --- | --------- |
+| docker ps | Lists all running containers |
+| docker ps -a | Lists all containers |
+| docker pull <image> | Pull an image from a registry |
+| docker images | Lista all local images |
+| docker run  <imageName> | Run an image as a container |
+| docker run --name <name> <imageName> | Run an image as a container, using the specified name for the container. |
+| docker run --rm <imageName> | Run an image as a conatiner and automatically delete it when it exits. |
+| docker network create <name> | Create a user defined network |
+| docker network ls | List networks |
+| docker network rm <name> | Delete a network |
+| docker run -it ... | Enable the abiliy to interact with a container via stdin and stdout |
+| docker run --hostname ... | Set the hostname of the container |
+| docker run --network ... | Set the container's network |
+| docker inspect <name> | Return low-level information on Docker objects |
+| docker rm <name> | Delete a container |
+| docker rmi image name | Delete an image from the local cache |
+
 ## Part 1: Docker
 
 This section of the lab will introduce Docker.  
