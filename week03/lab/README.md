@@ -271,6 +271,8 @@ If this example doesn't work, confirm your display is setup correctly (e.g. expo
 
 ### Installation
 
+https://github.com/MIDS-scaling-up/v3/tree/main/week03/demo
+
 ### Getting started
 
 ### Integrating Pods
