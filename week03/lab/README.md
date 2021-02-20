@@ -23,6 +23,8 @@ sudo usermod -aG docker $USER
 Log out and log back in so that your group membership is re-evaluated.
 
 ## Useful Docker commands
+Not all commands may be covered in this lab.
+
 | Command | Description |
 | --- | --------- |
 | docker ps | Lists all running containers |
