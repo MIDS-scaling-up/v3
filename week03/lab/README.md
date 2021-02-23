@@ -276,4 +276,74 @@ https://github.com/MIDS-scaling-up/v3/tree/main/week03/demo
 ### Getting started
 
 ### Integrating Pods
+
+### MQTT 101
+MQTT - http://mqtt.org/ is a lightweight messaging protocol for the Internet of Things. You send messages to topics and there are just three simple QoS settings: 0,1, and 2.  Please familiarize yourself with these. Here's a [nice page on MQTT QoS](https://www.hivemq.com/blog/mqtt-essentials-part-6-mqtt-quality-of-service-levels/) and another one [on MQTT topics](https://www.hivemq.com/blog/mqtt-essentials-part-5-mqtt-topics-best-practices/) that go over MQTT best practices.
+
+
+#### Mosquitto
+Perhaps the most popular OpenSource MQTT toolkit is called Mosquitto. It is extremely lightweight and fast. 
+To install the client on a Debian distro, for instance, you would do this:
+```
+sudo apt install -y mosquitto-clients
+```
+
+Or, if you want to install the broker, you need to do this:
+```
+sudo apt install -y mosquitto
+```
+
+On Alpine Linux, you would do instead:
+```
+apk add mosquitto
+```
+
+Note that mqtt uses port 1883 for un-encrypted messages.
+
+
+To see what packages are available on Alpine linux for Mosquitto, you would do something like [this](https://pkgs.alpinelinux.org/packages?name=mosquitto&branch=edge)
+
+### Subscribing to messages on an MQTT Broker via mosquitto_sub
+To subscribe to a topic tree on an MQTT broker, we do something like this:
+
+```
+mosquitto_sub -t applications/in/+/public/# -h <ip address of the MQTT broker>
+```
+
+This matches `applications/in/app1/public` as well as `applications/in/app2/public/subtopic`, etc. etc.
+
+### MQTT via python
+You don't need to use Python, in fact, perhaps it's more fun to just use command line tools like mosquitto_sub and mosquitto_pub; but it's obviously better to use Python.  Here's a simple template on how to use [Paho-MQTT](https://pypi.org/project/paho-mqtt/):
+```
+import paho.mqtt.client as mqtt
+
+
+LOCAL_MQTT_HOST="mosquitto"
+LOCAL_MQTT_PORT=1883
+LOCAL_MQTT_TOPIC="test_topic"
+
+def on_connect_local(client, userdata, flags, rc):
+        print("connected to local broker with rc: " + str(rc))
+        client.subscribe(LOCAL_MQTT_TOPIC)
+	
+def on_message(client,userdata, msg):
+  try:
+    print("message received!")	
+    # if we wanted to re-publish this message, something like this should work
+    # msg = msg.payload
+    # remote_mqttclient.publish(REMOTE_MQTT_TOPIC, payload=msg, qos=0, retain=False)
+  except:
+    print("Unexpected error:", sys.exc_info()[0])
+
+local_mqttclient = mqtt.Client()
+local_mqttclient.on_connect = on_connect_local
+local_mqttclient.connect(LOCAL_MQTT_HOST, LOCAL_MQTT_PORT, 60)
+local_mqttclient.on_message = on_message
+
+
+
+# go into a loop
+local_mqttclient.loop_forever()
+
+```
  
