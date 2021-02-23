@@ -346,4 +346,58 @@ local_mqttclient.on_message = on_message
 local_mqttclient.loop_forever()
 
 ```
- 
+With this in mind, we are going to deploy a Mosquitto MQTT broker into Kubernetes, create a service, then use access the broker from outside Kubernetes and then from inside it.
+
+You'll start by building a simple [Alpine Linux](https://alpinelinux.org/) based container.  Alpine is a very lightweight Linux distro that works well on Edge devices.
+
+```
+FROM alpine:latest
+RUN apk add mosquitto
+CMD mosquitto
+```
+You'll want to build the image and push it into your DockerHub registry, e.g. docker build -t rdejana/mosquitto . and docker push rdejana/mosquitto.
+
+Next, you'll want to create a YAML file for the Kubernetes Deployment. Using the following as an example:
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mosquitto-deployment
+spec:
+  selector:
+    matchLabels:
+      app: mosquitto
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: mosquitto
+    spec:
+      containers:
+      - name: mosquitto
+        image: <yourImageHere>
+        ports:
+        - containerPort: 1883
+```
+Use kubectl to deploy the yaml:
+```
+kubectl apply -f mosquitto.yaml
+```
+Confirm the pod is running:
+
+
+Now to access the broker, you'll need to create a service.  Create a file named mosquittoService.yaml that looks like:
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: mosquitto-service
+  labels:
+    run: mosquitto
+spec:
+  ports:
+  - port: 1883
+    protocol: TCP
+  selector:
+    run: mosquitto
+```
