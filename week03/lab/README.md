@@ -1,5 +1,5 @@
 # Lab 3: Containers, Docker, and Kubernetes
-This lab will introduce containers, Dockeer, and the container orchestration system, Kubernetes.  We will use Docker to build and run containers, then explore running the containers with Kubernetes.
+This lab will introduce containers, Docker, and the container orchestration system, Kubernetes.  We will use Docker to build and run containers, then explore running the containers with Kubernetes.
 
 This lab is run on the Jetson device using the desktop (via VNC or display); unless noted, all commands are run on your Jetson.
 
@@ -395,6 +395,7 @@ metadata:
   labels:
     run: mosquitto
 spec:
+  type: NodePort
   ports:
   - port: 1883
     protocol: TCP
