@@ -271,9 +271,43 @@ If this example doesn't work, confirm your display is setup correctly (e.g. expo
 
 ### Installation
 
-https://github.com/MIDS-scaling-up/v3/tree/main/week03/demo
+We'll be using an approach based on https://thenewstack.io/tutorial-deploying-tensorflow-models-at-the-edge-with-nvidia-jetson-nano-and-k3s/ and using a version of Kubernetes called K3s, a distribution focused a lightweight Kubernetes designed for the Edge.  
 
-### Getting started
+To install K3s, run the following: 
+```
+mkdir $HOME/.kube/
+curl -sfL https://get.k3s.io | sh -s - --docker --write-kubeconfig-mode 644 --write-kubeconfig $HOME/.kube/config
+```
+
+This installs k3s and has it use a Docker instead of containerd.
+If you need to install curl, run the command `sudo apt-get install curl`.
+
+After a few minutes, you'll have Kubernetes up and running.
+```
+kubectl get nodes
+NAME   STATUS   ROLES                  AGE   VERSION
+nx     Ready    control-plane,master   27s   v1.20.0+k3s2
+```
+
+Kubernetes is installed as a systemd service and is configured to start automatically.  You can disable this with the following command:
+```
+sudo systemctl disable k3s
+```
+The service can be started with the command:
+```
+sudo systemctl start k3s
+```
+and stopped with:
+```
+sudo systemctl stop k3s
+```
+If k3s doesn't stop cleanling, rebooting will be needed.
+To remove k3s, you can run the following:
+```
+/usr/local/bin/k3s-uninstall.sh
+```
+
+### Getting started with Nginx
 You'll explore Kubernetes via the deployment of the http server Nginx.
 
 Create a file named deployNginx.yaml and add the following:
