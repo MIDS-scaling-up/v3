@@ -491,7 +491,7 @@ FROM alpine:latest
 RUN apk add mosquitto
 CMD mosquitto
 ```
-You'll want to build the image and push it into your DockerHub registry, e.g. docker build -t rdejana/mosquitto . and docker push rdejana/mosquitto.
+You'll want to build the image and push it into your DockerHub registry, e.g. `docker build -t rdejana/mosquitto .` and `docker push rdejana/mosquitto`.
 
 Next, you'll want to create a YAML file for the Kubernetes Deployment. Using the following as an example:
 ```
@@ -539,7 +539,7 @@ spec:
   selector:
     app: mosquitto
 ```
-Run the command `kubectl get service mosquitto-service` and take note of the NodePort Kubernetes assign.
+Run the command `kubectl get service mosquitto-service` and take note of the NodePort Kubernetes assigns.
 
 To use the service, you'll create 2 simple python applications. This can be done using your Jetson device or your local workstation (your choice), but this will assume that you are using your Jetson.  You may want to setup a python virtual env (e.g. python3 -m venv /path/to/new/virtual/environment) for this, but the choice is yours.  To install the MQTT client libraries, run the following, `pip3 install paho-mqtt`.
 
@@ -549,7 +549,7 @@ import paho.mqtt.client as mqtt
 
 
 LOCAL_MQTT_HOST="localhost"
-LOCAL_MQTT_PORT=<your NodePort>"
+LOCAL_MQTT_PORT=<your NodePort>
 LOCAL_MQTT_TOPIC="test_topic"
 
 def on_connect_local(client, userdata, flags, rc):
@@ -585,7 +585,7 @@ import paho.mqtt.client as mqtt
   
 
 LOCAL_MQTT_HOST="localhost"
-LOCAL_MQTT_PORT=<your NodePort>"
+LOCAL_MQTT_PORT=<your NodePort>
 LOCAL_MQTT_TOPIC="test_topic"
 
 def on_connect_local(client, userdata, flags, rc):
