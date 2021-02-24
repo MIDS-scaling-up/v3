@@ -231,6 +231,22 @@ Go ahead and launch the image with the command `docker run -ti -p 8888:8888 myim
 You'll now push this image to DockerHub. If you haven't logged in yet, run the command `docker login` and follow the prompts.  Run the command `docker tag myimage <yourdockerid>/myjupyter`, replacing <yourdockerid> with your actual value. For me, it would be `docker tag myimage rdejana/myjupyter`. You'll them push the image into DockerHub using the command `docker push <yourdockerid>/myjupyter`, e.g. `docker push rdejana/myjupyter`.  When the push is completed, open a broswer and go to `https://hub.docker.com/`, login in, and you should see your newly pushed image.  Note, this image is public and may be used by anybody.  Be careful not to store any credentials in your images!
  
 In this next example, we'll build an image with is able to use your USB camera. Change to the directory build_example_2 and review both the Dockerfile and cam.py.
+
+```
+FROM ubuntu
+  
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update
+RUN apt install -y python3-dev python3-pip  python3-opencv vim-tiny  libopencv-dev
+RUN pip3 install Cython
+RUN pip3 install numpy
+# example from https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_gui/py_video_display/py_video_display.html
+COPY cam.py cam.py
+
+CMD ["python3","cam.py"]
+```
+
+
 ```
 # cam.py
 # this is from https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_gui/py_video_display/py_video_display.html
