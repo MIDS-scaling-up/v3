@@ -5,6 +5,8 @@ This lab is run on the Jetson device using the desktop (via VNC or display); unl
 
 Ensure that you cloned this github repo and are in the directory for this lab (v2/week03/lab/).
 
+This lab should take approximentaly 60 minutes to complete.
+
 ## Prerequisites
 The following prerequisites are required for this lab:
 - Docker is installed on your Jetson device.  This should have been done as part of your Jetpack install.
