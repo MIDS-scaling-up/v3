@@ -399,6 +399,90 @@ spec:
   ports:
   - port: 1883
     protocol: TCP
+    targetPort: 1883
   selector:
-    run: mosquitto
+    app: mosquitto
 ```
+Run the command `kubectl get service mosquitto-service` and take note of the NodePort Kubernetes assign.
+
+To use the service, you'll create 2 simple python applications. This can be done using your Jetson device or your local workstation (your choice), but this will assume that you are using your Jetson.  You may want to setup a python virtual env (e.g. python3 -m venv /path/to/new/virtual/environment) for this, but the choice is yours.  To install the MQTT client libraries, run the following, `pip3 install paho-mqtt`.
+
+To create a listener, use the following code in a file named listener.py:
+```
+import paho.mqtt.client as mqtt
+
+
+LOCAL_MQTT_HOST="localhost"
+LOCAL_MQTT_PORT=<your NodePort>"
+LOCAL_MQTT_TOPIC="test_topic"
+
+def on_connect_local(client, userdata, flags, rc):
+        print("connected to local broker with rc: " + str(rc))
+        client.subscribe(LOCAL_MQTT_TOPIC)
+	
+def on_message(client,userdata, msg):
+  try:
+    print("message received: ",str(msg.payload.decode("utf-8")))
+    # if we wanted to re-publish this message, something like this should work
+    # msg = msg.payload
+    # remote_mqttclient.publish(REMOTE_MQTT_TOPIC, payload=msg, qos=0, retain=False)
+  except:
+    print("Unexpected error:", sys.exc_info()[0])
+
+local_mqttclient = mqtt.Client()
+local_mqttclient.on_connect = on_connect_local
+local_mqttclient.connect(LOCAL_MQTT_HOST, LOCAL_MQTT_PORT, 60)
+local_mqttclient.on_message = on_message
+
+
+
+# go into a loop
+local_mqttclient.loop_forever()
+```
+Set LOCAL_MQTT_PORT to be your NodePort value and if you are not running on your Jetson, set LOCAL_MQTT_HOST to your Jetson's IP address.
+
+Run your listener.
+
+In a second shell, create publisher.py with the following:
+```
+import paho.mqtt.client as mqtt
+  
+
+LOCAL_MQTT_HOST="localhost"
+LOCAL_MQTT_PORT=<your NodePort>"
+LOCAL_MQTT_TOPIC="test_topic"
+
+def on_connect_local(client, userdata, flags, rc):
+        print("connected to local broker with rc: " + str(rc))
+
+local_mqttclient = mqtt.Client()
+local_mqttclient.on_connect = on_connect_local
+local_mqttclient.connect(LOCAL_MQTT_HOST, LOCAL_MQTT_PORT, 60)
+
+#publish the message
+local_mqttclient.publish(LOCAL_MQTT_TOPIC,"Hello MQTT...")
+```
+
+Again, set LOCAL_MQTT_PORT to be your NodePort value and if you are not running on your Jetson, set LOCAL_MQTT_HOST to your Jetson's IP address.
+
+Run `python3 publisher.py` and in the listener's shell you should see our message.  You may now stop the listener.
+
+The last part of this lab will be to build and deploy a listener container into kubernetes.  You'll be using Ubuntu for this example.
+As you'll be leverageing the Kubernetes DNS to "discover" your broker, you'll want to update LOCAL_MQTT_HOST to be mosquitto-service and LOCAL_MQTT_PORT to 1883.  
+```
+FROM ubuntu:latest
+# this is needed to make sure we can see the log output
+ENV PYTHONUNBUFFERED=1
+WORKDIR /app
+RUN apt-get update && apt-get install -y python3 python3-pip
+#RUN a command to intall the MQTT python client 
+# Copy your listener.py file into the container
+CMD python3 listener.py
+```
+You'll need to add the command to install the MQTT client and the command to copy your listener file into the container.  Note, you'll also need to push into your DockerHub account.
+
+Watch the logs of your listener, `kubectl logs -f <podName>` and run your publisher.  You should see that your listener connected via the service name and your message show up!
+
+You can now delete your serivce and deployments.
+
+
