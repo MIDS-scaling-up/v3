@@ -5,7 +5,7 @@ This lab is run on the Jetson device using the desktop (via VNC or display); unl
 
 Ensure that you cloned this github repo and are in the directory for this lab (v2/week03/lab/).
 
-This lab should take approximentaly 60 minutes to complete.
+This lab may take up to 60 minutes to complete.
 
 ## Prerequisites
 The following prerequisites are required for this lab:
@@ -616,6 +616,27 @@ RUN apt-get update && apt-get install -y python3 python3-pip
 CMD python3 listener.py
 ```
 You'll need to add the command to install the MQTT client and the command to copy your listener file into the container.  Note, you'll also need to push into your DockerHub account.
+
+Create a deployment yaml similar to the following, but adjust to point toward the image you published to DockerHub.
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: listener
+spec:
+  selector:
+    matchLabels:
+      app: listener
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: listener
+    spec:
+      containers:
+      - name: listener
+        image: <yourImage>
+```
 
 Watch the logs of your listener, `kubectl logs -f <podName>` and run your publisher.  You should see that your listener connected via the service name and your message show up!
 
