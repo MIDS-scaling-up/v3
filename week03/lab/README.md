@@ -179,7 +179,7 @@ make
 This will display a GPU powered N-body simulation, running in a container and displaying on your UI.  Close the window and exit out of your container.
 
 ### Building containers
-Run existing containers from existing images is great, but you can also build your own container images. First you'll build a simple Jupyter Notebook container.  Change to the director build_example_1 and look at the file `Dockerfile`.
+Run existing containers from existing images is great, but you can also build your own container images. First you'll build a simple Jupyter Notebook container.  Change to the directory build_example_1 and look at the file `Dockerfile`.
 ```
 # Using ubuntu 18.04 as base image
 FROM ubuntu:18.04
@@ -226,7 +226,7 @@ Removing intermediate container 8158469d5a5b
 Successfully built 2ddce619ee6c
 Successfully tagged myimage:latest
 ```
-Go ahead and launch the image with the command docker run -ti -p 8888:8888 myimage. You'll see some info with the token value displayed to stdout. Use that to login into your notebook. You can them open simple.ipynb and run it.
+Go ahead and launch the image with the command `docker run -ti -p 8888:8888 myimage`. You'll see some info with the token value displayed to stdout. Use that to login into your notebook. You can them open simple.ipynb and run it.
 
 You'll now push this image to DockerHub. If you haven't logged in yet, run the command `docker login` and follow the prompts.  Run the command `docker tag myimage <yourdockerid>/myjupyter`, replacing <yourdockerid> with your actual value. For me, it would be `docker tag myimage rdejana/myjupyter`. You'll them push the image into DockerHub using the command `docker push <yourdockerid>/myjupyter`, e.g. `docker push rdejana/myjupyter`.  When the push is completed, open a broswer and go to `https://hub.docker.com/`, login in, and you should see your newly pushed image.  Note, this image is public and may be used by anybody.  Be careful not to store any credentials in your images!
  
