@@ -5,7 +5,7 @@ This lab is run on the Jetson device using the desktop (via VNC or display); unl
 
 Ensure that you cloned this github repo and are in the directory for this lab (v2/week03/lab/).
 
-This lab should take approximentaly 60 minutes to complete.
+This lab may take up to 60 minutes to complete.
 
 ## Prerequisites
 The following prerequisites are required for this lab:
@@ -46,6 +46,9 @@ Not all commands may be covered in this lab.
 | docker inspect <name> | Return low-level information on Docker objects |
 | docker rm <name> | Delete a container |
 | docker rmi image name | Delete an image from the local cache |
+	
+## Getting your Jetson's IP
+If your Jetson is wired, e.g. using ethernt, you can find its IP with the command `ifconfig eth0`. If it is wireless, replace eth0 with wlan0. 
 
 ## Part 1: Docker
 
@@ -176,7 +179,7 @@ make
 This will display a GPU powered N-body simulation, running in a container and displaying on your UI.  Close the window and exit out of your container.
 
 ### Building containers
-Run existing containers from existing images is great, but you can also build your own container images. First you'll build a simple Jupyter Notebook container.  Change to the director build_example_1 and look at the file `Dockerfile`.
+Run existing containers from existing images is great, but you can also build your own container images. First you'll build a simple Jupyter Notebook container.  Change to the directory build_example_1 and look at the file `Dockerfile`.
 ```
 # Using ubuntu 18.04 as base image
 FROM ubuntu:18.04
@@ -223,11 +226,27 @@ Removing intermediate container 8158469d5a5b
 Successfully built 2ddce619ee6c
 Successfully tagged myimage:latest
 ```
-Go ahead and launch the image with the command docker run -ti -p 8888:8888 myimage. You'll see some info with the token value displayed to stdout. Use that to login into your notebook. You can them open simple.ipynb and run it.
+Go ahead and launch the image with the command `docker run -ti -p 8888:8888 myimage`. You'll see some info with the token value displayed to stdout. Use that to login into your notebook. You can them open simple.ipynb and run it.
 
 You'll now push this image to DockerHub. If you haven't logged in yet, run the command `docker login` and follow the prompts.  Run the command `docker tag myimage <yourdockerid>/myjupyter`, replacing <yourdockerid> with your actual value. For me, it would be `docker tag myimage rdejana/myjupyter`. You'll them push the image into DockerHub using the command `docker push <yourdockerid>/myjupyter`, e.g. `docker push rdejana/myjupyter`.  When the push is completed, open a broswer and go to `https://hub.docker.com/`, login in, and you should see your newly pushed image.  Note, this image is public and may be used by anybody.  Be careful not to store any credentials in your images!
  
 In this next example, we'll build an image with is able to use your USB camera. Change to the directory build_example_2 and review both the Dockerfile and cam.py.
+
+```
+FROM ubuntu
+  
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update
+RUN apt install -y python3-dev python3-pip  python3-opencv vim-tiny  libopencv-dev
+RUN pip3 install Cython
+RUN pip3 install numpy
+# example from https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_gui/py_video_display/py_video_display.html
+COPY cam.py cam.py
+
+CMD ["python3","cam.py"]
+```
+
+
 ```
 # cam.py
 # this is from https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_gui/py_video_display/py_video_display.html
@@ -264,7 +283,7 @@ To run the container:
 docker run -it --rm --device /dev/video0 --network host -e DISPLAY=$DISPLAY camera:latest
 ```
 
-This run command uses two "interestig" options, first is `--device` which allows us to expose a hosts device, in this case, your camera, to the container.  Next is the `--network host`, which attaches the container to host's network.  This is needed displaying.
+This run command uses two "interesting" options, first is `--device` which allows us to expose a hosts device, in this case, your camera, to the container.  Next is the `--network host`, which attaches the container to host's network.  This is needed for X to work.
 
 If this example doesn't work, confirm your display is setup correctly (e.g. export DISPLAY=:0 and xhost +) and that your camera is on /dev/video0.  If you camera is not using /dev/video0, adjust both cam.py and the --device option to match your machine.
 
@@ -472,7 +491,7 @@ FROM alpine:latest
 RUN apk add mosquitto
 CMD mosquitto
 ```
-You'll want to build the image and push it into your DockerHub registry, e.g. docker build -t rdejana/mosquitto . and docker push rdejana/mosquitto.
+You'll want to build the image and push it into your DockerHub registry, e.g. `docker build -t rdejana/mosquitto .` and `docker push rdejana/mosquitto`.
 
 Next, you'll want to create a YAML file for the Kubernetes Deployment. Using the following as an example:
 ```
@@ -520,7 +539,7 @@ spec:
   selector:
     app: mosquitto
 ```
-Run the command `kubectl get service mosquitto-service` and take note of the NodePort Kubernetes assign.
+Run the command `kubectl get service mosquitto-service` and take note of the NodePort Kubernetes assigns.
 
 To use the service, you'll create 2 simple python applications. This can be done using your Jetson device or your local workstation (your choice), but this will assume that you are using your Jetson.  You may want to setup a python virtual env (e.g. python3 -m venv /path/to/new/virtual/environment) for this, but the choice is yours.  To install the MQTT client libraries, run the following, `pip3 install paho-mqtt`.
 
@@ -530,7 +549,7 @@ import paho.mqtt.client as mqtt
 
 
 LOCAL_MQTT_HOST="localhost"
-LOCAL_MQTT_PORT=<your NodePort>"
+LOCAL_MQTT_PORT=<your NodePort>
 LOCAL_MQTT_TOPIC="test_topic"
 
 def on_connect_local(client, userdata, flags, rc):
@@ -566,7 +585,7 @@ import paho.mqtt.client as mqtt
   
 
 LOCAL_MQTT_HOST="localhost"
-LOCAL_MQTT_PORT=<your NodePort>"
+LOCAL_MQTT_PORT=<your NodePort>
 LOCAL_MQTT_TOPIC="test_topic"
 
 def on_connect_local(client, userdata, flags, rc):
@@ -597,6 +616,27 @@ RUN apt-get update && apt-get install -y python3 python3-pip
 CMD python3 listener.py
 ```
 You'll need to add the command to install the MQTT client and the command to copy your listener file into the container.  Note, you'll also need to push into your DockerHub account.
+
+Create a deployment yaml similar to the following, but adjust to point toward the image you published to DockerHub.
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: listener
+spec:
+  selector:
+    matchLabels:
+      app: listener
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: listener
+    spec:
+      containers:
+      - name: listener
+        image: <yourImage>
+```
 
 Watch the logs of your listener, `kubectl logs -f <podName>` and run your publisher.  You should see that your listener connected via the service name and your message show up!
 
