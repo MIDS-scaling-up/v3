@@ -46,6 +46,9 @@ Not all commands may be covered in this lab.
 | docker inspect <name> | Return low-level information on Docker objects |
 | docker rm <name> | Delete a container |
 | docker rmi image name | Delete an image from the local cache |
+	
+## Getting your Jetson's IP
+If your Jetson is wired, e.g. using ethernt, you can find its IP with the command `ifconfig eth0`. If it is wireless, replace eth0 with wlan0. 
 
 ## Part 1: Docker
 
