@@ -274,8 +274,122 @@ If this example doesn't work, confirm your display is setup correctly (e.g. expo
 https://github.com/MIDS-scaling-up/v3/tree/main/week03/demo
 
 ### Getting started
+You'll explore Kubernetes via the deployment of the http server Nginx.
 
-### Integrating Pods
+Create a file named deployNginx.yaml and add the following:
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+```
+Now create the deployment: 
+```
+kubectl apply -f deployNginx.yaml
+```
+Display information about the Deployment:
+```
+kubectl describe deployment nginx-deployment
+```
+And you should see something similar to:
+```
+Name:                   nginx-deployment
+Namespace:              default
+CreationTimestamp:      Tue, 23 Feb 2021 18:34:45 -0700
+Labels:                 <none>
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=nginx
+Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=nginx
+  Containers:
+   nginx:
+    Image:        nginx:1.14.2
+    Port:         80/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   nginx-deployment-66b6c48dd5 (2/2 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  32s   deployment-controller  Scaled up replica set nginx-deployment-66b6c48dd5 to 2
+```
+Now list the Pods created by the deployment:
+```
+kubectl get pods -l app=nginx
+```
+And you'll see something like:
+```
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-66b6c48dd5-4j2rj   1/1     Running   0          94s
+nginx-deployment-66b6c48dd5-892dn   1/1     Running   0          94s
+```
+Display some informationa about a Pod:
+```
+kubectl describe pod <pod-name>
+```
+where <pod-name> is the name of one of your Pods.
+
+Delete one of the pods:
+```
+kubectl delete pod <pod-name>
+```
+Now list the Pods again; what happened?
+
+It is nice that the deployment is running, but it would be better to be able to access the web server.  This is will be done via a Kubernetes Service, in this case a NodePort service.  Run the following command to create the service:
+```
+kubectl expose deployment nginx-deployment --type=NodePort --port=80 --name nginx
+```
+To find the the port used by the service, run:
+```
+kubectl get service nginx
+```
+And you'll get something similar to:
+```
+NAME    TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+nginx   NodePort   10.106.179.170   <none>        80:30340/TCP   59s
+```
+In this example, the exposed port is `30340`.  Open a brower to `http://<yourDeviceIP>:<NodePort>` and you should see a welcome page.
+
+To find out which instance served your request, look at the Pod's logs:
+```
+kubectl logs <podName>
+```
+You can now delete the resources:
+```
+kubectl delete service nginx
+kubectl delete deployment nginx-deployment
+```
+
+### A more interesting example
+Now for a more interesting example.  You'll be deploying a simple MQTT broker along with a listener application.
+
 
 ### MQTT 101
 MQTT - http://mqtt.org/ is a lightweight messaging protocol for the Internet of Things. You send messages to topics and there are just three simple QoS settings: 0,1, and 2.  Please familiarize yourself with these. Here's a [nice page on MQTT QoS](https://www.hivemq.com/blog/mqtt-essentials-part-6-mqtt-quality-of-service-levels/) and another one [on MQTT topics](https://www.hivemq.com/blog/mqtt-essentials-part-5-mqtt-topics-best-practices/) that go over MQTT best practices.
@@ -312,40 +426,7 @@ mosquitto_sub -t applications/in/+/public/# -h <ip address of the MQTT broker>
 
 This matches `applications/in/app1/public` as well as `applications/in/app2/public/subtopic`, etc. etc.
 
-### MQTT via python
-You don't need to use Python, in fact, perhaps it's more fun to just use command line tools like mosquitto_sub and mosquitto_pub; but it's obviously better to use Python.  Here's a simple template on how to use [Paho-MQTT](https://pypi.org/project/paho-mqtt/):
-```
-import paho.mqtt.client as mqtt
-
-
-LOCAL_MQTT_HOST="mosquitto"
-LOCAL_MQTT_PORT=1883
-LOCAL_MQTT_TOPIC="test_topic"
-
-def on_connect_local(client, userdata, flags, rc):
-        print("connected to local broker with rc: " + str(rc))
-        client.subscribe(LOCAL_MQTT_TOPIC)
-	
-def on_message(client,userdata, msg):
-  try:
-    print("message received!")	
-    # if we wanted to re-publish this message, something like this should work
-    # msg = msg.payload
-    # remote_mqttclient.publish(REMOTE_MQTT_TOPIC, payload=msg, qos=0, retain=False)
-  except:
-    print("Unexpected error:", sys.exc_info()[0])
-
-local_mqttclient = mqtt.Client()
-local_mqttclient.on_connect = on_connect_local
-local_mqttclient.connect(LOCAL_MQTT_HOST, LOCAL_MQTT_PORT, 60)
-local_mqttclient.on_message = on_message
-
-
-
-# go into a loop
-local_mqttclient.loop_forever()
-
-```
+### Mosquitto and Kubernetes
 With this in mind, we are going to deploy a Mosquitto MQTT broker into Kubernetes, create a service, then use access the broker from outside Kubernetes and then from inside it.
 
 You'll start by building a simple [Alpine Linux](https://alpinelinux.org/) based container.  Alpine is a very lightweight Linux distro that works well on Edge devices.
