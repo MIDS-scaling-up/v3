@@ -44,18 +44,18 @@ for (x,y,w,h) in faces:
 Note, you can find the OpenCV cascade files on the nx in the directory /usr/share/opencv4/haarcascades
 ```
 
-## Linking containers
+### Linking containers
 On the NX, your containers should communicate via Kubernetes services, see Lab 3 for details.  On the cloud side, you should use a user defined network to enable your containers to easily communicate.  Please review the [docker networking tutorial](https://docs.docker.com/network/network-tutorial-standalone/#use-user-defined-bridge-networks).  The idea is that you will need to create a local bridge network and then the containers you will create will join it.
 
-## Overall architecture / flow
+### Overall architecture / flow
 Your overall application flow / architecture should be something like:
 
-## Hints
+### Hints
 Using a USB device from Kubernetes requires a privileged security context.  If you'd like your container to display your camera's images, you'll need to enable host networking and set the DISPLAY env variable.
 
 Review Lab 3!
 
-## Grading/Submission
+### Grading/Submission
 You are scored based on the following:
 
 - 60 points for a containerized end to end appliation
