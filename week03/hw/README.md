@@ -66,6 +66,7 @@ You are scored based on the following:
 - 10 points for storing your faces in object storage
 
 What to submit to ISVC:
+
 A link to the repository of your for this homework [private repo please] which should include your code, Dockerfiles, and Kubernetes YAML files.  In addition, the answers to the 2 questions should be included.
 
 A publicly accessble http link to the location of your faces in the object storage. 
