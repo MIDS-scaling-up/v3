@@ -48,7 +48,7 @@ Note, you can find the OpenCV cascade files on the nx in the directory /usr/shar
 On the NX, your containers should communicate via Kubernetes services, see Lab 3 for details.  On the cloud side, you should use a user defined network to enable your containers to easily communicate.  Please review the [docker networking tutorial](https://docs.docker.com/network/network-tutorial-standalone/#use-user-defined-bridge-networks).  The idea is that you will need to create a local bridge network and then the containers you will create will join it.
 
 ### Overall architecture / flow
-Your overall application flow / architecture should be something like: ![this](hw03.png).
+Your overall application flow / architecture should be something like: ![this](hw3.png).
 
 ### Hints
 - Using a USB device from Kubernetes requires a privileged security context.  If you'd like your container to display your camera's images, you'll need to enable host networking and set the DISPLAY env variable.
