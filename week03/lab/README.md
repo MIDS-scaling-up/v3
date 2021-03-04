@@ -462,15 +462,16 @@ Or, if you want to install the broker, you need to do this:
 sudo apt install -y mosquitto
 ```
 
-On Alpine Linux, you would do instead:
+On Alpine Linux, you would instead run:
 ```
 apk add mosquitto
 ```
 
-Note that mqtt uses port 1883 for un-encrypted messages.
-
-
 To see what packages are available on Alpine linux for Mosquitto, you would do something like [this](https://pkgs.alpinelinux.org/packages?name=mosquitto&branch=edge)
+
+
+Note that MQTT uses port 1883 for un-encrypted messages.
+
 
 ### Subscribing to messages on an MQTT Broker via mosquitto_sub
 To subscribe to a topic tree on an MQTT broker, we do something like this:
