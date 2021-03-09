@@ -18,11 +18,14 @@ https://avatao.com/life-before-docker-and-beyond-a-brief-history-of-container-se
 
 https://docs.docker.com/get-started/overview/
 
-https://docs.docker.com/get-docker/ - install docker on your workstation
-
 https://mkdev.me/en/posts/the-tool-that-really-runs-your-containers-deep-dive-into-runc-and-oci-specifications
 
 https://www.docker.com/blog/what-is-containerd-runtime/
+
+
+### Installing Docker
+
+https://docs.docker.com/get-docker/ 
 
 
 ### Kubernetes
@@ -45,6 +48,6 @@ https://developer.nvidia.com/blog/deploying-ai-apps-with-egx-on-jetson-xavier-nx
 
 https://blogs.nvidia.com/blog/2020/10/08/retailers-edge-computing-ai/
 
-https://kubernetes.io/blog/2018/05/22/getting-to-know-kubevirt/ - VMs in Containers
+https://kubernetes.io/blog/2018/05/22/getting-to-know-kubevirt/ 
 
 
