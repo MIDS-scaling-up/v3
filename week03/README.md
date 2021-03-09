@@ -45,4 +45,6 @@ https://developer.nvidia.com/blog/deploying-ai-apps-with-egx-on-jetson-xavier-nx
 
 https://blogs.nvidia.com/blog/2020/10/08/retailers-edge-computing-ai/
 
+https://kubernetes.io/blog/2018/05/22/getting-to-know-kubevirt/ - VMs in Containers
+
 
