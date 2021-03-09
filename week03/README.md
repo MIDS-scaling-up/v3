@@ -1,5 +1,5 @@
 # Lecture 2
-Virtual machines, containers, orchestration and Kubernetes.
+Virtual machines, containers, orchestration and Kubernetes, edge, and cloud native.
 
 ## Reading
 
