@@ -1,3 +1,9 @@
+# Lecture 2
+Virtual machines, containers, orchestration and Kubernetes.
+
+## Reading
+
+### Virtual Machines
 
 https://www.ibm.com/cloud/learn/hypervisors
 
@@ -6,7 +12,7 @@ https://www.stratoscale.com/blog/hyperconvergence/cloud-101-what-is-a-hypervisor
 https://www.redhat.com/en/topics/virtualization/what-is-KVM
 
 
-Containers
+### Containers
 
 https://avatao.com/life-before-docker-and-beyond-a-brief-history-of-container-security/
 
@@ -19,7 +25,7 @@ https://mkdev.me/en/posts/the-tool-that-really-runs-your-containers-deep-dive-in
 https://www.docker.com/blog/what-is-containerd-runtime/
 
 
-Kubernetes
+### Kubernetes
 
 https://kubernetes.io/docs/concepts/
 
@@ -29,8 +35,7 @@ https://rancher.com/docs/k3s/latest/en/architecture/
 
 https://thenewstack.io/how-k3s-portworx-and-calico-can-serve-as-a-foundation-of-cloud-native-edge-infrastructure/
 
-Misc
-
+### Miscellaneous
 
 https://docs.microsoft.com/en-us/dotnet/architecture/cloud-native/definition
 
