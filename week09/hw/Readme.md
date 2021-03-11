@@ -1,5 +1,7 @@
 # Homework 9 - Distributed training
 
+This is a graded homework
+
 Due: before week 10 begins
 
 This homework will be focused on aspects of multi-gpu and multi-node model training.
