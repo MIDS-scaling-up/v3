@@ -6,4 +6,5 @@ Due just before week 6 session
 
 This homework will focus on PyTorch and possibly PyTorch Lightning.  The students would be required to pick a pre-trained model and fine tune it, writing the loop from scratch
 
-Alternatively, the students would be required to create their own design of a model and train it from random weights.
+Finally, the students will need to transfer their trained model to the Jetson device and demonstrate its performance / quality there.
+Optinally, the students could demonstrate that the model could be trained on the Jetson.
