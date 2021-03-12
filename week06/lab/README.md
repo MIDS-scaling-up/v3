@@ -27,21 +27,20 @@ Source elements generate data for use by a pipeline, for example reading from fr
 
 Filters and filter-like elements have both input and outputs pads. They operate on data that they receive on their input (sink) pads, and will provide data on their output (source) pads.
 
-![Filter element](images/filter-element.png)
 
 Filter-like elements can have any number of source or sink pads.  For example, a demuxer would have one sink pad and several (1-N) source pads, one for each of the  streams contained in the source format. On the other hand, an decoder will only have one source and sink pads.
 
 ![Filter element](images/filter-element.png)
 
 
-Multi pad example: 
-
 ![Filter element](images/filter-element-multi.png)
 
 
-Visualisation of a filter element with more than one output pad shows another filter-like element, this one having more than one output (source) pad. An example of one such element could, for example, be an Ogg demuxer for an Ogg stream containing both audio and video. One source pad will contain the elementary video stream, another will contain the elementary audio stream. Demuxers will generally fire signals when a new pad is created. The application programmer can then handle the new elementary stream in the signal handler.
+Finally, sink elements are the end of a pipeline; they accept an input and outout to a display, to disk, etc.
 
-Sink elements are end points in a media pipeline. They accept data but do not produce anything. Disk writing, soundcard playback, and video output would all be implemented by sink elements. Visualisation of a sink element shows a sink element.
+![Filter element](images/sink-element.png)
+
+
 
 
 python, opencv, and gstreamer
