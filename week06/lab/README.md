@@ -150,7 +150,11 @@ And you'll get output similar to this (note, we are only concerned with video/x-
 	
 ```
 
-You can see that for this camera, it's format is YUY2, and that our available dimensions and framerates are related.  Let's start by asking for 30 FPS.  Note, you'll need to use the` X/1` for framerates.
+You can see that for this camera, it's format is YUY2, and that our available dimensions and framerates are related. 
+
+For the rest of the camera based examples, you'll need to use values that work with your actual hardware. 
+
+Let's start by asking for 30 FPS.  Note, you'll need to use the` X/1` for framerates.
 ```
 gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw,framerate=30/1 ! xvimagesink
 ```
@@ -167,6 +171,7 @@ gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw,framerate=30/1,width=160
 
 And works as expected.   Feel free to explore what your camera can do!
 
+
 Now what can we do with the video?  Say we want to see the image in grayscale.
 ```
 gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw,framerate=30/1 ! videoconvert ! video/x-raw,format=GRAY8 ! videoconvert  ! xvimagesink
@@ -177,7 +182,8 @@ gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw,framerate=30/1 ! videoco
 ```
 Fails as we need to make sure the video is in a format that xvimagesink can understand, e.g. BGRx.
 
-We can do the same the Nvidia plugins:
+
+We can do the same with nv3dsink:
 ```
 gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw,framerate=30/1 ! nvvidconv ! 'video/x-raw(memory:NVMM)' !  nvvidconv ! 'video/x-raw,format=GRAY8' !  nvvidconv ! 'video/x-raw(memory:NVMM)' ! nv3dsink -e
 ```
