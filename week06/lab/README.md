@@ -13,7 +13,10 @@ sudo xrandr --fb 1600x900
 
 ## Part 1: GStreamer
 
-In this part of the lab, you'll explore using GStreamer, primally via the gst-launch-1.0 tool.  The sections marked `(Audio)` require an audio device, e.g. USB headphones, and may be considered optional.  
+In this part of the lab, you'll explore using GStreamer, primally via the gst-launch-1.0 tool.  
+
+While not covered here, audio is also supported.  See the Gstreamer documentation for examples.
+ 
 
 ### Basics
 At its core GStreamer uses pipelines, where a pipelie is a list of elements separated by exclamation marks (!). 
