@@ -272,6 +272,5 @@ This is just a very simple introduction to GStreamer.  If you are interested in 
 
 
 ## Part 2: Quantization
-Notebook example
 
-Jetson Inference
+Run the notebook/docker image and see how tf-trt optimizes the inference.
