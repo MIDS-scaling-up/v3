@@ -18,7 +18,11 @@ In this part of the lab, you'll explore using GStreamer, primally via the gst-la
 ### Basics
 At its core GStreamer uses pipelines, where a pipelie is a list of elements separated by exclamation marks (!). 
 
-For the application programmer, elements are best visualized as black boxes. On the one end, you might put something in, the element does something with it and something else comes out at the other side. For a decoder element, for example, you'd put in encoded data, and the element would output decoded data. In the next chapter (see Pads and capabilities), you will learn more about data input and output in elements, and how you can set that up in your application
+For the application programmer, elements are best visualized as black boxes. On the one end, you might put something in, the element does something with it and something else comes out at the other side. The interface (inputs and outputs) to the outside world of an elent are called pads. 
+
+![Image of Yaktocat](images/filter-element.png)
+
+For a decoder element, for example, you'd put in encoded data, and the element would output decoded data. In the next chapter (see Pads and capabilities), you will learn more about data input and output in elements, and how you can set that up in your application
 
 Source elements generate data for use by a pipeline, for example reading from disk or from a sound card. Visualisation of a source element shows how we will visualise a source element. We always draw a source pad to the right of the element.
 
