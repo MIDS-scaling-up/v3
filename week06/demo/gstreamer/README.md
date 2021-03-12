@@ -218,7 +218,7 @@ In the second window, run the following:
 ```
  gst-launch-1.0 udpsrc address=127.0.0.1 port=8001 caps='application/x-rtp, encoding-name=(string)H264, payload=(int)96' ! rtph264depay ! queue ! h264parse ! nvv4l2decoder ! nv3dsink -e
 ```
-This listens for the packets and decdes the RTP stream and displays it on the screen.
+This listens for the packets and decodes the RTP stream and displays it on the screen.
 
 
 ## Part 6: Python and OpenCV
