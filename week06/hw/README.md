@@ -37,8 +37,8 @@ while(True):
 cap.release()
 cv2.destroyAllWindows()
 ```
-In the lab, you saw how to stream using Gstreamer.  Using the lab and the above example, write a Python application that listens for images streamed from a Gstreamer pipeline.
+In the lab, you saw how to stream using Gstreamer.  Using the lab and the above example, write a Python application that listens for images streamed from a Gstreamer pipeline.  You'll want to make sure your image displays in color.
 
 
-- Quantize a model
+Quantize a model
 - using the base model of your choice, 
