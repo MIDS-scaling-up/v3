@@ -6,6 +6,11 @@ https://docs.nvidia.com/jetson/l4t/Tegra%20Linux%20Driver%20Package%20Developmen
 
 https://medium.com/nutanix-iot/turning-a-laptop-into-an-ip-camera-de00f6b1e63
 
+https://medium.com/@fanzongshaoxing/use-nvidia-deepstream-to-accelerate-h-264-video-stream-decoding-8f0fec764778
+
+https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Overview.html#nvidia-deepstream-overview
+
+
 ### Quantization and model optizmation
 
 https://github.com/dusty-nv/jetson-inference
