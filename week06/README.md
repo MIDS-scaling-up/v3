@@ -22,3 +22,4 @@ https://docs.nvidia.com/deeplearning/tensorrt/install-guide/index.html
 
 https://pytorch.org/docs/stable/quantization.html
 
+https://pytorch.org/blog/introduction-to-quantization-on-pytorch/
