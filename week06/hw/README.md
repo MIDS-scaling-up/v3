@@ -1,4 +1,6 @@
-Part 1: GStreamer
+# Homework 6
+
+## Part 1: GStreamer
 
 1. In the lab, you used the Ndida sink nv3dsink; Nvidia provides a another sink, nveglglessink.  Convert the following sink to use nveglglessink.
 ```
@@ -40,6 +42,6 @@ cv2.destroyAllWindows()
 In the lab, you saw how to stream using Gstreamer.  Using the lab and the above example, write a Python application that listens for images streamed from a Gstreamer pipeline.  You'll want to make sure your image displays in color.
 
 
-Model optimization and quantization
+## Part 2: Model optimization and quantization
 
 In lab, you saw to how use leverage TensorRT with TensorFlow.  For this homework, you'll look at another way to levarage TensorRT via the Jetson Infernece library.
