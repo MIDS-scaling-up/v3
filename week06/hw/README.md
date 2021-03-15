@@ -41,7 +41,27 @@ cv2.destroyAllWindows()
 ```
 In the lab, you saw how to stream using Gstreamer.  Using the lab and the above example, write a Python application that listens for images streamed from a Gstreamer pipeline.  You'll want to make sure your image displays in color.
 
+For part 1, you'll need to submit:
+- Answer to question 1
+- Answer to question 2
+- Answer to question 3
+- Source code and Gstreamer "server" pipeline used.
+
 
 ## Part 2: Model optimization and quantization
 
-In lab, you saw to how use leverage TensorRT with TensorFlow.  For this homework, you'll look at another way to levarage TensorRT via the Jetson Infernece library.
+In lab, you saw to how use leverage TensorRT with TensorFlow.  For this homework, you'll look at another way to levarage TensorRT with Pytorch via the Jetson Infernece library (https://github.com/dusty-nv/jetson-inference).
+
+You'll want to train a custom image classification model, using the cat/dog, PlantCLEF, or your own data data.
+
+Like in the lab, you'll want to first baseline the your model, looking a the image of images per second it can classify.  You may train the model using your Jetson device and the Jetson Inference scripts or train on a GPU eanabled server/virtual machine.  Once you have your baseline, follow the steps/examples outlined in the Jetson Inference to run your model with TensorRT (the defaults used are fine) and determine the number of images per second that are processed.
+
+You may use either the container apporach or build the library from source.
+
+For part 2, you'll need to submit:
+- The base model you used
+- A description of your data set
+- How long your trained your model for and what your final accuracy was
+- Native Pytorch baseline
+- TensorRT numbers
+
