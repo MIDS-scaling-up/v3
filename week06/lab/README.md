@@ -277,4 +277,32 @@ This is just a very simple introduction to GStreamer.  If you are interested in 
 
 ## Part 2: Quantization
 
-Run the notebook/docker image and see how tf-trt optimizes the inference.
+
+This is a very simple image classification example based on https://github.com/tensorflow/tensorrt/tree/master/tftrt/examples/image-classification updated to run on the Jetson Xavier NX. You'll learn how to use TensorFlow 2.x to convert a Keras model to three tf-trt models, a fp32, fp16, and int8. A simple set of test images will be used to both validate and benchmark both the native model and the three tf-trt ones.
+
+You'll be using a prebuilt image (rdejana/tf-trt-demo) for this lab.
+
+Run: 
+```docker run -it --rm --net=host rdejana/tf-trt-demo```
+
+Once the container as started, you'll see output similar to: 
+
+```
+[I 21:26:42.668 NotebookApp] Writing notebook server cookie secret to /root/.local/share/jupyter/runtime/notebook_cookie_secret
+[I 21:26:43.631 NotebookApp] Serving notebooks from local directory: /app/tf-trt
+[I 21:26:43.631 NotebookApp] Jupyter Notebook 6.1.6 is running at:
+[I 21:26:43.631 NotebookApp] http://nx:8888/?token=af4be11ce363992a3815f1893de5b4f219940a7fb364040a
+[I 21:26:43.631 NotebookApp]  or http://127.0.0.1:8888/?token=af4be11ce363992a3815f1893de5b4f219940a7fb364040a
+[I 21:26:43.631 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 21:26:43.647 NotebookApp] 
+    
+    To access the notebook, open this file in a browser:
+        file:///root/.local/share/jupyter/runtime/nbserver-1-open.html
+    Or copy and paste one of these URLs:
+        http://nx:8888/?token=af4be11ce363992a3815f1893de5b4f219940a7fb364040a
+     or http://127.0.0.1:8888/?token=af4be11ce363992a3815f1893de5b4f219940a7fb364040a
+```
+
+Navigate to the appropriate URL and open the file tf-trt.ipynb.
+
+Once the notebook is open, you may run each piece. Note, the flush.sh script is available to clear cached memory if needed. In addition, the notebook restarts a number of points to clear up memroy.
