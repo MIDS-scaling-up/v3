@@ -40,5 +40,6 @@ cv2.destroyAllWindows()
 In the lab, you saw how to stream using Gstreamer.  Using the lab and the above example, write a Python application that listens for images streamed from a Gstreamer pipeline.  You'll want to make sure your image displays in color.
 
 
-Quantize a model
-- using the base model of your choice, 
+Model optimization and quantization
+
+In lab, you saw to how use leverage TensorRT with TensorFlow.  For this homework, you'll look at another way to levarage TensorRT via the Jetson Infernece library.
