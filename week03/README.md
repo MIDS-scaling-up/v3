@@ -50,4 +50,6 @@ https://blogs.nvidia.com/blog/2020/10/08/retailers-edge-computing-ai/
 
 https://kubernetes.io/blog/2018/05/22/getting-to-know-kubevirt/ 
 
+https://elinux.org/Jetson_Zoo
+
 
