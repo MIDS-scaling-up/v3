@@ -1,5 +1,9 @@
 # Homework 6
 
+This homework covers some use of GStreamer and model optimization.  It builds on the week 6 lab and completing the lab first is hightly recommended.   
+
+This is an ungraded assignment
+
 ## Part 1: GStreamer
 
 1. In the lab, you used the Ndida sink nv3dsink; Nvidia provides a another sink, nveglglessink.  Convert the following sink to use nveglglessink.
@@ -63,5 +67,5 @@ For part 2, you'll need to submit:
 - A description of your data set
 - How long your trained your model for and what your final accuracy was
 - Native Pytorch baseline
-- TensorRT numbers
+- TensorRT performance numbers
 
