@@ -29,6 +29,8 @@ https://www.tensorflow.org/lite/performance/post_training_quant
 
 https://docs.nvidia.com/deeplearning/tensorrt/install-guide/index.html
 
-https://pytorch.org/docs/stable/quantization.html
-
 https://pytorch.org/blog/introduction-to-quantization-on-pytorch/
+
+https://pytorch.org/tutorials/recipes/quantization.html
+
+https://pytorch.org/docs/stable/quantization.html
