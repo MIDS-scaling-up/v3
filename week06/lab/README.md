@@ -282,6 +282,8 @@ This is a very simple image classification example based on https://github.com/t
 
 You'll be using a prebuilt image (rdejana/tf-trt-demo) for this lab.
 
+See https://github.com/MIDS-scaling-up/v3/tree/main/week06/demo/quantization/tf-trt if you'd like to build the image on your own.
+
 Run: 
 ```docker run -it --rm --net=host rdejana/tf-trt-demo```
 
