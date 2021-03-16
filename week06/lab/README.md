@@ -306,3 +306,5 @@ Once the container as started, you'll see output similar to:
 Navigate to the appropriate URL and open the file tf-trt.ipynb.
 
 Once the notebook is open, you may run each piece. Note, the flush.sh script is available to clear cached memory if needed. In addition, the notebook restarts a number of points to clear up memroy.
+
+Think about the changes in peformance.  Feel free to replace the model used with a different one and rerun.
