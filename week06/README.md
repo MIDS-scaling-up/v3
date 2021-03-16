@@ -25,6 +25,8 @@ https://www.tensorflow.org/lite/performance/model_optimization
 
 https://www.tensorflow.org/lite/performance/post_training_quantization
 
+https://www.tensorflow.org/lite/performance/post_training_float16_quant
+
 https://www.tensorflow.org/lite/performance/post_training_quant
 
 https://docs.nvidia.com/deeplearning/tensorrt/install-guide/index.html
