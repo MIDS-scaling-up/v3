@@ -1,4 +1,4 @@
-# Lecture 2
+# Lecture 3
 Virtual machines, containers, orchestration and Kubernetes, edge, and cloud native.
 
 ## Reading
