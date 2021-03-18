@@ -7,3 +7,4 @@ The exercises would involve training diverse networks (NLP, CV) with a focus on 
 We may also explore model parallelism.
 
 The current ideas would be to outline how this is done using PyTorch Lightning, on NLP and object detection tasks
+we will just cover simple examples here and explain how to it works
