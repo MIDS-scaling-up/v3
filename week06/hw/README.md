@@ -65,7 +65,7 @@ You may use either the container apporach or build the library from source.
 For part 2, you'll need to submit:
 - The base model you used
 - A description of your data set
-- How long your trained your model for and what your final accuracy was
+- How long your trained your model, how many epochs you specified, and the batch size.
 - Native Pytorch baseline
 - TensorRT performance numbers
 
