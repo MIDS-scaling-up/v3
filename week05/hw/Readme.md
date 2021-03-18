@@ -14,8 +14,10 @@ The ideas are:
 5. What framework was the easiest to use
 6. Focus on image classification for now
 7. What is the image size
+8. The impact of batch size
+
 
 Finally, the students will need to transfer their trained model to the Jetson device and demonstrate its performance / quality there.
 Optinally, the students could demonstrate that the model could be trained on the Jetson.
 
-If your model is big, it will be slow on the jetson
+If your model is big, it will be slow on the jetson. 
