@@ -11,3 +11,5 @@ Alternatively, the students would be required to create their own design of a mo
 
 Finally, the students need to demonstrate that their Jetson device can use the trained model for inference
 Multi-node.. perhaps using PyTorch DDP or pytorch lightning eventually
+
+distributed Huggingface NLP something training on multinode
