@@ -50,6 +50,10 @@ On the NX, your containers should communicate via Kubernetes services, see Lab 3
 ### Overall architecture / flow
 Your overall application flow / architecture should be something like: ![this](hw3.png).
 
+### Bonus Points
+You can recieve an extra 10 bonus points for using Kubernetes on the cloud side rather than Docker.
+
+
 ### Hints
 - Using a USB device from Kubernetes requires a privileged security context.  If you'd like your container to display your camera's images, you'll need to enable host networking and set the DISPLAY env variable.
 - To make storing in Object Store easier, look at https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-configure-bucket.html
@@ -64,6 +68,7 @@ You are scored based on the following:
 - 10 points for using Kuberentes on your NX
 - 10 points for explaining the MQTT topics and the QoS that you used.
 - 10 points for storing your faces in object storage
+- 10 bonus points for using Kubernetes instead of Docker on the cloud side.
 
 What to submit to ISVC:
 
