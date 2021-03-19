@@ -58,6 +58,11 @@ The patterns have an index number or a name and either may be used.  For example
 
 Explore the various patterns.
 
+The first example demostrated running a single pipeline, but we can do even more.  The following example runs runs two videotestsrc pipelines:
+```
+gst-launch-1.0 videotestsrc ! xvimagesink videotestsrc pattern=ball ! xvimagesink
+```
+
 Nvidia also provides a couple of its own accellerated plugins:
 
 - nv3dsink: a window-based rendering sink, and based on X11
