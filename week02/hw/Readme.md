@@ -160,7 +160,7 @@ aws ec2  terminate-instances --instance-ids i-0d0fd239ccae129e4
 
 By default, Amazon EC2 deletes all EBS volumes that were attached when the instance launched. Volumes attached after instance launch continue running.
 
-### Docker 101
+# Docker 101
 This section is a primer on docker, which in the past few years emerged as the dominant workload management and deployment tool.
 
 Docker - https://www.docker.com/  - is a collection of tools around Linux Containers [which are a lightweight form of virtualization]. 
