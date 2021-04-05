@@ -1,0 +1,9 @@
+# Get the AMI name
+aws ec2 describe-images  --filters  Name=name,Values='*deep-learning-ami-v3.3*' 
+
+# ami-0e58ffc6b12dbae20
+#  sg-0737d0c8a4a2f85a2
+# Pick out the ImageId
+aws ec2 create-security-group --group-name hw06 --description "HW6 Security group" --vpc-id vpc-e4e35381 
+
+
