@@ -15,7 +15,7 @@ We are working on sourcing discount codes for the Jetson Xavier NX Developer Kit
 
 ### 1.1 Host (Computer) Installation
 
-On your Windows, Mac, or Ubuntu workstation, navigate to the [JetPack homepage](https://developer.nvidia.com/jetpack-sdk-44-archive) (**NOTE that we are using JetPack 4.4 for this class**) and click on "Download SD Card Image" in the `JETSON XAVIER NX DEVELOPER KIT` box. Once it downloads, follow the steps at [Getting Started with Jetson Xavier NX Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit) to flash the SD card.
+On your Windows, Mac, or Ubuntu workstation, navigate to the [JetPack homepage](https://developer.nvidia.com/jetpack-sdk-441-archive) (**NOTE that we are using JetPack 4.4.1 for this class**) and click on "Download SD Card Image" in the `JETSON XAVIER NX DEVELOPER KIT` box. Once it downloads, follow the steps at [Getting Started with Jetson Xavier NX Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit) to flash the SD card.
 
 NVIDIA provides [flashing instructions](https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit#write) for Windows, Linux, and Mac. You will need to insert the MicroSD card into the card reader and connect it to the USB port on your computer.
 
