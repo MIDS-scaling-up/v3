@@ -279,6 +279,13 @@ Replace videotestsrc with your Jetson's camera.
 
 This is just a very simple introduction to GStreamer.  If you are interested in other ways it can be used on the edge, take a look at Nvidia's DeepStream SDK, a streaming analytic toolkit to build AI-powered applications, which leverages GStreamer.
 
+If you are interesting in DeepStream, check out the DeepStream container image for the Jetson at https://ngc.nvidia.com/catalog/containers/nvidia:deepstream-l4t.  The samples tag, e.g. nvcr.io/nvidia/deepstream-l4t:5.0.1-20.09-samples, contains a number of examples for you to explore.  For example:
+```
+xhost +
+docker run -it --rm --net=host --runtime nvidia -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix nvcr.io/nvidia/deepstream-peopledetection:r32.4.2  deepstream-test5-app -c deepstream-5.0/samples/configs/deepstream-app/sourceX_1080p_dec_infer-resnet_tracker_tiled_display_int8_hq_dla_nx.txt
+
+```
+
 
 ## Part 2: Quantization
 
