@@ -219,7 +219,7 @@ This HW further builds on using public cloud services with a primer on AWS Sagem
 to easily build, train and deploy ML models with an integrated Jupyter Notebook instance.
 
 -   Readup details on Sagemaker. https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-preprocess-data.html
--   
+
 -   Create Sagemaker notebook instance.  https://docs.aws.amazon.com/sagemaker/latest/dg/gs-console.html
 
 -   Create a jupyter notebook and save it. https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-prepare.html
@@ -230,6 +230,7 @@ to easily build, train and deploy ML models with an integrated Jupyter Notebook 
 -   Once complete, Login to your account and check the resources the example created
 
 -   Cleanup the environment by deleting the deployed endpoint, Notebook instance and S3 to not incur AWS charges
+
 
 
 # PART3 - Pricing
