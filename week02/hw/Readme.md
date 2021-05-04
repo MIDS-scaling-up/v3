@@ -232,7 +232,7 @@ to easily build, train and deploy ML models with an integrated Jupyter Notebook 
 -   Cleanup the environment by deleting the deployed endpoint, Notebook instance and S3 to not incur AWS charges
 
 
-### PART3 - Pricing
+# PART3 - Pricing
     
 #### Spot pricing
 
@@ -279,9 +279,11 @@ We will be using a [V100](https://www.nvidia.com/en-us/data-center/v100/) in HW0
 If a quota increase via the service quota console is denied, please try submitting a service quota increase via the support console and provide the reason for the quota increase.   
 An approved request is not a prerequisite for completing this homework 02, but please have the request submitted in the `EC2 dashoard`.   
 
-### PART4 - Turn in 
 
-# Submit text file on class portal homework submission page with answers to the following Questions 
+
+# PART4 - Turn in 
+
+### Submit text file on class portal homework submission page with answers to the following Questions 
  
 -   How can Sagemaker help Data Scientists
   
