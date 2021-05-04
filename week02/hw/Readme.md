@@ -1,4 +1,4 @@
-# HW02: The Cloud
+# HW02: Docker and Cloud ML Services-Sagmaker
 
 We will be using AWS as cloud platform for some of your homeworks and
 Labs. AWS gives all W251 students a promotional credit of
@@ -369,6 +369,39 @@ Now, point your browser to http://my_vm_ip:8800  and use the token to log in.
 Once you are all done, stop and remove the container running notebook and terminate the instance to avoid extra charges
 You can take an AMI image snapshot before terminating the instance.
 
+This HW further builds on using public cloud services with a primer on AWS Sagemaker. Sagemaker is a fully managed Machine Learning Service enabling 
+to easily build, train and deploy ML models with an integrated Jupyter Notebook instance. 
+
+
+# Setup and run Sagemaker Example
+
+-   Readup details on Sagemaker. https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-preprocess-data.html
+-   
+-   Create Sagemaker notebook instance.  https://docs.aws.amazon.com/sagemaker/latest/dg/gs-console.html
+
+-   Create a jupyter notebook and save it. https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-prepare.html
+
+-   Run the end to end Example https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/1P_kmeans_highlevel/kmeans_mnist.ipynb
+(This incl. downloading MNIST dataset to your account's default S3 Object storage)
+
+-   Once complete, Login to your account and check the resources the example created
+
+-   Cleanup the environment by deleting the deployed endpoint, Notebook instance and S3 to not incur AWS charges
+
+
+# Submit answers to the following Questions on ML services 
+
+-   How can Sagemaker help Data Scientists
+  
+-   Advantages/Disadvantages of Sagemaker
+
+-   Integration of Sagemaker with other AWS services such as Lambda functions, Kubernetes etc.,
+
+-  When to use what algorithms
+
+-  What are other ML services available from other cloud service providers such as Google, Microsoft, IBM?
+-  
+
 ### Pricing
     
 #### Spot pricing
@@ -409,18 +442,6 @@ aws ec2 run-instances --image-id ami-0bcc094591f354be2 --instance-type t2.micro 
 
 **Remember to terminate the instance at the end.**
 
-#### Monitor your billing
-Please keep an eye on your costing through the semester with the below command. Students have run over in the past.    
-```
-aws ce get-cost-and-usage \
-    --time-period Start=2020-07-01,End=2020-07-31 \
-    --granularity MONTHLY  \
-    --metrics "BlendedCost" "UnblendedCost"   
-```
-#### Set up billing alerts
-To set up alerts for charges to your AWS account, type “Budgets” into the Find Services search bar on the AWS Console. From here you can create a budget with notification if you go over a defined threshold.
-(thanks Chris Weyandt for showing this!i). 
-![](figs/aws_budgets.png)
    
 ### Raise usage limits on your account
 Your AWS account has default quotas, formerly referred to as limits, for each AWS service. Unless otherwise noted, each quota is Region-specific. You can request increases for some quotas, and other quotas cannot be increased. Your starting quotas do not include the allowances required for homework 06 and 09, where we will be using more advanced GPU resources. Therefore we need to get the request in early.   
