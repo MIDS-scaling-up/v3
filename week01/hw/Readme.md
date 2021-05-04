@@ -321,7 +321,7 @@ nvme0n1      259:0    0 465.8G  0 disk
 Use the `configure_xavier.sh` script in this repo to set up swap space after you have rebooted and verified that you are running your Operating System from the SSD:
 
 ```
-git clone https://github.com/MIDS-scaling-up/v2.git
+git clone https://github.com/MIDS-scaling-up/v3.git
 cd v2/week01/hw
 chmod +x configure_xavier.sh
 ./configure_xavier.sh
@@ -341,7 +341,7 @@ jtop
 ## 4. Docker 
 Docker is a platform that allows you to create, deploy, and run applications in containers. The application and all its dependecies are packaged into one container that is easy to ship out and uses the same Linux kernel as the system it's running on, unlike a virtual machine. This makes it especially useful for compact platforms such as the Jetson.
 
-JetPack 4.3 has Docker pre-installed, and has an experimental nvidia-docker support.
+JetPack 4.3+ has Docker pre-installed, and has an experimental nvidia-docker support.
 
 Let's test it to see if it can run containers. Since the Jetson doesn't have the docker image 'hello-world' downloaded yet, Docker will automatically pull it online from the official repository:
 
