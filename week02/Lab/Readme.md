@@ -161,6 +161,20 @@ aws ec2  terminate-instances --instance-ids i-0d0fd239ccae129e4
 By default, Amazon EC2 deletes all EBS volumes that were attached when the instance launched. Volumes attached after instance launch continue running.
 
 
+#### Monitor your billing
+Please keep an eye on your costing through the semester with the below command. Students have run over in the past.    
+```
+aws ce get-cost-and-usage \
+    --time-period Start=2020-07-01,End=2020-07-31 \
+    --granularity MONTHLY  \
+    --metrics "BlendedCost" "UnblendedCost"   
+```
+#### Set up billing alerts
+To set up alerts for charges to your AWS account, type “Budgets” into the Find Services search bar on the AWS Console. From here you can create a budget with notification if you go over a defined threshold.
+(thanks Chris Weyandt for showing this!i). 
+![](figs/aws_budgets.png)
+
+
 This HW further builds on using public cloud services with a primer on AWS Sagemaker. Sagemaker is a fully managed Machine Learning Service enabling 
 to easily build, train and deploy ML models with an integrated Jupyter Notebook instance. 
 
