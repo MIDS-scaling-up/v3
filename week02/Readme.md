@@ -5,10 +5,10 @@ Introduction to Cloud Computing and Cloud AI—Defining the cloud. How clouds ar
 ## Reading:
 
 * What is cloud computing?: 
-https://aws.amazon.com/what-is-cloud-computing/
-http://www.ibm.com/cloud-computing/us/en/what-is-cloud-computing.html
-https://azure.microsoft.com/en-us/overview/what-is-cloud-computing/
-https://cloud.google.com/learn/what-is-cloud-computing
+* https://aws.amazon.com/what-is-cloud-computing/
+* http://www.ibm.com/cloud-computing/us/en/what-is-cloud-computing.html
+* https://azure.microsoft.com/en-us/overview/what-is-cloud-computing/
+* https://cloud.google.com/learn/what-is-cloud-computing
 * Types of clouds: https://www.globaldots.com/cloud-computing-types-of-cloud/
 * Cloud service types: https://www.fingent.com/blog/cloud-service-models-saas-iaas-paas-choose-the-right-one-for-your-business
 
