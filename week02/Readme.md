@@ -20,7 +20,7 @@ Introduction to Cloud Computing and Cloud AI—Defining the cloud. How clouds ar
 * Containers: https://www.docker.com/resources/what-container
 * Kubernetes: https://kubernetes.io/docs/tutorials/kubernetes-basics/
 * Openshift: https://www.openshift.com/learn/what-is-openshift
-* Google Colab: https://www.youtube.com/watch?v=inN8seMm7UI
+* Google Colab: https://colab.research.google.com/notebooks/intro.ipynb#scrollTo=5fCEDCU_qrC0
 
 ### Getting started with AWS:
 * https://aws.amazon.com/getting-started/
