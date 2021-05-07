@@ -6,16 +6,18 @@ See [hw01](https://github.com/MIDS-scaling-up/v3/tree/main/week01/hw) for edge d
 
 The syllabus and homeworks are as follows, 
   
--  (Week 01) Introduction and Overview
--  (Week 02) Clouds, Infrastructure, and Machine Learning Cloud Services
--  (Week 03) Introduction to Containers
--  (Week 04) Deep Learning 101
--  (Week 05) Deep Learning Frameworks
--  (Week 06) Optimizing Models for the Edge and GStreamer
--  (Week 07) Deep Learning 201
--  (Week 08) Datasets and Dataset Processing
--  (Week 09) HPC, MPI, and Multinode/MultiGPU (MNMG) Training
--  (Week 10) Generative Adversarial Networks (GANs)
--  (Week 11) Deep Reinforcement Learning
--  (Week 12) Speech, Natural Language Processing, and Conversational Design
--  (Week 13) AI and DL: Applying AI to Real World Applications
+Week | Content 
+--- | --- 
+01| Introduction and Overview
+02| Clouds, Infrastructure, and Machine Learning Cloud Services
+03| Introduction to Containers
+04| Deep Learning 101
+05| Deep Learning Frameworks
+06| Optimizing Models for the Edge and GStreamer
+07| Deep Learning 201
+08| Datasets and Dataset Processing
+09| HPC, MPI, and Multinode/MultiGPU (MNMG) Training
+10| Generative Adversarial Networks (GANs)
+11| Deep Reinforcement Learning
+12| Speech, Natural Language Processing, and Conversational Design
+13| AI and DL: Applying AI to Real World Applications
