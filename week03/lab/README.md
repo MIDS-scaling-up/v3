@@ -168,6 +168,11 @@ Now run the command (Note, this assumes JetPack 4.5):
 ```
 docker run --rm --network host -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix nvcr.io/nvidia/l4t-base:r32.5.0
 ```
+If you are using JetPack 4.4.1, use:
+```
+docker run --rm --network host -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix nvcr.io/nvidia/l4t-base:r32.4.4
+```
+
 Once in the shell, run the following commands:
 ```
 apt-get update && apt-get install -y --no-install-recommends make g++
