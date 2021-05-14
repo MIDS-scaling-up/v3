@@ -64,7 +64,7 @@ Review Lab 3!
 You are scored based on the following:
 
 - 60 points for a containerized end to end appliation
-- 10 points for using a user defined network in the cloud
+- 10 points for using a user defined network in the cloud (automatic if using k8s on the cloud side)
 - 10 points for using Kuberentes on your NX
 - 10 points for explaining the MQTT topics and the QoS that you used.
 - 10 points for storing your faces in object storage
