@@ -527,7 +527,7 @@ spec:
         ports:
         - containerPort: 1883
 ```
-Use kubectl to deploy the yaml:
+Use kubectl to deploy the yaml:  
 ```
 kubectl apply -f mosquitto.yaml
 ```
@@ -550,6 +550,11 @@ spec:
     targetPort: 1883
   selector:
     app: mosquitto
+```
+   
+Again, deploy the yaml.   
+```
+kubectl apply -f mosquittoService.yaml
 ```
 Run the command `kubectl get service mosquitto-service` and take note of the NodePort Kubernetes assigns.
 
