@@ -497,7 +497,11 @@ FROM alpine:latest
 RUN apk add mosquitto
 CMD mosquitto
 ```
-You'll want to build the image and push it into your DockerHub registry, e.g. `docker build -t rdejana/mosquitto .` and `docker push rdejana/mosquitto`.
+
+Make sure that you specify a tag for your image!
+
+
+You'll want to build the image and push it into your DockerHub registry, e.g. `docker build -t rdejana/mosquitto:v1 .` and `docker push rdejana/mosquitto:v1`.
 
 Next, you'll want to create a YAML file for the Kubernetes Deployment. Using the following as an example:
 ```
