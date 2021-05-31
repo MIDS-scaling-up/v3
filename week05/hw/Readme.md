@@ -29,6 +29,10 @@ The steps are roughly as follows:
 ### The decisions
 Which architecture to choose? Another, hopefully a much easier one, when to stop training? We conscuously set the bar at 65% Top1 (on the validation set) so that you may not need to choose a very heavy model and / or train it forever.
 
+### Please note
+* Please do not attempt to spend more than 3 days training your model on a single T4 GPU. If your estimate gives you a longer training time, pick a different approach.
+* You might want to prototype your work using Jupyter and then submit it using [papermill](https://papermill.readthedocs.io/en/latest/usage-cli.html)
+
 ### Extra credit
 Create your own model architecture. You can draw your inspiration from the [PyTorch Resnet github](https://github.com/pytorch/vision/blob/master/torchvision/models/resnet.py), for instance.
 
