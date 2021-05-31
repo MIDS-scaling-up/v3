@@ -21,12 +21,13 @@ The steps are roughly as follows:
   * untar both files and remove them as you no longer neeed them
   * Use the following [shell script](https://raw.githubusercontent.com/soumith/imagenetloader.torch/master/valprep.sh) to process your val directory. It simply moves your validation set into proper subfolders
   * When you untarred the train file, it created a large number (1000) of tar files, one for each class.  You will need to create a separate directory for each of class , move the tar file there, untar the file and remove it. This should be a one liner shell script but we'll let you have fun with it!
+  * Make sure that under the train and val folders, there is one directory for class and that the samples for that class are under that directory
 5. Adapt the code we discuss in the labs to the training of imagenet
 6. Start training && observe progress !
 
 
 ### The decisions
-Which architecture to choose? Another, hopefully a much easier one, when to stop training? We conscuously set the bar at 65% Top1 so that you may not need to choose a very heavy model and / or train it forever.
+Which architecture to choose? Another, hopefully a much easier one, when to stop training? We conscuously set the bar at 65% Top1 (on the validation set) so that you may not need to choose a very heavy model and / or train it forever.
 
 ### Extra credit
 Create your own model architecture. You can draw your inspiration from the [PyTorch Resnet github](https://github.com/pytorch/vision/blob/master/torchvision/models/resnet.py), for instance.
