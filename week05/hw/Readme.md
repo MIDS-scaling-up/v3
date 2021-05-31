@@ -1,23 +1,36 @@
-# Homework 5 - Deep Learning Frameworks
+# Homework 5 - Deep Learning Frameworks - Training an image classifier on the ImageNet dataset from random weights.
 
-This is a graded homework
+This is a graded homework.  IT IS CURRENTLY UNDER DEVELOPMENT AND WILL BE FINALIZED SHORTLY
 
 Due just before week 6 session
 
-This homework will focus on PyTorch and possibly PyTorch Lightning.  The students would be required to pick a pre-trained model and fine tune it, writing the loop from scratch
+### The goal
+The goal of the homework is to train an image classification network on the ImageNet dataset to the Top 1 accuracy of 65% or higher.
 
-The ideas are:
-1. The dataset will be small, so the models will overfit
-2. Need to pick a "custom" dataset.. but if they want to , pick their own dataset?
-3. What is the model architecture that they will pick large vs small?
-4. What are the data augmentation techniques? did they use any?
-5. What framework was the easiest to use
-6. Focus on image classification for now
-7. What is the image size
-8. The impact of batch size
+We suggest that you use PyTorch or PyTorch Lightning.  
+
+The lab 6 materials ought to help you prepare for the homework.
+
+### The steps
+The steps are roughly as follows:
+
+1. Procure a virtual machine in AWS - we recommend a T4 GPU and 1 TB of space (g4dn.2xlarge). Use the Nvidia Deep Learning AMI so that the pre-requisites are pre-installed for you
+2. Download the ImageNet dataset to your VM. Please register at [image-net.org](https://image-net.org/). Given the slowness of download via this web site, we have prepared a copy of ImageNet for you and will distribute it in class.
+3. Prepare the dataset:
+  * create train and val subdirectories and move the train and val tar files to their respective locations
+  * untar both files and remove them as you no longer neeed them
+  * Use the following [shell script](https://raw.githubusercontent.com/soumith/imagenetloader.torch/master/valprep.sh) to process your val directory. It simply moves your validation set into proper subfolders
+  * When you untarred the train file, it created a large number (1000) of tar files, one for each class.  You will need to create a directory for each of class , untar the respective file and remove the original
+5. Adapt the code we discuss in the labs to the training of imagenet
+6. Start training && observe progress !
 
 
-Finally, the students will need to transfer their trained model to the Jetson device and demonstrate its performance / quality there.
-Optinally, the students could demonstrate that the model could be trained on the Jetson.
+### The decisions
+The one major decision you'll need to make is, which architecture to choose? Another, hopefully a much easier one, when to stop training?
 
-If your model is big, it will be slow on the jetson. 
+### Extra credit
+Create your own model architecture. You can draw your inspiration from the [PyTorch Resnet github](https://github.com/pytorch/vision/blob/master/torchvision/models/resnet.py), for instance.
+
+
+### To turn in
+Please turn in your training logs. They should obviously display that you have achieved the Top 1 accuracy.  Also, please save / download the trained weights to your jetson device for evaluation later.
