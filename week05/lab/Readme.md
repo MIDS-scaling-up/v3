@@ -20,7 +20,7 @@ Please recall or look up the PyTorch and TensorFlow 2 commands that tell you whe
 pip3 install papermill
 ```
 ### 4. Designate a parameters cell
-In your (new) Jupyter notebook, tag one of the cells to be the parameter cell. At the moment, the ml image contains JupyterLab 2.2.9, so follow the instructions [here]https://papermill.readthedocs.io/en/latest/usage-parameterize.html#jupyterlab-2-0-2-2-x)
+In your (new) Jupyter notebook, tag one of the cells to be the parameter cell. At the moment, the ml image contains JupyterLab 2.2.9, so follow the instructions [here](https://papermill.readthedocs.io/en/latest/usage-parameterize.html#jupyterlab-2-0-2-2-x)
 
 ### 5. PyTorch - CIFAR10 classification
 In this section, we will use the provided template and build an image classifier for the CIFAR10 dataset, which contains 60,000 32x32 color images that are sorted into 10 classes. Your goal is to quickly train a classifier from random weights -- and hey, you can do that on your NX!  You don't need to train all the way to the end, just run it for a few epochs to get a feel for how well it converges. Make sure that your _validation_ loss declines.
