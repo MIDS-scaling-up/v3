@@ -36,4 +36,4 @@ papermill notebook.ipynb output.ipynb  -p param1 -p param2 ...
 the `-p` directives will override the defaults provided in your jupyter cell
 
 ### 8. PyTorch Lightning
-Now let's reformat this code for Pytorch Lightning! This section is under development
+Now let's reformat this code for Pytorch Lightning! Fill in [this template](https://github.com/MIDS-scaling-up/v3/blob/main/week05/lab/cifar_lightning_lab.ipynb) with your code. 
