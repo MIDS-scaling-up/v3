@@ -26,8 +26,12 @@ The steps are roughly as follows:
 6. Start training && observe progress !
 
 
-### The decisions
-Which architecture to choose? Another, hopefully a much easier one, when to stop training? We conscuously set the bar at 65% Top1 (on the validation set) so that you may not need to choose a very heavy model and / or train it forever.
+### Key decisions to consider
+* Which architecture to choose? Here's what [Torchvision has](https://pytorch.org/vision/stable/models.html) but obviously you're not limited to that if you want to try something newer.
+* Which optimizer to use? For this homework we recommend [SGD](https://pytorch.org/vision/stable/models.html) for simplicity.
+* What should the learning rate be? This is where we need to check our sources / see how others trained the model.
+* Should we change the learning rate while training? Our suggestion would be to use something simple: e.g. drop it 10x every 33% of training time.
+* When to stop training? We conscuously set the bar at 65% Top1 (on the validation set) so that you may not need to choose a very heavy model and / or train it forever.
 
 ### Please note
 * Please do not attempt to spend more than 3 days training your model on a single T4 GPU. If your estimate gives you a longer training time, pick a different approach.
