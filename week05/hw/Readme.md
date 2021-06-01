@@ -22,7 +22,7 @@ The steps are roughly as follows:
   * Use the following [shell script](https://raw.githubusercontent.com/soumith/imagenetloader.torch/master/valprep.sh) to process your val directory. It simply moves your validation set into proper subfolders
   * When you untarred the train file, it created a large number (1000) of tar files, one for each class.  You will need to create a separate directory for each of class , move the tar file there, untar the file and remove it. This should be a one liner shell script but we'll let you have fun with it!
   * Make sure that under the train and val folders, there is one directory for class and that the samples for that class are under that directory
-5. Adapt the code we discuss in the labs to the training of imagenet
+5. Adapt the code we discuss in the labs to the training of imagenet. Make sure the number of classes and image sizes are correct. Make sure the transforms are correct.
 6. Start training && observe progress !
 
 
