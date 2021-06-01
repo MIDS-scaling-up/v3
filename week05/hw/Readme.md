@@ -1,11 +1,11 @@
 # Homework 5 - Deep Learning Frameworks - Training an image classifier on the ImageNet dataset from random weights.
 
-This is a graded homework.  IT IS CURRENTLY UNDER DEVELOPMENT AND WILL BE FINALIZED SHORTLY
+This is a graded homework.
 
 Due just before week 6 session
 
 ### The goal
-The goal of the homework is to train an image classification network on the ImageNet dataset to the Top 1 accuracy of 65% or higher.
+The goal of the homework is to train an image classification network on the ImageNet dataset to the Top 1 accuracy of 60% or higher.
 
 We suggest that you use PyTorch or PyTorch Lightning.  
 
@@ -31,7 +31,7 @@ The steps are roughly as follows:
 * Which optimizer to use? For this homework we recommend [SGD](https://pytorch.org/vision/stable/models.html) for simplicity.
 * What should the learning rate be? This is where we need to check our sources / see how others trained the model.
 * Should we change the learning rate while training? Our suggestion would be to use something simple: e.g. drop it 10x every 33% of training time.
-* When to stop training? We conscuously set the bar at 65% Top1 (on the validation set) so that you may not need to choose a very heavy model and / or train it forever.
+* When to stop training? We conscuously set the bar at 60% Top1 (on the validation set) so that you may not need to choose a very heavy model and / or train it forever.
 
 ### Please note
 * Please do not attempt to spend more than 3 days training your model on a single T4 GPU. If your estimate gives you a longer training time, pick a different approach.
