@@ -20,10 +20,10 @@ Please recall or look up the PyTorch and TensorFlow 2 commands that tell you whe
 pip3 install papermill
 ```
 ### 4. Designate a parameters cell
-In your (new) Jupyter notebook, tag one of the cells to be the parameter cell. At the moment, the ml image contains JupyterLab 2.2.9, so follow the instructions [here](https://papermill.readthedocs.io/en/latest/usage-parameterize.html#jupyterlab-2-0-2-2-x)
+In your [lab template](https://github.com/MIDS-scaling-up/v3/blob/main/week05/lab/cifar_lab.ipynb) Jupyter notebook, tag one of the cells to be the parameter cell. At the moment, the ml image contains JupyterLab 2.2.9, so follow the instructions [here](https://papermill.readthedocs.io/en/latest/usage-parameterize.html#jupyterlab-2-0-2-2-x)
 
 ### 5. PyTorch - CIFAR10 classification
-In this section, we will use the provided template and build an image classifier for the CIFAR10 dataset, which contains 60,000 32x32 color images that are sorted into 10 classes. Your goal is to quickly train a classifier from random weights -- and hey, you can do that on your NX!  You don't need to train all the way to the end, just run it for a few epochs to get a feel for how well it converges. Make sure that your _validation_ loss declines.
+In this section, we will fill in the provided template and build an image classifier for the CIFAR10 dataset, which contains 60,000 32x32 color images that are sorted into 10 classes. Your goal is to quickly train a classifier from random weights -- and hey, you can do that on your NX!  You don't need to train all the way to the end, just run it for a few epochs to get a feel for how well it converges. Make sure that your _validation_ loss declines.
 
 ### 6. PyTorch - CINIC10 dataset
 The [CINIC](https://github.com/BayesWatch/cinic-10) dataset bridges us to the goal of our homework - training on ImageNet. These images are still 32x32, but you'll have to download this dataset separately -- we recommend pulling it from the [Kaggle Dataset](https://www.kaggle.com/mengcius/cinic10) because it's a lot faster. You'll need to uncompress it and then modify your code to use it instead of CIFAR10. Hint: use `datasets.ImageFolder`. Same as before, you don't need to run it forever, just run for a few epochs.
