@@ -2,7 +2,7 @@
 
 **Note this is a non-graded homework.**
  
-![](figs/competition.png)  
+![](figs/competition_page.png)  
 
 ### Instructions 
 
