@@ -72,7 +72,7 @@ Nvidia also provides a couple of its own accellerated plugins:
 
 Try to use the `nv3dsink`.  A simple approach would be running something similar to `gst-launch-1.0 videotestsrc ! nv3dsink`. 
 
-Does it work...well, no, it doesn't.  You sould get an error that says `could not link videotestsrc0 to nv3dsink0`.  
+Does it work...well, no, it doesn't.  You should get an error that says `could not link videotestsrc0 to nv3dsink0`.  
 
 Recall that an element will have pads and that pads have `capabilities` or `caps`.  Caps describe what the pad is able to do/hanlde.
 
