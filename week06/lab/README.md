@@ -72,7 +72,7 @@ Nvidia also provides a couple of its own accellerated plugins:
 
 Try to use the `nv3dsink`.  A simple approach would be running something similar to `gst-launch-1.0 videotestsrc ! nv3dsink`. 
 
-Does it work...well, no, it doesn't.  You should get an error that says `could not link videotestsrc0 to nv3dsink0`.  
+Does it work...well, it works with JetPack 4.5.X, but doesn't with earlier releases.  You would get an error that says `could not link videotestsrc0 to nv3dsink0`.  
 
 Recall that an element will have pads and that pads have `capabilities` or `caps`.  Caps describe what the pad is able to do/hanlde.
 
@@ -232,6 +232,12 @@ The NX can also encode and decode video with Gstreamer
 ```
 gst-launch-1.0 videotestsrc ! 'video/x-raw, format=(string)I420, width=(int)640, 
 height=(int)480' ! omxh264enc ! 'video/x-h264, stream-format=(string)byte-stream' ! h264parse ! omxh264dec ! nveglglessink -e
+```
+
+or, if you are running Jetpack 4.5:
+```
+gst-launch-1.0 videotestsrc ! 'video/x-raw, format=(string)I420, width=(int)640, 
+height=(int)480' ! omxh264enc ! 'video/x-h264, stream-format=(string)byte-stream' ! h264parse ! omxh264dec ! nvvidconv ! video/x-raw, format=I420 ! nveglglessink -e
 ```
 
 Take a look at jtop and you can see that hardware accelerators are being used.
