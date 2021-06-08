@@ -279,6 +279,12 @@ In the second window, run the following:
 ```
  gst-launch-1.0 udpsrc port=5000 ! application/x-rtp, media=video, encoding-name=H265 ! rtph265depay ! h265parse ! nvv4l2decoder ! nvvidconv ! nv3dsink -e
 ```
+
+Or, if you are on Jetpack 4.5:
+```
+gst-launch-1.0 udpsrc port=5000 ! application/x-rtp, media=video, encoding-name=H265 ! rtph265depay ! h265parse ! nvv4l2decoder ! nvvidconv ! video/x-raw, format=I420 ! nv3dsink -e
+```
+
 This listens for the packets and decodes the RTP stream and displays it on the screen.
 
 Replace videotestsrc with your Jetson's camera.
