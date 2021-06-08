@@ -298,6 +298,11 @@ docker run -it --rm --net=host --runtime nvidia -e DISPLAY=$DISPLAY -v /tmp/.X11
 
 ```
 
+If you are on 4.5.X, you would have to settle for something like this instead:
+```
+docker run -it --rm --net=host  -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix nvcr.io/nvidia/deepstream-l4t:5.1-21.02-samples  deepstream-test5-app -c samples/configs/deepstream-app/source30_1080p_dec_infer-resnet_tiled_display_int8.txt
+```
+
 
 ## Part 2: Quantization
 
