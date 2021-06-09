@@ -10,7 +10,7 @@ We will demonstrate a few concepts from [this](https://arxiv.org/abs/1812.01187?
     
 Before starting, if you do not have it, you need to sign up to the kaggle platform and sign up to the [competition page](https://www.kaggle.com/c/midsw251birds/overview) - see data tab.
     
-In [this](https://www.kaggle.com/darraghdog/week07-lab-fork-me?scriptVersionId=65297289) script we cover a few of the concepts to improve training in Image classification. You will need to copy and edit the notebook (menu in top right corner). 
+In [this](https://www.kaggle.com/darraghdog/week07-lab-fork-me?scriptVersionId=65297289) notebook we cover a few of the concepts to improve training in Image classification. You will need to copy and edit the [linked notebook](https://www.kaggle.com/darraghdog/week07-lab-fork-me?scriptVersionId=65297289) (menu in top right corner). 
   
 First run through all the steps to the end of the initial set up section.  
   
