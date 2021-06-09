@@ -12,6 +12,8 @@ Reference material is found in [this](https://arxiv.org/abs/1812.01187?utm_sourc
   
 The goal of the homework is to develop a model in kaggle (referencing the Benchmark script if you wish), which willl score as high an accuracy score as possible. Also, you should implement at least three concepts from the Lab (or alternatively from the referenced paper) into your solution.   
    
+You can see an overview of how to use kaggle in the overview page.  
+  
 There is a public leaderboard which will be visible through the competition. At the end (Midnight UTC, Friday 25th), the private leaderboard ranking will be revealed!! 
 
 To submit your homework, you need to submit two things to ISVC.  
