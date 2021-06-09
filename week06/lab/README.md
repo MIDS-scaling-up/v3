@@ -72,7 +72,7 @@ Nvidia also provides a couple of its own accellerated plugins:
 
 Try to use the `nv3dsink`.  A simple approach would be running something similar to `gst-launch-1.0 videotestsrc ! nv3dsink`. 
 
-Does it work...well, no, it doesn't.  You should get an error that says `could not link videotestsrc0 to nv3dsink0`.  
+Does it work...well, it works with JetPack 4.5.X, but doesn't with earlier releases.  You would get an error that says `could not link videotestsrc0 to nv3dsink0`.  
 
 Recall that an element will have pads and that pads have `capabilities` or `caps`.  Caps describe what the pad is able to do/hanlde.
 
@@ -234,6 +234,12 @@ gst-launch-1.0 videotestsrc ! 'video/x-raw, format=(string)I420, width=(int)640,
 height=(int)480' ! omxh264enc ! 'video/x-h264, stream-format=(string)byte-stream' ! h264parse ! omxh264dec ! nveglglessink -e
 ```
 
+or, if you are running Jetpack 4.5:
+```
+gst-launch-1.0 videotestsrc ! 'video/x-raw, format=(string)I420, width=(int)640, 
+height=(int)480' ! omxh264enc ! 'video/x-h264, stream-format=(string)byte-stream' ! h264parse ! omxh264dec ! nvvidconv ! video/x-raw, format=I420 ! nveglglessink -e
+```
+
 Take a look at jtop and you can see that hardware accelerators are being used.
 ```
 jtop
@@ -273,6 +279,12 @@ In the second window, run the following:
 ```
  gst-launch-1.0 udpsrc port=5000 ! application/x-rtp, media=video, encoding-name=H265 ! rtph265depay ! h265parse ! nvv4l2decoder ! nvvidconv ! nv3dsink -e
 ```
+
+Or, if you are on Jetpack 4.5:
+```
+gst-launch-1.0 udpsrc port=5000 ! application/x-rtp, media=video, encoding-name=H265 ! rtph265depay ! h265parse ! nvv4l2decoder ! nvvidconv ! video/x-raw, format=I420 ! nv3dsink -e
+```
+
 This listens for the packets and decodes the RTP stream and displays it on the screen.
 
 Replace videotestsrc with your Jetson's camera.
@@ -286,6 +298,11 @@ docker run -it --rm --net=host --runtime nvidia -e DISPLAY=$DISPLAY -v /tmp/.X11
 
 ```
 
+If you are on 4.5.X, you would have to settle for something like this instead:
+```
+docker run -it --rm --net=host  -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix nvcr.io/nvidia/deepstream-l4t:5.1-21.02-samples  deepstream-test5-app -c samples/configs/deepstream-app/source30_1080p_dec_infer-resnet_tiled_display_int8.txt
+```
+
 
 ## Part 2: Quantization
 
@@ -296,8 +313,10 @@ You'll be using a prebuilt image (rdejana/tf-trt-demo) for this lab.
 
 See https://github.com/MIDS-scaling-up/v3/tree/main/week06/demo/quantization/tf-trt if you'd like to build the image on your own.
 
-Run: 
-```docker run -it --rm --net=host rdejana/tf-trt-demo```
+Depending on your version of Jetpack, run: 
+```docker run -it --rm --net=host w251/tf-trt-demo:r32.4.4```
+or
+```docker run -it --rm --net=host w251/tf-trt-demo:r32.5.0```
 
 Once the container as started, you'll see output similar to: 
 
