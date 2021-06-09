@@ -9,6 +9,10 @@
 We our conducting an in-class competition on Kaggle. You can find instructions [here](https://www.kaggle.com/c/midsw251birds/overview). You may need to create a user on the platform first.
 
 Reference material is found in [this](https://arxiv.org/abs/1812.01187?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+arxiv%2FQSXk+%28ExcitingAds%21+cs+updates+on+arXiv.org%29) paper - make sure to read it first.  
+  
+The goal of the homework is to develop a model in kaggle (referencing the Benchmark script if you wish), which willl score as high an accuracy score as possible. Also, you should implement at least three concepts from the Lab (or alternatively from the referenced paper) into your solution.   
+   
+There is a public leaderboard which will be visible through the competition. At the end (Midnight UTC, Friday 25th), the private leaderboard ranking will be revealed!! 
 
 To submit your homework, you need to submit two things to ISVC.  
 1. A screen shot of your score on the leaderboard.  
