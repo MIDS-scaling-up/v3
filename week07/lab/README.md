@@ -14,6 +14,6 @@ In [this](https://www.kaggle.com/darraghdog/week07-lab-fork-me?scriptVersionId=6
   
 First run through all the steps to the end of the initial set up section.  
   
-After the initial section, there are four topics to cover, chose any one of them to start and see if you can answer the questions asked. For all except the architectures section, there should be a corresponding section descriping it in the paper referenced.   
+After the initial section, there are a number of topics to cover, chose any one of them to start and see if you can answer the questions asked. For all except the architectures section, there should be a corresponding section descriping it in the paper referenced.   
       
 Good luck! 
