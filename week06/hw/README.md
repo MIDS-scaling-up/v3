@@ -54,7 +54,7 @@ For part 1, you'll need to submit:
 
 ## Part 2: Model optimization and quantization
 
-In lab, you saw to how use leverage TensorRT with TensorFlow.  For this homework, you'll look at another way to levarage TensorRT with Pytorch via the Jetson Infernece library (https://github.com/dusty-nv/jetson-inference).
+In lab, you saw to how use leverage TensorRT with TensorFlow.  For this homework, you'll look at another way to levarage TensorRT with Pytorch via the Jetson Inference library (https://github.com/dusty-nv/jetson-inference).
 
 You'll want to train a custom object detection model, uses either the fruit example or your own set of classes.
 
