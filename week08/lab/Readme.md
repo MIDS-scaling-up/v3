@@ -56,7 +56,7 @@ Download a sample [video dataset](https://w251lab08.s3.us-west-1.amazonaws.com/v
 ### Part 2. Yolo v5 tutorial
 Of the many object detectors, Yolo v5 continues to dominate. Take a look at the [PyTorch object detection models](https://pytorch.org/vision/stable/models.html#object-detection-instance-segmentation-and-person-keypoint-detection) and then glance through [Yolov5 documentation](https://github.com/ultralytics/yolov5)
 
-Open up the [Yolo v5 Colab notebook](https://colab.research.google.com/github/ultralytics/yolov5/blob/master/tutorial.ipynb)  -- if Colab glitches on you, use the [Kaggle variant](https://www.kaggle.com/ultralytics/yolov5) and examine / click though it.  Train it on the coco128 dataset.
+Open up the [Yolo v5 Colab notebook](https://colab.research.google.com/github/ultralytics/yolov5/blob/master/tutorial.ipynb)  -- if Colab glitches on you, use the [Kaggle variant](https://www.kaggle.com/ultralytics/yolov5) and examine / click though it.  Make sure to create an account on wandb.com. Train the model on the coco128 dataset.
 
 Questions:
 * How many files are in the dataset?
@@ -65,3 +65,11 @@ Questions:
 * How long does it take to train?
 * What is MAP?
 * Was transfer learning used in training?
+* Are you able to see your experiments on wandb?
+
+
+### Part 3. Training Yolo v5 on custom data
+In this section, we will be following the [Roboflow Yolo v5 fine tuning guide] (https://colab.research.google.com/drive/1gDZ2xcTOgR39tGGs-EZ6i3RTs16wmzZQ).  In order to complete this notebook, you will need to log into Roboflow / create an account, so that you are able to download the [BCCD dataset](https://public.roboflow.com/object-detection/bccd). Please follow the guide; training should take 6-10 minutes.  Questions:
+* How many classes are in this dataset?
+* How many samples?
+* Do you get better results with the raw or augmented dataset?
