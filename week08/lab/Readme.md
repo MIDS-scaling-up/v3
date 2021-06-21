@@ -66,6 +66,7 @@ Questions:
 * What is MAP?
 * Was transfer learning used in training?
 * Are you able to see your experiments on wandb?
+* What is the MAP of [Nvidia's SSD300](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Detection/SSD) recipe?
 
 
 ### Part 3. Training Yolo v5 on custom data
