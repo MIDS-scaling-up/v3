@@ -6,7 +6,7 @@ This week, the labs will cover aspects of data preparation, using object detecti
 Videos are made up of frames, and each frame is an image.  But, extracting images from frames is not completely straightforward. We will use the ffmpeg library. Please install it on the machine where you will be doing the lab. Below, we are using Docker:
 
 ```
-docker run -ti -v <pathToYourDataDiretory>:/images/data ubuntu bash
+docker run -ti ubuntu bash
 # now, run 
 # apt update 
 # apt install -y ffmpeg
@@ -52,3 +52,16 @@ Download a sample [video dataset](https://w251lab08.s3.us-west-1.amazonaws.com/v
 * What is the resolution?
 * What is the frame rate?
 * In the light of the previous exercise, what is a good way to extract frames from such a video?
+
+### Part 2. Yolo v5 tutorial
+Of the many object detectors, Yolo v5 continues to dominate. Take a look at the [PyTorch object detection models](https://pytorch.org/vision/stable/models.html#object-detection-instance-segmentation-and-person-keypoint-detection) and then glance through [Yolov5 documentation](https://github.com/ultralytics/yolov5)
+
+Open up the [Yolo v5 Colab notebook](https://colab.research.google.com/github/ultralytics/yolov5/blob/master/tutorial.ipynb)  -- if Colab glitches on you, use the [Kaggle variant](https://www.kaggle.com/ultralytics/yolov5) and examine / click though it.  Train it on the coco128 dataset.
+
+Questions:
+* How many files are in the dataset?
+* How many annotations?
+* How many classes?
+* How long does it take to train?
+* What is MAP?
+* Was transfer learning used in training?
