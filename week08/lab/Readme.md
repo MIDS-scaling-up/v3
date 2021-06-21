@@ -74,3 +74,10 @@ In this section, we will be following the [Roboflow Yolo v5 fine tuning guide] (
 * How many classes are in this dataset?
 * How many samples?
 * Do you get better results with the raw or augmented dataset?
+
+### Part 4. Image annotation
+The landscape of image annotators continues to suffer from fragmentation, with solutions rapidly changing and no provider dominating.  For the lab, we will use a very simple system, [MakeSense AI](https://www.makesense.ai/).  Please upload a few dozen images that you extracted in previous sections.  Define a few classes and try annotating. 
+
+Questions:
+* How long does it take you to annotate 10-20 images?
+* How long would it take to annotate enough images for a reasonable training of Yolo v5?
