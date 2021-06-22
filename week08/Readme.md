@@ -12,3 +12,4 @@ Just a few suggested links:
 * [MakeSense AI](https://www.makesense.ai/)
 * [Mozilla Common Voice](https://commonvoice.mozilla.org/en)
 * [Full Stack Deep Learning Lecture 8](https://fullstackdeeplearning.com/spring2021/lecture-8/)
+* [Microsoft Trove](https://www.microsoft.com/en-us/ai/trove)
