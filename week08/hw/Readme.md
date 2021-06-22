@@ -1,4 +1,4 @@
-# Homework 8: Fine tuning Yolo v5 on a custom dataset
+# Homework 8: Fine tuning an object detector on a custom dataset
 
 This homework is meant to provide a taste of what it's like to create a small domain - specific dataset and use publicly available assets to create a custom models.
 
