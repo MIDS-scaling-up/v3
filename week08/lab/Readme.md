@@ -15,31 +15,33 @@ Please navigate to https://www.jpjodoin.com/urbantracker/dataset.html . Download
 
 Create the test directories:
 
+```
 mkdir -p data/ffmepg
 mkdir -p data/ffmepg/test1
 mkdir -p data/ffmepg/test2
 mkdir -p data/ffmepg/test3
+```
 
 If you get errors in the following steps, you can extract to data/ and change the extracted image name pattern.
 
 The first step is to extract a single image from the video.
 
-ffmpeg -i sherbrooke_video.avi -frames:v 1 data/ffmepg/test1/extracted.jpg
+`ffmpeg -i sherbrooke_video.avi -frames:v 1 data/ffmepg/test1/extracted.jpg`
 the option -frames:v specifies the number of frames to extract and data/ffmepg/test1/extracted.jpg is the output file.
 When complete, browser your data directory from your workstation and open up data/ffmepg/test1/extracted.jpg and confirm that extract.
 
 
-Now you wille extract 100 images from the file using the command ffmpeg -i sherbrooke_video.avi -frames:v 100 data/ffmepg/test2/extract%04d.jpg
+Now you wille extract 100 images from the file using the command `ffmpeg -i sherbrooke_video.avi -frames:v 100 data/ffmepg/test2/extract%04d.jpg`
 With this command, %04d tells ffmpeg to name the extracted images with the serices with a 4 digit pattern, extract0001.jpg, extract0002.jpg, etc. Other numbers may be used, e.g. to use 2 numbers, the pattern would be %02d.
 
 
 Review the images. How much did the scence change?
 Now we'll adjust the frames per second used with the -r option, in this case with 1 frame per second.
-ffmpeg -i sherbrooke_video.avi -frames:v 100 -r 1 data/ffmepg/test2/extract%04d.jpg
+`ffmpeg -i sherbrooke_video.avi -frames:v 100 -r 1 data/ffmepg/test2/extract%04d.jpg`
 
 
 What's different? What happens if you change r?
-Finally, we'll extract all the images with the command ffmpeg -i sherbrooke_video.avi data/ffmepg/test3/extract%04d.jpg
+Finally, we'll extract all the images with the command `ffmpeg -i sherbrooke_video.avi data/ffmepg/test3/extract%04d.jpg`
 
 
 How long did it take?
@@ -70,7 +72,7 @@ Questions:
 
 
 ### Part 3. Training Yolo v5 on custom data
-In this section, we will be following the [Roboflow Yolo v5 fine tuning guide] (https://colab.research.google.com/drive/1gDZ2xcTOgR39tGGs-EZ6i3RTs16wmzZQ).  In order to complete this notebook, you will need to log into Roboflow / create an account, so that you are able to download the [BCCD dataset](https://public.roboflow.com/object-detection/bccd). Please follow the guide; training should take 6-10 minutes.  Questions:
+In this section, we will be following the [Roboflow Yolo v5 fine tuning guide](https://colab.research.google.com/drive/1gDZ2xcTOgR39tGGs-EZ6i3RTs16wmzZQ).  In order to complete this notebook, you will need to log into Roboflow / create an account, so that you are able to download the [BCCD dataset](https://public.roboflow.com/object-detection/bccd). Please follow the guide; training should take 6-10 minutes.  Questions:
 * How many classes are in this dataset?
 * How many samples?
 * Do you get better results with the raw or augmented dataset?
