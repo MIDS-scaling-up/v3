@@ -7,6 +7,7 @@ Ata high level, the assignment is to annotate some data from the [Tesla cam](htt
 Notes:
 * Peruse [Yolo v5 best practices](https://docs.ultralytics.com/tutorials/training-tips-best-results/)
 * Annotate at least 100 images. Recommended: 300
+* Look for large objects, e.g. the file like `2021-06-13_19-22-13-front.mp4`
 * Create at least two classes. Recommended: 'Car' and 'Truck'
 * Feel free to use [MakeSense AI](https://www.makesense.ai/) or [Label Studio](https://labelstud.io/). Recommended: MakeSense AI for simplicity, as in case of Label Studio, you'll need to convert your labels from VoC format into Yolo format.
 * Recommended: use Active Learning
