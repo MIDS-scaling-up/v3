@@ -7,7 +7,7 @@ Just a few suggested links:
 * [Albumentations](https://github.com/albumentations-team/albumentations)
 * [Nvidia DALI](https://github.com/NVIDIA/DALI)
 * [ImageNet](https://image-net.org/)
-* [Open Images v6](https://storage.googleapis.com/openimages/web/index.html]
+* [Open Images v6](https://storage.googleapis.com/openimages/web/index.html)
 * [Heartex Label Studio](https://heartex.com/product)
 * [MakeSense AI](https://www.makesense.ai/)
 * [Mozilla Common Voice](https://commonvoice.mozilla.org/en)
