@@ -3,7 +3,7 @@
 This week, the labs will cover aspects of data preparation, using object detection in images as a backdrop.
 
 ### Part 1a. Videos from a stationary camera
-Videos are made up of frames, and each frame is an image.  But, extracting images from frames is not completely straightforward. We will use the ffmpeg library. Please install it on the machine where you will be doing the lab. Below, we are using Docker:
+Videos are made up of frames, and each frame is an image.  But, extracting images from frames is not completely straightforward. We will use the ffmpeg library. Please install it on the machine where you will be doing the lab.  Below, we are using Docker:
 
 ```
 docker run -ti ubuntu bash
@@ -11,6 +11,8 @@ docker run -ti ubuntu bash
 # apt update 
 # apt install -y ffmpeg
 ```
+Note, if you are using Docker, you'll want to use a volume on the host system to make it easier to see your output. This can be done by adding `-v <hostDir>:<containerDir>`.
+
 Please navigate to https://www.jpjodoin.com/urbantracker/dataset.html . Download sherbrooke_video.avi. This is a 2 min and 13 second video filmed from a traffic camera located at at the Sherbrooke/Amherst intersection in Montreal. 
 
 Create the test directories:
