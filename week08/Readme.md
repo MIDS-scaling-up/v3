@@ -1,8 +1,8 @@
-# All about datasets
+# Week 8: Datasets and data set processing
 
-Huge topic this week.
+Types of datasets. Key public datasets. Cloud platforms for hosting and processing of large datasets. ELT / ETL overview.  Datasets and Data Loaders of major Deep Learning frameworks. Data Annotation systems. Active Learning. Targeted Learning.  Amazon SageMaker Ground Truth. Data Augmentation Techniques. Dataset collection from model runtimes.
 
-Just a few suggested links:
+### Suggested Reading:
 
 * [Albumentations](https://github.com/albumentations-team/albumentations)
 * [Nvidia DALI](https://github.com/NVIDIA/DALI)
