@@ -4,12 +4,10 @@ This is a graded homework
 
 Due: before week 10 begins
 
-This homework will be focused on aspects of multi-gpu and multi-node model training.
-The current idea is to train an object detector network on custom data
+In this homework, we are focused on aspects of multi-node and multi-gpu (mnmg) model training.
+The high level idea is to practice running multi-node training by adapting the code we develop in homework 5 to run on two nodes instead of one.
 
-Alternatively, the students would be required to create their own design of a model and train it from random weights.
+Notes:
+* You will need to provision two 
 
-Finally, the students need to demonstrate that their Jetson device can use the trained model for inference
-Multi-node.. perhaps using PyTorch DDP or pytorch lightning eventually
 
-distributed Huggingface NLP something training on multinode
