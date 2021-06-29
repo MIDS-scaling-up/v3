@@ -20,5 +20,6 @@ Tips:
 * You could trt using g4dn.xlarge, but in our experience, they just don't have enough CPUs to keep the GPU fed, so the results will be slow.
 * Ideally, you should be able to use EFS.  However, one must ensure that performance is good-- and we've seen issues.
 * There is no need to train to the end (e.g. 90 epochs); it would be sufficient to run the training for 1-2 epochs, time it, and compare the results against a run on a sinle GPU instance.
+* Please monitor the GPU utilization using nvidia-smi; as long as both GPUs are > 95% utilized, you are doing fine.
 
 
