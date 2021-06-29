@@ -12,7 +12,7 @@ You will need to download the CINIC dataset. The instructors will distribute a l
 Lab 4 will be done in teams using instructor-provided VMs. For lab 5, you will need a pair of VMs. That lab could be done in groups or individually. You will need the ability to provision 16 vCPUs (two VMs, 8 cVPUs each).
 
 ### Lab 1. Automatic Mixed Precision (AMP)
-In this lab, we will start with a previously discussed CINIC example. You will need to add the [Torch AMP](https://pytorch.org/docs/stable/amp.html) to the code.  Does it improve performance? Does it allow you to increase batch size while training?
+In this lab, we will start with a previously discussed [CINIC example](cinic.ipynb). You will need to add the [Torch AMP](https://pytorch.org/docs/stable/amp.html) to the code.  Does it improve performance? Does it allow you to increase batch size while training?
 
 ### Lab 2. Using Tensorboard to monitor experiments
 
