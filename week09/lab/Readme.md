@@ -26,6 +26,7 @@ tensorboard --logdir=/data/runs
 Then you should be able to connect to the ip address of your VM on port 6006
 
 ### Lab 3. Using Weights and Biases (Wandb) to monitor experiments
+Similar to the previous section, instead of SummaryWriter, peruse the [Wandb Quickstart](https://docs.wandb.ai/quickstart) and `wandb.log` to log the parameters during the experiment. You should be able to log into Wandb and see your stats updated in real time.
 
 ### Lab 4. Using Data Parallelism (DP) to run the experiment on two GPUs in the same node
 For this lab, which will be done in teams, the instructors will distribute access to multi-GPU containers running Jupyter Lab. Each team will get its own URL and access token that they will be able to access their Jupyter Lab instance. Your task will be to add [Data Parallelism](https://pytorch.org/tutorials/beginner/blitz/data_parallel_tutorial.html) to your CINIC example, so that it runs on both GPUs.  Does it speed up training?
