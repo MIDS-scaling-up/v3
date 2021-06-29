@@ -15,6 +15,15 @@ Lab 4 will be done in teams using instructor-provided VMs. For lab 5, you will n
 In this lab, we will start with a previously discussed [CINIC example](cinic.ipynb). You will need to add the [Torch AMP](https://pytorch.org/docs/stable/amp.html) to the code.  Please change the code to set the GPU number (0), increase the batch size to fill the GPU, and use a heavier network (resnet152). Does AMP improve performance? Does it allow you to increase batch size while training?
 
 ### Lab 2. Using Tensorboard to monitor experiments
+Read through [TORCH.UTILS.TENSORBOARD docs](https://pytorch.org/docs/stable/tensorboard.html). Use SummaryWriter() to log acc1, acc5, loss, and learning rate. Hint: you'll need to do something like `writer.add_scalar("Loss/train", loss, global_step = global_step)`, keeping track of your global step for a nice graph.
+
+Launch tensorboard, eg.
+```
+# the logdir should match the parameter passed to what you pass to SummaryWriter, e.g.
+# writer = SummaryWriter(log_dir="/data/runs/")
+tensorboard --logdir=/data/runs
+```
+Then you should be able to connect to the ip address of your VM on port 6006
 
 ### Lab 3. Using Weights and Biases (Wandb) to monitor experiments
 
