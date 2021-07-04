@@ -1,5 +1,5 @@
 #GANs Lab
-In this lab, you will create images of people who resemble celebrities. We are using the [Celeb-A Faces dataset] (http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html) and referencing code created by Nathan Inkawhich <https://github.com/inkawhich>.
+In this lab, you will create images of people who resemble celebrities. We are using the [Celeb-A Faces dataset](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html) and referencing code created by Nathan Inkawhich <https://github.com/inkawhich>.
 
 Load the Python Notebook from Github (dcgan_faces.ipynb) into [Colab](https://colab.research.google.com/notebooks/intro.ipynb#recent=true). Ensure that your runtime is using a GPU.
 
