@@ -322,7 +322,7 @@ Use the `configure_xavier.sh` script in this repo to set up swap space after you
 
 ```
 git clone https://github.com/MIDS-scaling-up/v3.git
-cd v2/week01/hw
+cd v3/week01/hw
 chmod +x configure_xavier.sh
 ./configure_xavier.sh
 ```
