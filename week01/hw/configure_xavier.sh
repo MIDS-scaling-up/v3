@@ -4,7 +4,7 @@
 sudo usermod -aG docker $USER
 
 # Turn of zram swap
-sudo mv /etc/systemd/nvzramconfig.sh sudo mv /etc/systemd/nvzramconfig.sh.save
+sudo mv /etc/systemd/nvzramconfig.sh /etc/systemd/nvzramconfig.sh.save
 
 # Create and enable a 32 GB swap space
 sudo mkdir /data
