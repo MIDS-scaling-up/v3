@@ -1,10 +1,13 @@
 # HW 1: Installing JetPack and Docker 
 
+# DRAFT - Updating for Jetson Nano
+
 
 ## 1. Nvidia JetPack SDK
-JetPack is an SDK that basically contains everything needed for deep learning and AI applications in a handy package bundle containing the OS for for the Xavier. Installation on the Xavier requires downloading and flashing the image to a MicroSD card.
+JetPack is an SDK that basically contains everything needed for deep learning and AI applications in a handy package bundle containing the OS for for the Nano. Installation on the Nano requires downloading and flashing the image to a MicroSD card.
 
-We are working on sourcing discount codes for the Jetson Xavier NX Developer Kit and hope to have them available the week before classes start. For details on set up see [homework 1](week01/hw): 
+We are working on sourcing discount codes for the Jetson Nano Developer Kit and hope to have them available the week before classes start. For details on set up see [homework 1](week01/hw): 
+TODO: need list here
  1. [Jetson Xavier NX Developer Kit](https://developer.nvidia.com/embedded/jetson-xavier-nx-devkit), or try [arrow]( https://www.arrow.com/en/products/945-83518-0000-000/nvidia)
  2. MicroSD card (64GB minimum size)
  3. USB MicroSD card reader
@@ -15,9 +18,11 @@ We are working on sourcing discount codes for the Jetson Xavier NX Developer Kit
 
 ### 1.1 Host (Computer) Installation
 
-On your Windows, Mac, or Ubuntu workstation, navigate to the [JetPack homepage](https://developer.nvidia.com/jetpack-sdk-441-archive) (**NOTE that we are using JetPack 4.4.1 for this class**) and click on "Download SD Card Image" in the `JETSON XAVIER NX DEVELOPER KIT` box. Once it downloads, follow the steps at [Getting Started with Jetson Xavier NX Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit) to flash the SD card.
+On your Windows, Mac, or Ubuntu workstation, navigate to the [JetPack homepage](https://developer.nvidia.com/jetpack-sdk-441-archive) (**NOTE that we are using JetPack 4.6 for this class**) and click on "Download SD Card Image" in the `JETSON Nano DEVELOPER KIT` box. Once it downloads, follow the steps at [Getting Started with Jetson Xavier Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit) to flash the SD card.
 
-NVIDIA provides [flashing instructions](https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit#write) for Windows, Linux, and Mac. You will need to insert the MicroSD card into the card reader and connect it to the USB port on your computer.
+NVIDIA provides [flashing instructions](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#write) for Windows, Linux, and Mac. You will need to insert the MicroSD card into the card reader and connect it to the USB port on your computer.
+
+TODO need to remove
 
 **While the flashing process runs, you can use the Philips head screwdriver to install the SSD on your Xavier NX.**
 
@@ -230,9 +235,9 @@ The Jetson line of SoCs (including the Xavier NX) has a number of different powe
 
 ## 3. Configure Operating System to run from SSD
 
-Your Xavier is booting the Operating System from the MicroSD card, which is not very fast.
+Your Nano is booting the Operating System from the MicroSD card, which is not very fast.
 
-We recommend that you configure your system to run from the SSD instead. Follow the instructions on [this page](https://www.jetsonhacks.com/2020/05/29/jetson-xavier-nx-run-from-ssd/) (watch the video carefully).
+This assumes that you have a SINGLE USB 3.0 drive installed and it is using /dev/sda.
 
 # WARNING: This is a destructive process and will wipe your SSD. 
 ### Note: This process assumes that your SSD is at /dev/nvme0n1, which is the standard device location
@@ -250,6 +255,7 @@ Your output should show a `/` in the MOUNTPOINT column of the `mmcblk0p1` line:
 ```
 NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 loop0          7:0    0    16M  1 loop 
+sda            8:0    0 465.8G  0 disk 
 mtdblock0     31:0    0    32M  0 disk 
 mmcblk0      179:0    0  59.5G  0 disk 
 ├─mmcblk0p1  179:1    0  59.2G  0 part /
@@ -263,28 +269,29 @@ mmcblk0      179:0    0  59.5G  0 disk
 ├─mmcblk0p9  179:9    0   256K  0 part 
 ├─mmcblk0p10 179:10   0   100M  0 part 
 └─mmcblk0p11 179:11   0    18K  0 part 
-zram0        252:0    0   1.9G  0 disk [SWAP]
-zram1        252:1    0   1.9G  0 disk [SWAP]
-nvme0n1      259:0    0 465.8G  0 disk 
+zram0        252:0    0 494.5M  0 disk [SWAP]
+zram1        252:1    0 494.5M  0 disk [SWAP]
+zram2        252:2    0 494.5M  0 disk [SWAP]
+zram3        252:3    0 494.5M  0 disk [SWAP]
 ```
 
 To setup the SSD:
 
 ```
 # Wipe the SSD
-sudo wipefs --all --force /dev/nvme0n1
+sudo wipefs --all --force /dev/sda
 
 # Partition the SSD 
-sudo parted --script /dev/nvme0n1 mklabel gpt mkpart primary ext4 0% 100%
+sudo parted --script /dev/sda mklabel gpt mkpart primary ext4 0% 100%
 
 # Format the newly created partition
-sudo mkfs.ext4 /dev/nvme0n1p1
+sudo mkfs.ext4 /dev/sda1
 
 # We will use the jetsonhacks scripts to move data and enable the SSD as
 # the default disk
 
-git clone https://github.com/jetsonhacks/rootOnNVMe.git
-cd rootOnNVMe/
+git clone https://github.com/MIDS-scaling-up/rootOnUSBforNano.git
+cd rootOnUSBforNano/
 sudo ./copy-rootfs-ssd.sh
 ./setup-service.sh
 
@@ -292,29 +299,33 @@ sudo ./copy-rootfs-ssd.sh
 sudo reboot
 ```
 
-Run the `lsblk` command again to verify that you are running the OS from the SSD. This time, the `/` should be the MOUNTPOINT for `nvme0n1p1`:
+Run the `lsblk` command again to verify that you are running the OS from the SSD. This time, the `/` should be the MOUNTPOINT for `sda1`:
 
 
 ```
-NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-loop0          7:0    0    16M  1 loop 
-mtdblock0     31:0    0    32M  0 disk 
+loop1          7:1    0    16M  1 loop 
+sda            8:0    0 931.5G  0 disk 
+└─sda1         8:1    0 931.5G  0 part /
+mtdblock0     31:0    0     4M  0 disk 
 mmcblk0      179:0    0  59.5G  0 disk 
-├─mmcblk0p1  179:1    0  59.2G  0 part /media/nvidia/48fc8f75-dc2b-4a68-9673-c4cc26f9d5db
-├─mmcblk0p2  179:2    0    64M  0 part 
-├─mmcblk0p3  179:3    0    64M  0 part 
-├─mmcblk0p4  179:4    0   448K  0 part 
-├─mmcblk0p5  179:5    0   448K  0 part 
-├─mmcblk0p6  179:6    0    63M  0 part 
-├─mmcblk0p7  179:7    0   512K  0 part 
-├─mmcblk0p8  179:8    0   256K  0 part 
-├─mmcblk0p9  179:9    0   256K  0 part 
-├─mmcblk0p10 179:10   0   100M  0 part 
-└─mmcblk0p11 179:11   0    18K  0 part 
-zram0        252:0    0   1.9G  0 disk [SWAP]
-zram1        252:1    0   1.9G  0 disk [SWAP]
-nvme0n1      259:0    0 465.8G  0 disk 
-└─nvme0n1p1  259:1    0 465.8G  0 part /
+├─mmcblk0p1  179:1    0  59.5G  0 part 
+├─mmcblk0p2  179:2    0   128K  0 part 
+├─mmcblk0p3  179:3    0   448K  0 part 
+├─mmcblk0p4  179:4    0   576K  0 part 
+├─mmcblk0p5  179:5    0    64K  0 part 
+├─mmcblk0p6  179:6    0   192K  0 part 
+├─mmcblk0p7  179:7    0   384K  0 part 
+├─mmcblk0p8  179:8    0    64K  0 part 
+├─mmcblk0p9  179:9    0   448K  0 part 
+├─mmcblk0p10 179:10   0   448K  0 part 
+├─mmcblk0p11 179:11   0   768K  0 part 
+├─mmcblk0p12 179:12   0    64K  0 part 
+├─mmcblk0p13 179:13   0   192K  0 part 
+└─mmcblk0p14 179:14   0   128K  0 part 
+zram0        252:0    0 494.5M  0 disk [SWAP]
+zram1        252:1    0 494.5M  0 disk [SWAP]
+zram2        252:2    0 494.5M  0 disk [SWAP]
+zram3        252:3    0 494.5M  0 disk [SWAP]
 ```
 
 
