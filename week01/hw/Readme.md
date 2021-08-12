@@ -338,8 +338,8 @@ Install jtop (a monitoring tool from https://github.com/rbonghi/jetson_stats):
 
 ```
 sudo apt update
-sudo apt install python3-pip
-sudo -H pip install -U jetson-stats
+sudo apt install -y python3-pip
+sudo -H pip3 install -U jetson-stats
 sudo reboot
 
 # Test after reboot
