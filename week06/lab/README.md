@@ -312,10 +312,17 @@ You'll be using a prebuilt image (rdejana/tf-trt-demo) for this lab.
 
 See https://github.com/MIDS-scaling-up/v3/tree/main/week06/demo/quantization/tf-trt if you'd like to build the image on your own.
 
-Depending on your version of Jetpack, run: 
-```docker run -it --rm --net=host w251/tf-trt-demo:r32.4.4```
-or
-```docker run -it --rm --net=host w251/tf-trt-demo:r32.5.0```
+If you are using an NX with Jetpack 4.6, run: 
+```
+docker run -it --rm --net=host rdejana/tf-trt-demo:r32.6.1_nx
+```
+or if on the 4 GB Nano
+```
+docker run -it --rm --net=host rdejana/tf-trt-demo:r32.6.1_nano
+```
+
+Note, you may need to keep track of the memory status and clear/flush buffers as needed.
+
 
 Once the container as started, you'll see output similar to: 
 
