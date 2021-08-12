@@ -7,6 +7,7 @@
 JetPack is an SDK that basically contains everything needed for deep learning and AI applications in a handy package bundle containing the OS for for the Nano. Installation on the Nano requires downloading and flashing the image to a MicroSD card.
 
 We are working on sourcing discount codes for the Jetson Nano Developer Kit and hope to have them available the week before classes start. For details on set up see [homework 1](week01/hw): 
+
 TODO: need list here
  1. [Jetson Xavier NX Developer Kit](https://developer.nvidia.com/embedded/jetson-xavier-nx-devkit), or try [arrow]( https://www.arrow.com/en/products/945-83518-0000-000/nvidia)
  2. MicroSD card (64GB minimum size)
@@ -18,17 +19,14 @@ TODO: need list here
 
 ### 1.1 Host (Computer) Installation
 
-On your Windows, Mac, or Ubuntu workstation, navigate to the [JetPack homepage](https://developer.nvidia.com/jetpack-sdk-441-archive) (**NOTE that we are using JetPack 4.6 for this class**) and click on "Download SD Card Image" in the `JETSON Nano DEVELOPER KIT` box. Once it downloads, follow the steps at [Getting Started with Jetson Xavier Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit) to flash the SD card.
+On your Windows, Mac, or Ubuntu workstation, navigate to the [JetPack homepage](https://developer.nvidia.com/jetpack-sdk-441-archive) (**NOTE that we are using JetPack 4.6 for this class**) and click on "Download SD Card Image" in the `JETSON Nano DEVELOPER KIT` box. Once it downloads, follow the steps at [Getting Started with Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit) to flash the SD card.
 
 NVIDIA provides [flashing instructions](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#write) for Windows, Linux, and Mac. You will need to insert the MicroSD card into the card reader and connect it to the USB port on your computer.
 
-TODO need to remove
 
-**While the flashing process runs, you can use the Philips head screwdriver to install the SSD on your Xavier NX.**
+A quick video showing MicroSD card [here](Xavier_NX_Install_SSD.mp4). Note, this video is for a Jetson Xavier NX and includes the installation of a SSD.
 
-A quick video showing MicroSD card and SSD installation is [here](Xavier_NX_Install_SSD.mp4).
-
-Once the flashing process is complete, you will insert the MicroSD card into your Xavier. **Do not power it on yet.**
+Once the flashing process is complete, you will insert the MicroSD card into your Jetson. **Do not power it on yet.**
 
 
 
@@ -44,11 +42,11 @@ With the first option, you will obviously need additional hardware. Option numbe
 
 If you choose option two, you will need a machine running Linux (we recommend Ubuntu 18.04), or a Mac. If you do not have one, you can create a VM running Ubuntu (see section 1.2).
 
-If you are using install option one, you can connect the keyboard, mouse, and display to [complete the setup process](https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit#setup). Once they are connected, you can connect the power adapter. Follow the steps to complete the setup and then go to section 2. If you have issues connecting to wifi, skip that step and connect the Xavier directly to your router with an ethernet cable **after** the setup is complete.
+If you are using install option one, you can connect the keyboard, mouse, and display to [complete the setup process](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#setup). Once they are connected, you can connect the power adapter. Follow the steps to complete the setup and then go to section 2. If you have issues connecting to wifi, skip that step and connect the Nano directly to your router with an ethernet cable **after** the setup is complete.
 
-If you are using install option two, you can connect the Xavier to your Mac or Linux computer using the micro-USB cable and then connect the power adapter.
+If you are using install option two, you can connect the Nano to your Mac or Linux computer using the micro-USB cable and then connect the power adapter.
 
-**If you are using a VMware VM, you will be prompted to connect the USB device to your host computer or the VM; choose the VM. When in the VM, use "lsusb" in the terminal to check if the Xavier is visible.**
+**If you are using a VMware VM, you will be prompted to connect the USB device to your host computer or the VM; choose the VM. When in the VM, use "lsusb" in the terminal to check if the Jetson is visible.**
 
 ### 1.3 If you chose Option 2 in section 1.2
 
@@ -107,20 +105,19 @@ sudo screen /dev/ttyACM0 115200 -L
 ```
 
 ### 1.4 Both Linux and Mac:
-**Note: the wifi configuration might not work due to a bug in the software. If it is an issue, just skip the wifi step and connect the Xavier directly to your router with an ethernet cable after the setup is complete**
 
-You will finish the [setup process](https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit#setup) using the tty terminal you just opened to the device. 
+You will finish the [setup process](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#setup) using the tty terminal you just opened to the device. 
 
 ## 2. Configure VNC
 
-It is highly recommended that you connect your Xavier directly to your router with an ethernet cable.
+It is highly recommended that you connect your Nano directly to your router with an ethernet cable.
 
 You can have a keyboard, mouse, and monitor attached to your Jetson; but it is also extremely convenient to set up screen sharing, so you can see the Jetson desktop remotely. This is needed, for instance, when you want to show Jetson's screen over a web conference - plus it's a lot easier than switching between monitors all the time.
 
 1.  Get a VNC screen sharing client.  You can install [TightVNC](https://www.tightvnc.com/), [Remmina](https://remmina.org/), or another VNC client of your choice. 
-2. Configure your Xavier for remote screen sharing.
+2. Configure your Nano for remote screen sharing.
 
-On your Xavier, open a terminal (or ssh to your Xavier from another computer). 
+On your Nano, open a terminal (or ssh to your Nano from another computer). 
 
 ```
 mkdir ~/.config/autostart
@@ -147,27 +144,39 @@ gsettings set org.gnome.Vino require-encryption false
 ```
 # Enabling automatic login
   AutomaticLoginEnable = true
-  AutomaticLogin = nvidia # Ensure that you replace 'nvidia' with the ID you use to login to your Xavier
+  AutomaticLogin = nvidia # Ensure that you replace 'nvidia' with the ID you use to login to your Nano
 ```
 
 
-* Reboot your Xavier
+* Reboot your Nano
 * Then, launch your remote sharing client, choose VNC as the protocol, type in the IP address of your jetson and port 5900.
 
 **NOTE:**
 To find your IP address, use the following command:
 
 ```
-nvidia@xavier:~$ ip addr show | grep inet
+nvidia@nano:~$ ip addr show | grep inet
     inet 127.0.0.1/8 scope host lo
     inet6 ::1/128 scope host 
     inet 192.168.11.103/24 brd 192.168.11.255 scope global dynamic noprefixroute eth0
     inet6 fe80::4ab0:2dff:fe05:a700/64 scope link noprefixroute 
-nvidia@xavier:~$ 
+nvidia@nano:~$ 
 ```
 The IP address in this example is on the third line: `192.168.11.103`.
 
-### Now run a VNC viewer on your computer (not the Xavier):
+When using VNC it is strongly recommended to us a reslution less than 4k as resolutions at 4k or higher can cause additional lag.
+For example, a resolution of 1600x900 typically decent performance (you may adjust as needed).
+
+Make sure your display cable is not plugged into your Nano (if it is, unplug it and reboot) and from a SSH shell enter: 
+```
+export DISPLAY=:0
+xhost +
+sudo xrandr --fb 1600x900
+```
+
+You'll need to run this after you reboot your Nano.
+
+### Now run a VNC viewer on your computer (not the Jetson):
 
 On any platform, you can download a VNC Viewer (like Real VNC) and use it: 
 
@@ -189,8 +198,8 @@ sudo xrandr --fb 1600x900 # you can choose some other resolution if desired
 
 
 
-### Testing JetPack on the Xavier
-Ensure the Xavier is on and running Ubuntu. Use this command to verify that everything is happy and healthy:
+### Testing JetPack on the Nano
+Ensure the Nano is on and running Ubuntu. Use this command to verify that everything is happy and healthy:
 
 ```
 sudo nvpmodel -q --verbose
@@ -201,37 +210,26 @@ The output should be similar to:
 ```
 NVPM VERB: Config file: /etc/nvpmodel.conf
 NVPM VERB: parsing done for /etc/nvpmodel.conf
-NV Fan Mode:quiet
-NVPM VERB: Current mode: NV Power Mode: MODE_15W_6CORE
-2
+NVPM WARN: fan mode is not set!
+NVPM VERB: Current mode: NV Power Mode: MAXN
+0
 NVPM VERB: PARAM CPU_ONLINE: ARG CORE_0: PATH /sys/devices/system/cpu/cpu0/online: REAL_VAL: 1 CONF_VAL: 1
 NVPM VERB: PARAM CPU_ONLINE: ARG CORE_1: PATH /sys/devices/system/cpu/cpu1/online: REAL_VAL: 1 CONF_VAL: 1
 NVPM VERB: PARAM CPU_ONLINE: ARG CORE_2: PATH /sys/devices/system/cpu/cpu2/online: REAL_VAL: 1 CONF_VAL: 1
 NVPM VERB: PARAM CPU_ONLINE: ARG CORE_3: PATH /sys/devices/system/cpu/cpu3/online: REAL_VAL: 1 CONF_VAL: 1
-NVPM VERB: PARAM CPU_ONLINE: ARG CORE_4: PATH /sys/devices/system/cpu/cpu4/online: REAL_VAL: 1 CONF_VAL: 1
-NVPM VERB: PARAM CPU_ONLINE: ARG CORE_5: PATH /sys/devices/system/cpu/cpu5/online: REAL_VAL: 1 CONF_VAL: 1
-NVPM VERB: PARAM TPC_POWER_GATING: ARG TPC_PG_MASK: PATH /sys/devices/gpu.0/tpc_pg_mask: REAL_VAL: 2 CONF_VAL: 1
+NVPM VERB: PARAM CPU_A57: ARG MIN_FREQ: PATH /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq: REAL_VAL: 102000 CONF_VAL: 0
+NVPM VERB: PARAM CPU_A57: ARG MAX_FREQ: PATH /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq: REAL_VAL: 1479000 CONF_VAL: 2147483647
 NVPM VERB: PARAM GPU_POWER_CONTROL_ENABLE: ARG GPU_PWR_CNTL_EN: PATH /sys/devices/gpu.0/power/control: REAL_VAL: auto CONF_VAL: on
-NVPM VERB: PARAM CPU_DENVER_0: ARG MIN_FREQ: PATH /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq: REAL_VAL: 1190400 CONF_VAL: 1190400
-NVPM VERB: PARAM CPU_DENVER_0: ARG MAX_FREQ: PATH /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq: REAL_VAL: 1420800 CONF_VAL: 1420800
-NVPM VERB: PARAM CPU_DENVER_1: ARG MIN_FREQ: PATH /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq: REAL_VAL: 1190400 CONF_VAL: 1190400
-NVPM VERB: PARAM CPU_DENVER_1: ARG MAX_FREQ: PATH /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq: REAL_VAL: 1420800 CONF_VAL: 1420800
-NVPM VERB: PARAM CPU_DENVER_2: ARG MIN_FREQ: PATH /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq: REAL_VAL: 1190400 CONF_VAL: 1190400
-NVPM VERB: PARAM CPU_DENVER_2: ARG MAX_FREQ: PATH /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq: REAL_VAL: 1420800 CONF_VAL: 1420800
-NVPM VERB: PARAM GPU: ARG MIN_FREQ: PATH /sys/devices/17000000.gv11b/devfreq/17000000.gv11b/min_freq: REAL_VAL: 114750000 CONF_VAL: 0
-NVPM VERB: PARAM GPU: ARG MAX_FREQ: PATH /sys/devices/17000000.gv11b/devfreq/17000000.gv11b/max_freq: REAL_VAL: 1109250000 CONF_VAL: 1109250000
+NVPM VERB: PARAM GPU: ARG MIN_FREQ: PATH /sys/devices/gpu.0/devfreq/57000000.gpu/min_freq: REAL_VAL: 76800000 CONF_VAL: 0
+NVPM VERB: PARAM GPU: ARG MAX_FREQ: PATH /sys/devices/gpu.0/devfreq/57000000.gpu/max_freq: REAL_VAL: 921600000 CONF_VAL: 2147483647
 NVPM VERB: PARAM GPU_POWER_CONTROL_DISABLE: ARG GPU_PWR_CNTL_DIS: PATH /sys/devices/gpu.0/power/control: REAL_VAL: auto CONF_VAL: auto
-NVPM VERB: PARAM EMC: ARG MAX_FREQ: PATH /sys/kernel/nvpmodel_emc_cap/emc_iso_cap: REAL_VAL: 1600000000 CONF_VAL: 1600000000
-NVPM VERB: PARAM DLA_CORE: ARG MAX_FREQ: PATH /sys/kernel/nvpmodel_emc_cap/nafll_dla: REAL_VAL: 1100800000 CONF_VAL: 1100800000
-NVPM VERB: PARAM DLA_FALCON: ARG MAX_FREQ: PATH /sys/kernel/nvpmodel_emc_cap/nafll_dla_falcon: REAL_VAL: 640000000 CONF_VAL: 640000000
-NVPM VERB: PARAM PVA_VPS: ARG MAX_FREQ: PATH /sys/kernel/nvpmodel_emc_cap/nafll_pva_vps: REAL_VAL: 819200000 CONF_VAL: 819200000
-NVPM VERB: PARAM PVA_CORE: ARG MAX_FREQ: PATH /sys/kernel/nvpmodel_emc_cap/nafll_pva_core: REAL_VAL: 601600000 CONF_VAL: 601600000
+NVPM VERB: PARAM EMC: ARG MAX_FREQ: PATH /sys/kernel/nvpmodel_emc_cap/emc_iso_cap: REAL_VAL: 0 CONF_VAL: 0
 NVPM VERB: PARAM CVNAS: ARG MAX_FREQ: PATH /sys/kernel/nvpmodel_emc_cap/nafll_cvnas: REAL_VAL: 576000000 CONF_VAL: 576000000
 
 ```
 
-### Exploring the power modes of the Xavier
-The Jetson line of SoCs (including the Xavier NX) has a number of different power modes described in some detail here: [TX2](https://www.jetsonhacks.com/2017/03/25/nvpmodel-nvidia-jetson-tx2-development-kit/) or [Xavier](https://www.jetsonhacks.com/2018/10/07/nvpmodel-nvidia-jetson-agx-xavier-developer-kit/). The main idea is that the lowering clock speeds on the cpu and turning off cores saves energy; and the default power mode is a low energy mode. You need to switch to a higher power mode to use all cores and maximize the clock frequency.  In the upper right corner of your desktop you will see a widget that should allow you to switch between power modes.  Set your power mode to MAXN; this will enable all six cores and will maximize your clock frequency. This is ok when we use our Xavier as a small desktop computer.  If you decide to use your Xavier as a robotic device and become worried about the power draw, you may want to lower this setting.
+### Exploring the power modes of the Nano
+The Jetson line of SoCs (including the Nano) has a number of different power modes described in some detail here: [TX2](https://www.jetsonhacks.com/2017/03/25/nvpmodel-nvidia-jetson-tx2-development-kit/) or [Xavier](https://www.jetsonhacks.com/2018/10/07/nvpmodel-nvidia-jetson-agx-xavier-developer-kit/). The main idea is that the lowering clock speeds on the cpu and turning off cores saves energy; and the default power mode is a low energy mode. You need to switch to a higher power mode to use all cores and maximize the clock frequency.  In the upper right corner of your desktop you will see a widget that should allow you to switch between power modes.  Set your power mode to MAXN; this will enable all  cores and will maximize your clock frequency. This is ok when we use our Nano as a small desktop computer.  If you decide to use your Nano as a robotic device and become worried about the power draw, you may want to lower this setting.
 
 ## 3. Configure Operating System to run from SSD
 
@@ -327,18 +325,20 @@ zram3        252:3    0 494.5M  0 disk [SWAP]
 ```
 
 
-Use the `configure_xavier.sh` script in this repo to set up swap space after you have rebooted and verified that you are running your Operating System from the SSD:
+Use the `configure_jetson.sh` script in this repo to set up swap space after you have rebooted and verified that you are running your Operating System from the SSD:
 
 ```
 git clone https://github.com/MIDS-scaling-up/v3.git
 cd v3/week01/hw
-chmod +x configure_xavier.sh
-./configure_xavier.sh
+chmod +x configure_jetson.sh
+./configure_jetson.sh
 ```
 
 Install jtop (a monitoring tool from https://github.com/rbonghi/jetson_stats):
 
 ```
+sudo apt update
+sudo apt install python3-pip
 sudo -H pip install -U jetson-stats
 sudo reboot
 
@@ -357,7 +357,14 @@ Let's test it to see if it can run containers. Since the Jetson doesn't have the
 ```
 docker run hello-world
 ```
-  
+
+Note, if you get a permissions error, run this command:
+```
+sudo usermod -aG docker $USER
+```
+Log out and log back in so that your group membership is re-evaluated.
+
+ 
 ### Run the base Docker Image for the Jetson
 Most of the work  in the class will require a Docker base image running Ubuntu 18.04 with all the needed dependencies. For the first time, in July 2019, Nvidia has released an officially supported base cuda container! Please register at the [Nvidia GPU Cloud](http://ngc.nvidia.com) and review the documentation for the [base jetson container](https://ngc.nvidia.com/catalog/containers/nvidia:l4t-base)
 
