@@ -237,10 +237,8 @@ The Jetson line of SoCs (including the Xavier NX) has a number of different powe
 
 Your Nano is booting the Operating System from the MicroSD card, which is not very fast.
 
-This assumes that you have a SINGLE USB 3.0 drive installed and it is using /dev/sda.
-
 # WARNING: This is a destructive process and will wipe your SSD. 
-### Note: This process assumes that your SSD is at /dev/nvme0n1, which is the standard device location
+### Note: This process assumes that your SSD is at /dev/sda, which is the standard device location
 
 Steps:
 
