@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/l4t-tensorflow:r32.4.4-tf2.3-py3
+FROM nvcr.io/nvidia/l4t-tensorflow:r32.6.1-tf2.5-py3
 RUN apt-get update && apt-get install python3-dev git sudo unzip -y
 RUN pip3 install -U pip
 RUN pip3 install cffi setuptools pillow matplotlib notebook jetson-stats
