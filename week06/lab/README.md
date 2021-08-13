@@ -2,7 +2,7 @@
 You may use VNC for this lab; if VNC is used, it is strongly recommended to us a reslution less than 4k as resolutions at 4k or higher can cause additional lag.
 For example, a resolution of 1600x900 typically decent performance (you may adjust as needed).
 
-Make sure your display cable is not plugged into your and NX and from a SSH shell enter: 
+Make sure your display cable is not plugged into your and Jetson and from a SSH shell enter: 
 ```
 export DISPLAY=:0
 xhost +
