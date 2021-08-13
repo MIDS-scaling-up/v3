@@ -40,3 +40,7 @@ for i in range(4):
   # decode the results into a list of tuples (class, description, probability)
   # (one such list for each sample in the batch)
   print('{} - Predicted: {}'.format(img_path, decode_predictions(preds, top=3)[0]))
+
+print('saving model')
+# Save the entire model as a SavedModel.
+model.save('models/resnet50_saved_model') 
