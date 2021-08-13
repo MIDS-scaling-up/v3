@@ -35,13 +35,13 @@ conversion_params = trt.DEFAULT_TRT_CONVERSION_PARAMS._replace(
     max_workspace_size_bytes=3000000000, 
     use_calibration=True)
 converter = trt.TrtGraphConverterV2(
-    input_saved_model_dir='resnet50_saved_model', 
+    input_saved_model_dir='models/resnet50_saved_model', 
     conversion_params=conversion_params)
 
 def calibration_input_fn():
     yield (batched_input, )
 converter.convert(calibration_input_fn=calibration_input_fn)
 
-converter.save(output_saved_model_dir='resnet50_saved_model_TFTRT_INT8')
+converter.save(output_saved_model_dir='models/resnet50_saved_model_TFTRT_INT8')
 print('Done Converting to TF-TRT INT8')
 
