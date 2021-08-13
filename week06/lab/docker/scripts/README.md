@@ -43,11 +43,11 @@ Note, this will take some time to complete.  Note, you'll need to update the con
 To start the container, select the following command based on your Jetson device.  
 For NX devices:
 ```
-docker run -ti --rm rdejana/tf-trt bash
+docker run -ti --rm rdejana/tf-trt-demo:r32.6.1 bash
 ```
 For Nano devices:
 ```
-docker run -ti --rm rdejana/tf-trt-nano bash
+docker run -ti --rm rdejana/tf-trt-demo:r32.6.1_nano bash
 ```
 
 You'll be presenting with prompt similar to:
