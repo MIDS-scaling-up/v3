@@ -48,10 +48,6 @@ For NX devices:
 ```
 docker run -ti --rm rdejana/tf-trt-demo:r32.6.1 bash
 ```
-For Nano devices:
-```
-docker run -ti --rm rdejana/tf-trt-demo:r32.6.1_nano bash
-```
 
 You'll be presenting with prompt similar to:
 ```
