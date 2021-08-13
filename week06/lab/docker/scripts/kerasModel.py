@@ -1,3 +1,9 @@
+#
+# This downloads the ResNet50 model, validates it, then saves it as a Keras SavedModel
+# It runs the model through a basic validation.
+#
+#
+
 from __future__ import absolute_import, division, print_function, unicode_literals
 import os
 import time
