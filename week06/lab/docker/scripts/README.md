@@ -29,6 +29,9 @@ converter = trt.TrtGraphConverterV2(
 converter.convert()
 converter.save(output_saved_model_dir='resnet50_saved_model_TFTRT_FP16')
 ```
+
+Based on your device, you may need to adjust the max_workspace_size_bytes.
+
 See the TF-TRT documenation for additional options and details.
 
 
