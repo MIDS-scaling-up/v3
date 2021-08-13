@@ -1,4 +1,4 @@
-# Bnechmark TF-TRT 16
+# Bnechmark TF-TRT IN8
 from __future__ import absolute_import, division, print_function, unicode_literals
 import os
 import time
@@ -74,8 +74,8 @@ def benchmark_tftrt(saved_model_loaded):
 
     print('Throughput: {:.0f} images/s'.format(N_run * batch_size / elapsed_time.sum()))
 
-# Load tour FP16 model
-saved_model_loaded = tf.saved_model.load('models/resnet50_saved_model_TFTRT_FP16', tags=[tag_constants.SERVING])
+# Load our int8 model
+saved_model_loaded = tf.saved_model.load('models/resnet50_saved_model_TFTRT_INT8', tags=[tag_constants.SERVING])
 
 predict_tftrt(saved_model_loaded)
 benchmark_tftrt(saved_model_loaded)
