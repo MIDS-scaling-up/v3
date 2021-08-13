@@ -312,14 +312,12 @@ You'll be using a prebuilt image (rdejana/tf-trt-demo) for this lab.
 
 See docker/ if you'd like to build the image on your own.
 
-If you are using an NX with Jetpack 4.6, run: 
+
 ```
-docker run -it --rm --net=host rdejana/tf-trt-demo:r32.6.1_nx
+docker run -it --rm --net=host rdejana/tf-trt-demo:r32.6.1
 ```
-or if on the 4 GB Nano
-```
-docker run -it --rm --net=host rdejana/tf-trt-demo:r32.6.1_nano
-```
+
+
 
 Note, you may need to keep track of the memory status and clear/flush buffers as needed.  As an alternaive, you may run this lab directly from the command line.  See docker/scripts/README.md for the details.
 
@@ -342,7 +340,7 @@ Once the container as started, you'll see output similar to:
      or http://127.0.0.1:8888/?token=af4be11ce363992a3815f1893de5b4f219940a7fb364040a
 ```
 
-Navigate to the appropriate URL and open the file tf-trt.ipynb.
+If you are running on an NX device, navigate to the appropriate URL and open the file tf-trt.ipynb.  If you are using a Nano, open the file tf-trt-nano.ipynb instead.
 
 Once the notebook is open, you may run each piece. Note, the flush.sh script is available to clear cached memory if needed. In addition, the notebook restarts a number of points to clear up memroy.
 
