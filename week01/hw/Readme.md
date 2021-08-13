@@ -326,7 +326,7 @@ zram2        252:2    0 494.5M  0 disk [SWAP]
 zram3        252:3    0 494.5M  0 disk [SWAP]
 ```
 
-### Note, with 4.6, there may be times when the Jetson fails to use the attached SSD as the root file system.  You can check this by running lsblk and confirmning the SD card is not using / as a mount point.
+### Note, with 4.6, there may be times when the Jetson fails to use the attached SSD as the root file system.  You can check this by running lsblk and confirmning the SD card is not using / as a mount point.  A reboot seems to correct this.
 
 
 Use the `configure_jetson.sh` script in this repo to set up swap space after you have rebooted and verified that you are running your Operating System from the SSD:
