@@ -12,7 +12,7 @@ To renable the desktop, you can either reboot or run the command:
 sudo init 5
 ```
 
-The basic TF-TRG conversion process looks like:
+The basic TF-TRT conversion process looks like:
 
 ```
 # max_workspace_size_bytes sets how much GPU memory will be avaible at runtime
