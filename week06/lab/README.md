@@ -310,7 +310,7 @@ This is a very simple image classification example based on https://github.com/t
 
 You'll be using a prebuilt image (rdejana/tf-trt-demo) for this lab.
 
-See https://github.com/MIDS-scaling-up/v3/tree/main/week06/demo/quantization/tf-trt if you'd like to build the image on your own.
+See docker/ if you'd like to build the image on your own.
 
 If you are using an NX with Jetpack 4.6, run: 
 ```
@@ -321,7 +321,7 @@ or if on the 4 GB Nano
 docker run -it --rm --net=host rdejana/tf-trt-demo:r32.6.1_nano
 ```
 
-Note, you may need to keep track of the memory status and clear/flush buffers as needed.
+Note, you may need to keep track of the memory status and clear/flush buffers as needed.  As an alternaive, you may run this lab directly from the command line.  See docker/scripts/README.md for the details.
 
 
 Once the container as started, you'll see output similar to: 
