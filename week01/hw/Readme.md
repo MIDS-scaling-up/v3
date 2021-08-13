@@ -238,6 +238,8 @@ Your Nano is booting the Operating System from the MicroSD card, which is not ve
 # WARNING: This is a destructive process and will wipe your SSD. 
 ### Note: This process assumes that your SSD is at /dev/sda, which is the standard device location
 
+
+
 Steps:
 
 Verify that the OS is booting from the Micro SD.
@@ -323,6 +325,8 @@ zram1        252:1    0 494.5M  0 disk [SWAP]
 zram2        252:2    0 494.5M  0 disk [SWAP]
 zram3        252:3    0 494.5M  0 disk [SWAP]
 ```
+
+### Note, with 4.6, there may be times when the Jetson fails to use the attached SSD as the root file system.  You can check this by running lsblk and confirmning the SD card is not using / as a mount point.
 
 
 Use the `configure_jetson.sh` script in this repo to set up swap space after you have rebooted and verified that you are running your Operating System from the SSD:
