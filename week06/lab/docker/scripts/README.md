@@ -1,4 +1,7 @@
 # Running from scripts
+
+This is a very simple image classification example based on https://github.com/tensorflow/tensorrt/tree/master/tftrt/examples/image-classification updated to run on the Jetson devices. You'll learn how to use TensorFlow 2.x to convert a Keras model to three tf-trt models, a fp32, fp16, and int8. A simple set of test images will be used to both validate and benchmark both the native model and the three tf-trt ones.
+
 This lab may require more memory than your device can provide.  As a workaround, you can run this script from the CLI without running a notebook.
 
 If you wish to reduce the amount of memory your device is using, you can swith modes and disable the Desktop UI.  This can be done with the following command:
