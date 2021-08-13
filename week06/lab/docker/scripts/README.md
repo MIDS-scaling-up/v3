@@ -12,6 +12,22 @@ To renable the desktop, you can either reboot or run the command:
 sudo init 5
 ```
 
+The basic TF-TRG conversion process looks like:
+
+```
+# max_workspace_size_bytes sets how much GPU memory will be avaible at runtime
+# what happens if you make max value bigger (say 8000000000) or smaller (say 1000000000)?
+max = 3000000000
+conversion_params = trt.DEFAULT_TRT_CONVERSION_PARAMS._replace(
+    precision_mode=trt.TrtPrecisionMode.FP16,
+    max_workspace_size_bytes=max)
+converter = trt.TrtGraphConverterV2(
+   input_saved_model_dir='resnet50_saved_model', conversion_params=conversion_params)
+converter.convert()
+converter.save(output_saved_model_dir='resnet50_saved_model_TFTRT_FP16')
+```
+See the TF-TRT documenation for additional options and details.
+
 
 ## Building the container (Optional)
 If you wish to build the container locally, you'll need to run the command:
