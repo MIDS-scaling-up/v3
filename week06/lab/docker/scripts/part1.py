@@ -44,3 +44,18 @@ for i in range(4):
 print('saving model')
 # Save the entire model as a SavedModel.
 model.save('models/resnet50_saved_model') 
+
+print('validating mdoel')
+model = tf.keras.models.load_model('models/resnet50_saved_model')
+
+img_path = './data/img0.JPG'  # Siberian_husky
+img = image.load_img(img_path, target_size=(224, 224))
+x = image.img_to_array(img)
+x = np.expand_dims(x, axis=0)
+x = preprocess_input(x)
+
+preds = model.predict(x)
+# decode the results into a list of tuples (class, description, probability)
+# (one such list for each sample in the batch)
+print('{} - Predicted: {}'.format(img_path, decode_predictions(preds, top=3)[0]))
+
