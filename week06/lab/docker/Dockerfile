@@ -9,7 +9,8 @@ RUN  cp -R /usr/local/lib/python3.6/dist-packages/protobuf-3.13.0-py3.6-linux-aa
 
 COPY tf-trt.ipynb tf-trt.ipynb
 COPY tf-trt-nano.ipynb tf-trt-nano.ipynb
-COPY scripts .
+RUN mkdir scripts
+COPY scripts/* scripts/
 
 # To Run : sudo docker run -it --rm --net=host --runtime nvidia  -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix nvcr.io/nvidia/l4t-base:r32.4.4
 
