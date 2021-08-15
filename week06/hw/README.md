@@ -56,7 +56,7 @@ For part 1, you'll need to submit:
 
 In lab, you saw to how use leverage TensorRT with TensorFlow.  For this homework, you'll look at another way to levarage TensorRT with Pytorch via the Jetson Inference library (https://github.com/dusty-nv/jetson-inference).
 
-You'll want to train a custom object detection model, using either the fruit example or your own set of classes.
+You'll want to train a custom image classification model, using either the fruit example or your own set of classes.
 
 Like in the lab, you'll want to first baseline the your model, looking a the image of images per second it can process.  You may train the model using your Jetson device and the Jetson Inference scripts or train on a GPU eanabled server/virtual machine.  Once you have your baseline, follow the steps/examples outlined in the Jetson Inference to run your model with TensorRT (the defaults used are fine) and determine the number of images per second that are processed.
 
