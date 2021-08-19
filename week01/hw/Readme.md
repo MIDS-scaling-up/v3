@@ -8,14 +8,25 @@ JetPack is an SDK that basically contains everything needed for deep learning an
 
 We are working on sourcing discount codes for the Jetson Nano Developer Kit and hope to have them available the week before classes start. For details on set up see [homework 1](week01/hw): 
 
-TODO: need list here
- 1. [Jetson Xavier NX Developer Kit](https://developer.nvidia.com/embedded/jetson-xavier-nx-devkit), or try [arrow]( https://www.arrow.com/en/products/945-83518-0000-000/nvidia)
- 2. MicroSD card (64GB minimum size)
+
+
+You will need the following:
+
+ 1. [Jetson Nano Developer Ki: ideally 4GB, but 2GB if that is all you can find](https://shop.nvidia.com/en-us/jetson/store/?page=1&limit=9&locale=en-us)
+ 2. [128GB Micro SD](https://www.amazon.com/gp/product/B07G3H5RBT/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
  3. USB MicroSD card reader
- 4. NVMe M.2 SSD (256GB minimum size) **NOTE: SATA M.2 SSDs will not work**
- 5. Size 0 Philips head screwdriver
- 6. Micro USB to USB cable
- 7. USB Webcam
+ 4. [WiFi/Bluetooth card](https://www.amazon.com/dp/B085M7VPDP?psc=1&ref=ppx_yo2_dt_b_product_details)
+ 5. [Power adapter](https://www.amazon.com/gp/product/B08DXZ1MSY/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
+ 6. [1TB USB3 SSD](https://www.amazon.com/Samsung-T5-Portable-SSD-MU-PA2T0B/dp/B073H552FJ/ref=sr_1_3)
+ 7. [USB Webcam](https://www.amazon.com/Logitech-960-000637-HD-Webcam-C310/dp/B003PAIV2Q/ref=sr_1_6)
+
+If you are able to find a Jetson NX, the following is needed:
+ 1. MicroSD card (64GB minimum size)
+ 2. USB MicroSD card reader
+ 3. NVMe M.2 SSD (256GB minimum size) **NOTE: SATA M.2 SSDs will not work**
+ 4. Size 0 Philips head screwdriver
+ 5. Micro USB to USB cable
+ 6. USB Webcam
 
 ### 1.1 Host (Computer) Installation
 
@@ -327,6 +338,93 @@ zram3        252:3    0 494.5M  0 disk [SWAP]
 ```
 
 ### Note, with 4.6, there may be times when the Jetson fails to use the attached SSD as the root file system.  You can check this by running lsblk and confirmning the SD card is not using / as a mount point.  A reboot seems to correct this.
+
+
+If you are using an NX, follow the instructions on [this page](https://www.jetsonhacks.com/2020/05/29/jetson-xavier-nx-run-from-ssd/) (watch the video carefully).
+
+# WARNING: This is a destructive process and will wipe your SSD. 
+### Note: This process assumes that your SSD is at /dev/nvme0n1, which is the standard device location
+
+Steps:
+
+Verify that the OS is booting from the Micro SD.
+
+```
+lsblk
+```
+
+Your output should show a `/` in the MOUNTPOINT column of the `mmcblk0p1` line:
+
+```
+NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+loop0          7:0    0    16M  1 loop 
+mtdblock0     31:0    0    32M  0 disk 
+mmcblk0      179:0    0  59.5G  0 disk 
+├─mmcblk0p1  179:1    0  59.2G  0 part /
+├─mmcblk0p2  179:2    0    64M  0 part 
+├─mmcblk0p3  179:3    0    64M  0 part 
+├─mmcblk0p4  179:4    0   448K  0 part 
+├─mmcblk0p5  179:5    0   448K  0 part 
+├─mmcblk0p6  179:6    0    63M  0 part 
+├─mmcblk0p7  179:7    0   512K  0 part 
+├─mmcblk0p8  179:8    0   256K  0 part 
+├─mmcblk0p9  179:9    0   256K  0 part 
+├─mmcblk0p10 179:10   0   100M  0 part 
+└─mmcblk0p11 179:11   0    18K  0 part 
+zram0        252:0    0   1.9G  0 disk [SWAP]
+zram1        252:1    0   1.9G  0 disk [SWAP]
+nvme0n1      259:0    0 465.8G  0 disk 
+```
+
+To setup the SSD:
+
+```
+# Wipe the SSD
+sudo wipefs --all --force /dev/nvme0n1
+
+# Partition the SSD 
+sudo parted --script /dev/nvme0n1 mklabel gpt mkpart primary ext4 0% 100%
+
+# Format the newly created partition
+sudo mkfs.ext4 /dev/nvme0n1p1
+
+# We will use the jetsonhacks scripts to move data and enable the SSD as
+# the default disk
+
+git clone https://github.com/jetsonhacks/rootOnNVMe.git
+cd rootOnNVMe/
+sudo ./copy-rootfs-ssd.sh
+./setup-service.sh
+
+# Reboot for the update to take effect
+sudo reboot
+```
+
+Run the `lsblk` command again to verify that you are running the OS from the SSD. This time, the `/` should be the MOUNTPOINT for `nvme0n1p1`:
+
+
+```
+NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+loop0          7:0    0    16M  1 loop 
+mtdblock0     31:0    0    32M  0 disk 
+mmcblk0      179:0    0  59.5G  0 disk 
+├─mmcblk0p1  179:1    0  59.2G  0 part /media/nvidia/48fc8f75-dc2b-4a68-9673-c4cc26f9d5db
+├─mmcblk0p2  179:2    0    64M  0 part 
+├─mmcblk0p3  179:3    0    64M  0 part 
+├─mmcblk0p4  179:4    0   448K  0 part 
+├─mmcblk0p5  179:5    0   448K  0 part 
+├─mmcblk0p6  179:6    0    63M  0 part 
+├─mmcblk0p7  179:7    0   512K  0 part 
+├─mmcblk0p8  179:8    0   256K  0 part 
+├─mmcblk0p9  179:9    0   256K  0 part 
+├─mmcblk0p10 179:10   0   100M  0 part 
+└─mmcblk0p11 179:11   0    18K  0 part 
+zram0        252:0    0   1.9G  0 disk [SWAP]
+zram1        252:1    0   1.9G  0 disk [SWAP]
+nvme0n1      259:0    0 465.8G  0 disk 
+└─nvme0n1p1  259:1    0 465.8G  0 part /
+```
+
 
 
 Use the `configure_jetson.sh` script in this repo to set up swap space after you have rebooted and verified that you are running your Operating System from the SSD:
