@@ -241,10 +241,10 @@ The Jetson line of SoCs (including the Nano) has a number of different power mod
 
 ## 3. Configure Operating System to run from SSD
 
-Your Nano is booting the Operating System from the MicroSD card, which is not very fast.
-
 # WARNING: This is a destructive process and will wipe your SSD. 
-### Note: This process assumes that your SSD is at /dev/sda, which is the standard device location
+### Note: This process assumes that your SSD is at /dev/sda, which is the standard device location. The `lsblk` command will show you the device name for your system.
+
+### Note 2: It is advised to run lsblk after each reboot to ensure that the device is using the correct boot device.
 
 
 
@@ -256,6 +256,7 @@ Verify that the OS is booting from the Micro SD.
 lsblk
 ```
 
+The output will show your SSD. Look under the `SIZE` column for the correct size device (`465.8G` in the example below). Note the device name (`sda` in the example below).
 Your output should show a `/` in the MOUNTPOINT column of the `mmcblk0p1` line:
 
 ```
@@ -280,6 +281,8 @@ zram1        252:1    0 494.5M  0 disk [SWAP]
 zram2        252:2    0 494.5M  0 disk [SWAP]
 zram3        252:3    0 494.5M  0 disk [SWAP]
 ```
+
+For the following steps, use the appropriate Device Name from the step above).
 
 To setup the SSD:
 
