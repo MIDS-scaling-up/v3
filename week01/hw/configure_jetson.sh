@@ -3,6 +3,9 @@
 # Add user to docker group to avoid sudo
 sudo usermod -aG docker $USER
 
+# Turn of zram swap
+sudo mv /etc/systemd/nvzramconfig.sh /etc/systemd/nvzramconfig.sh.save
+
 # Create and enable a 32 GB swap space
 sudo mkdir /data
 sudo fallocate -l 32G /data/swapfile

@@ -1,9 +1,8 @@
 ## VNC 
 You may use VNC for this lab; if VNC is used, it is strongly recommended to us a reslution less than 4k as resolutions at 4k or higher can cause additional lag.
-For example, 
-This demo may be used via VNC. If VNC is used, it is strongly recommended to us a reslution less than 4k as resolutions at 4k or higher can cause additional lag when VNC is used. For example, a resolution of 1600x900 typically decent performance (you may adjust as needed).
+For example, a resolution of 1600x900 typically decent performance (you may adjust as needed).
 
-Make sure your display cable is not plugged into your and NX and from a SSH shell enter: 
+Make sure your display cable is not plugged into your and Jetson and from a SSH shell enter: 
 ```
 export DISPLAY=:0
 xhost +
@@ -228,13 +227,8 @@ gst-launch-1.0 nvcompositor name=mix sink_0::xpos=0 sink_0::ypos=0 sink_0::zorde
 ```
 
 
-The NX can also encode and decode video with Gstreamer
-```
-gst-launch-1.0 videotestsrc ! 'video/x-raw, format=(string)I420, width=(int)640, 
-height=(int)480' ! omxh264enc ! 'video/x-h264, stream-format=(string)byte-stream' ! h264parse ! omxh264dec ! nveglglessink -e
-```
+Your Jetson can also encode and decode video with Gstreamer
 
-or, if you are running Jetpack 4.5:
 ```
 gst-launch-1.0 videotestsrc ! 'video/x-raw, format=(string)I420, width=(int)640, 
 height=(int)480' ! omxh264enc ! 'video/x-h264, stream-format=(string)byte-stream' ! h264parse ! omxh264dec ! nvvidconv ! video/x-raw, format=I420 ! nveglglessink -e
@@ -263,7 +257,7 @@ And playing it back is simple:
 gst-launch-1.0 filesrc location=test.mp4 ! qtdemux ! queue ! h264parse ! nvv4l2decoder ! nv3dsink -e
 ```
 
-GStreamer can be used to stream media (e.g. create your own IP camera) between devices, however to keep things simple, you'll stream from your NX to your NX.
+GStreamer can be used to stream media (e.g. create your own IP camera) between devices, however to keep things simple, you'll stream from your Jetson to your Jetson.
 
 This will require two shell windows.
 
@@ -276,11 +270,7 @@ gst-launch-1.0 videotestsrc  ! nvvidconv ! omxh265enc insert-vui=1 ! h265parse !
 This starts the "server" broadcasting the packets (udp) to the IP Address 127.0.01 on port 8001. The server broadcasts the stream using RTP that hs h265 ecnoded.
 
 In the second window, run the following: 
-```
- gst-launch-1.0 udpsrc port=5000 ! application/x-rtp, media=video, encoding-name=H265 ! rtph265depay ! h265parse ! nvv4l2decoder ! nvvidconv ! nv3dsink -e
-```
 
-Or, if you are on Jetpack 4.5:
 ```
 gst-launch-1.0 udpsrc port=5000 ! application/x-rtp, media=video, encoding-name=H265 ! rtph265depay ! h265parse ! nvv4l2decoder ! nvvidconv ! video/x-raw, format=I420 ! nv3dsink -e
 ```
@@ -291,32 +281,26 @@ Replace videotestsrc with your Jetson's camera.
 
 This is just a very simple introduction to GStreamer.  If you are interested in other ways it can be used on the edge, take a look at Nvidia's DeepStream SDK, a streaming analytic toolkit to build AI-powered applications, which leverages GStreamer.
 
-If you are interesting in DeepStream, check out the DeepStream container image for the Jetson at https://ngc.nvidia.com/catalog/containers/nvidia:deepstream-l4t.  The samples tag, e.g. nvcr.io/nvidia/deepstream-l4t:5.0.1-20.09-samples, contains a number of examples for you to explore.  For example:
-```
-xhost +
-docker run -it --rm --net=host --runtime nvidia -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix nvcr.io/nvidia/deepstream-peopledetection:r32.4.2  deepstream-test5-app -c deepstream-5.0/samples/configs/deepstream-app/sourceX_1080p_dec_infer-resnet_tracker_tiled_display_int8_hq_dla_nx.txt
-
-```
-
-If you are on 4.5.X, you would have to settle for something like this instead:
-```
-docker run -it --rm --net=host  -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix nvcr.io/nvidia/deepstream-l4t:5.1-21.02-samples  deepstream-test5-app -c samples/configs/deepstream-app/source30_1080p_dec_infer-resnet_tiled_display_int8.txt
-```
 
 
 ## Part 2: Quantization
 
 
-This is a very simple image classification example based on https://github.com/tensorflow/tensorrt/tree/master/tftrt/examples/image-classification updated to run on the Jetson Xavier NX. You'll learn how to use TensorFlow 2.x to convert a Keras model to three tf-trt models, a fp32, fp16, and int8. A simple set of test images will be used to both validate and benchmark both the native model and the three tf-trt ones.
+This is a very simple image classification example based on https://github.com/tensorflow/tensorrt/tree/master/tftrt/examples/image-classification updated to run on a Jetson device. You'll learn how to use TensorFlow 2.x to convert a Keras model to three tf-trt models, a fp32, fp16, and int8. A simple set of test images will be used to both validate and benchmark both the native model and the three tf-trt ones.
 
 You'll be using a prebuilt image (rdejana/tf-trt-demo) for this lab.
 
-See https://github.com/MIDS-scaling-up/v3/tree/main/week06/demo/quantization/tf-trt if you'd like to build the image on your own.
+See docker/ if you'd like to build the image on your own.
 
-Depending on your version of Jetpack, run: 
-```docker run -it --rm --net=host w251/tf-trt-demo:r32.4.4```
-or
-```docker run -it --rm --net=host w251/tf-trt-demo:r32.5.0```
+
+```
+docker run -it --rm --net=host rdejana/tf-trt-demo:r32.6.1
+```
+
+
+
+Note, you may need to keep track of the memory status and clear/flush buffers as needed.  As an alternaive, you may run this lab directly from the command line.  See docker/scripts/README.md for the details.
+
 
 Once the container as started, you'll see output similar to: 
 
@@ -336,7 +320,7 @@ Once the container as started, you'll see output similar to:
      or http://127.0.0.1:8888/?token=af4be11ce363992a3815f1893de5b4f219940a7fb364040a
 ```
 
-Navigate to the appropriate URL and open the file tf-trt.ipynb.
+If you are running on an NX device, navigate to the appropriate URL and open the file tf-trt.ipynb.  If you are using a Nano, open the file tf-trt-nano.ipynb instead.
 
 Once the notebook is open, you may run each piece. Note, the flush.sh script is available to clear cached memory if needed. In addition, the notebook restarts a number of points to clear up memroy.
 

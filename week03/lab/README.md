@@ -154,7 +154,7 @@ Edit the file `/etc/docker/daemon.json`, e.g. sudo `vi /etc/docker/daemon.json`,
     "default-runtime": "nvidia"
 }
 ```
-Reboot your NX and login when reboot is completed.
+Reboot your Jetson and login when reboot is completed.
 
 This demo wants to use your display, so we'll need to do some additional setup to work.  Note, this requires that you are interacting your Jetson via an attached display or via VNC. If you have a display attached or are using VNC but accessing via an ssh session, you'll first need to run 
 ```
@@ -164,17 +164,13 @@ To allow containers to communicate with X, run:
 ```
 sudo xhost +
 ```
-Now run the command (assumes you are using JetPack 4.4.1):
+Now run the command (assumes you are using JetPack 4.6):
 ```
-docker run --rm --network host -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix nvcr.io/nvidia/l4t-base:r32.4.4
+docker run --rm --network host -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix nvcr.io/nvidia/l4t-base:r32.6.1
 ```
 	
-If you are running JetPack 4.5, use:
-```
-docker run --rm --network host -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix nvcr.io/nvidia/l4t-base:r32.5.0
-```
-
-
+If you are running a different version of JetPack, you'll need to use the corresponding tag. 
+	
 Once in the shell, run the following commands:
 ```
 apt-get update && apt-get install -y --no-install-recommends make g++
@@ -303,6 +299,9 @@ We'll be using an approach based on https://thenewstack.io/tutorial-deploying-te
 
 To install K3s, run the following: 
 ```
+sudo apt update
+sudo apt install -y curl
+	
 mkdir $HOME/.kube/
 curl -sfL https://get.k3s.io | sh -s - --docker --write-kubeconfig-mode 644 --write-kubeconfig $HOME/.kube/config
 ```
@@ -314,7 +313,7 @@ After a few minutes, you'll have Kubernetes up and running.
 ```
 kubectl get nodes
 NAME   STATUS   ROLES                  AGE   VERSION
-nx     Ready    control-plane,master   27s   v1.20.0+k3s2
+nano     Ready    control-plane,master   27s   v1.20.0+k3s2
 ```
 
 Kubernetes is installed as a systemd service and is configured to start automatically.  You can disable this with the following command:
