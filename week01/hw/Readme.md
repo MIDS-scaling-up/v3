@@ -242,7 +242,7 @@ The Jetson line of SoCs (including the Nano) has a number of different power mod
 ## 3. Configure Operating System to run from SSD
 
 # WARNING: This is a destructive process and will wipe your SSD. 
-### Note: This process assumes that your SSD is at /dev/sda, which is the standard device location. The `lsblk` command will show you the device name for your system.
+### Note: This process assumes that your SSD is at /dev/sda, which is the standard device location for a USB device on both the Nano and the Xavier NX. The `lsblk` command will show you the device name for your system.
 
 ### Note 2: It is advised to run lsblk after each reboot to ensure that the Jetson is using the correct boot device.
 
@@ -343,7 +343,7 @@ zram3        252:3    0 494.5M  0 disk [SWAP]
 If you are using an NX, follow the instructions on [this page](https://www.jetsonhacks.com/2020/05/29/jetson-xavier-nx-run-from-ssd/) (watch the video carefully).
 
 # WARNING: This is a destructive process and will wipe your SSD. 
-### Note: This process assumes that your SSD is at /dev/nvme0n1, which is the standard device location
+### Note: This version is for an Xavier NX with a NVMe SSD located at /dev/nvme0n1, which is the standard device location
 
 Steps:
 
