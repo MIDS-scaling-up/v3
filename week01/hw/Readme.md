@@ -244,7 +244,7 @@ The Jetson line of SoCs (including the Nano) has a number of different power mod
 # WARNING: This is a destructive process and will wipe your SSD. 
 ### Note: This process assumes that your SSD is at /dev/sda, which is the standard device location. The `lsblk` command will show you the device name for your system.
 
-### Note 2: It is advised to run lsblk after each reboot to ensure that the device is using the correct boot device.
+### Note 2: It is advised to run lsblk after each reboot to ensure that the Jetson is using the correct boot device.
 
 
 
