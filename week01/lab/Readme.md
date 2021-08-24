@@ -2,7 +2,7 @@
 
 Docker is great for projects since you can place and run everything you need in a container through a easy, reproducible process. We'll use Docker to build and run our very own container with Darknet and YOLO.
 
-This lab is run on the Xavier device using the desktop (via VNC or display).
+This lab is run on the Jetson device using the desktop (via VNC or display).
 
 Ensure that you cloned this github repo and are in the directory for this lab (v2/week01/lab/).
 
@@ -35,7 +35,7 @@ docker build -t yolov5 -f Dockerfile.yolov5 .
 Wait for the process to finish, then list the Docker images to see if it worked. You should see a new image with the label "YOLO" under the repository column.
 
 ### Running YOLO with a Container
-Connect a USB webcam to the Xavier. First, enable X so that the container can output to a window.
+Connect a USB webcam to the Jetson. First, enable X so that the container can output to a window.
 
 ```
 xhost +
