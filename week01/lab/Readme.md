@@ -14,7 +14,7 @@ Ensure that you cloned this github repo and are in the directory for this lab (v
 With Docker, we can run YOLO entirely self-contained instead of downloading Darknet and other dependencies manually.
 
 ### Docker Basics
-Some Docker terminology: An image is the program that you develop in Docker. A container is an instance of an image that you actually run. A traditional programming analogy would be that an image is a class, and a container is an object of that class. Images are created using Dockerfiles and can be stored and pulled from online repositories. Boot up the Xavier, open a terminal, and list the current images on the Xavier:
+Some Docker terminology: An image is the program that you develop in Docker. A container is an instance of an image that you actually run. A traditional programming analogy would be that an image is a class, and a container is an object of that class. Images are created using Dockerfiles and can be stored and pulled from online repositories. Boot up the Jetson, open a terminal, and list the current images on the Jetson:
 
 ```
 docker images
