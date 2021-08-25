@@ -8,7 +8,7 @@ sudo mv /etc/systemd/nvzramconfig.sh /etc/systemd/nvzramconfig.sh.save
 
 # Create and enable a 32 GB swap space
 sudo mkdir /data
-sudo fallocate -l 32G /data/swapfile
+sudo fallocate -l 36G /data/swapfile
 sudo chmod 600 /data/swapfile
 sudo mkswap /data/swapfile
 sudo swapon /data/swapfile
