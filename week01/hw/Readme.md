@@ -13,8 +13,8 @@ You will need the following:
  2. [128GB Micro SD](https://www.amazon.com/gp/product/B07G3H5RBT/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
  3. USB MicroSD card reader
  4. [WiFi/Bluetooth card](https://www.amazon.com/dp/B085M7VPDP?psc=1&ref=ppx_yo2_dt_b_product_details)
- 5. [Power adapter](https://www.amazon.com/gp/product/B08DXZ1MSY/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
- 6. [1TB USB3 SSD](https://www.amazon.com/Samsung-T5-Portable-SSD-MU-PA2T0B/dp/B073H552FJ/ref=sr_1_3)
+ 5. [Power adapter](https://www.amazon.com/gp/product/B08DXZ1MSY/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1) ### NOTE: ensure you set the jumper when using the power adapter. Reference [here](https://www.jetsonhacks.com/2019/04/10/jetson-nano-use-more-power/).
+ 6. [1TB USB3 SSD](https://www.amazon.com/Samsung-T5-Portable-SSD-MU-PA2T0B/dp/B073H552FJ/ref=sr_1_3) ### NOTE: mount to the normal USB port; the USB-C port is needed for the power supply.
  7. [USB Webcam](https://www.amazon.com/Logitech-960-000637-HD-Webcam-C310/dp/B003PAIV2Q/ref=sr_1_6)
 
 If you are able to find a Jetson NX, the following is needed:
@@ -239,25 +239,14 @@ NVPM VERB: PARAM CVNAS: ARG MAX_FREQ: PATH /sys/kernel/nvpmodel_emc_cap/nafll_cv
 ### Exploring the power modes of the Nano
 The Jetson line of SoCs (including the Nano) has a number of different power modes described in some detail here: [TX2](https://www.jetsonhacks.com/2017/03/25/nvpmodel-nvidia-jetson-tx2-development-kit/) or [Xavier](https://www.jetsonhacks.com/2018/10/07/nvpmodel-nvidia-jetson-agx-xavier-developer-kit/). The main idea is that the lowering clock speeds on the cpu and turning off cores saves energy; and the default power mode is a low energy mode. You need to switch to a higher power mode to use all cores and maximize the clock frequency.  In the upper right corner of your desktop you will see a widget that should allow you to switch between power modes.  Set your power mode to MAXN; this will enable all  cores and will maximize your clock frequency. This is ok when we use our Nano as a small desktop computer.  If you decide to use your Nano as a robotic device and become worried about the power draw, you may want to lower this setting.
 
-## 3. Configure Operating System to run from SSD
+## 3. Prepare the SSD
 
-# WARNING: This is a destructive process and will wipe your SSD. 
-### Note: This process assumes that your SSD is at /dev/sda, which is the standard device location for a USB device on both the Nano and the Xavier NX. The `lsblk` command will show you the device name for your system.
+### 3.1 Configure a USB-attached SSD (both Nano and Xavier)
+### Note: If you have a NVMe SSD on your Xavier, skip to section 3.2
 
-### Note 2: It is advised to run lsblk after each reboot to ensure that the Jetson is using the correct boot device.
+Run `lsblk` to find the SSD. 
 
-
-
-Steps:
-
-Verify that the OS is booting from the Micro SD.
-
-```
-lsblk
-```
-
-The output will show your SSD. Look under the `SIZE` column for the correct size device (`465.8G` in the example below). Note the device name (`sda` in the example below).
-Your output should show a `/` in the MOUNTPOINT column of the `mmcblk0p1` line:
+The output will show all your block devices. Look under the SIZE column for the correct size device (465.8G in the example below). Note the device name (sda in the example below). Your output should show a / in the MOUNTPOINT column of the mmcblk0p1 line:
 
 ```
 NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
@@ -282,9 +271,7 @@ zram2        252:2    0 494.5M  0 disk [SWAP]
 zram3        252:3    0 494.5M  0 disk [SWAP]
 ```
 
-For the following steps, use the appropriate Device Name from the step above).
-
-To setup the SSD:
+To setup the SSD, run the following commands:
 
 ```
 # Wipe the SSD
@@ -296,51 +283,36 @@ sudo parted --script /dev/sda mklabel gpt mkpart primary ext4 0% 100%
 # Format the newly created partition
 sudo mkfs.ext4 /dev/sda1
 
-# We will use the jetsonhacks scripts to move data and enable the SSD as
-# the default disk
+# Create the fstab entry
+echo "/dev/sda1 /data ext4 defaults 0 1" | sudo tee -a /etc/fstab
 
-git clone https://github.com/MIDS-scaling-up/rootOnUSBforNano.git
-cd rootOnUSBforNano/
-sudo ./copy-rootfs-ssd.sh
-./setup-service.sh
+# Mount the ssd and set the permissions
+mount /data
+chmod go+rwx /data
 
-# Reboot for the update to take effect
-sudo reboot
+# Move the Docker repo to /data
+sudo systemctl start docker
+sudo mv /var/lib/docker /data/
+sudo ln -s /data/docker/ /var/lib/docker
+sudo systemctl start docker
+
+# Verify that Docker re-started
+sudo systemctl status docker
+
 ```
 
-Run the `lsblk` command again to verify that you are running the OS from the SSD. This time, the `/` should be the MOUNTPOINT for `sda1`:
+Continue to section 3.3 to set up the swap space.
+
+### 3.2 Configure Operating System to run from SSD (Xavier NX with a NVMe ONLY)
+
+### Note: It is advised to run lsblk after each reboot to ensure that the Jetson is using the correct boot device.
+
+Steps:
+
+### Note, with 4.6, there may be times when the Jetson fails to use the attached SSD as the root file system.  You can check this by running `lsblk` and confirmning the SD card is not using / as a mount point.  A reboot seems to correct this.
 
 
-```
-loop1          7:1    0    16M  1 loop 
-sda            8:0    0 931.5G  0 disk 
-└─sda1         8:1    0 931.5G  0 part /
-mtdblock0     31:0    0     4M  0 disk 
-mmcblk0      179:0    0  59.5G  0 disk 
-├─mmcblk0p1  179:1    0  59.5G  0 part 
-├─mmcblk0p2  179:2    0   128K  0 part 
-├─mmcblk0p3  179:3    0   448K  0 part 
-├─mmcblk0p4  179:4    0   576K  0 part 
-├─mmcblk0p5  179:5    0    64K  0 part 
-├─mmcblk0p6  179:6    0   192K  0 part 
-├─mmcblk0p7  179:7    0   384K  0 part 
-├─mmcblk0p8  179:8    0    64K  0 part 
-├─mmcblk0p9  179:9    0   448K  0 part 
-├─mmcblk0p10 179:10   0   448K  0 part 
-├─mmcblk0p11 179:11   0   768K  0 part 
-├─mmcblk0p12 179:12   0    64K  0 part 
-├─mmcblk0p13 179:13   0   192K  0 part 
-└─mmcblk0p14 179:14   0   128K  0 part 
-zram0        252:0    0 494.5M  0 disk [SWAP]
-zram1        252:1    0 494.5M  0 disk [SWAP]
-zram2        252:2    0 494.5M  0 disk [SWAP]
-zram3        252:3    0 494.5M  0 disk [SWAP]
-```
-
-### Note, with 4.6, there may be times when the Jetson fails to use the attached SSD as the root file system.  You can check this by running lsblk and confirmning the SD card is not using / as a mount point.  A reboot seems to correct this.
-
-
-If you are using an NX, follow the instructions on [this page](https://www.jetsonhacks.com/2020/05/29/jetson-xavier-nx-run-from-ssd/) (watch the video carefully).
+Follow the instructions on [this page](https://www.jetsonhacks.com/2020/05/29/jetson-xavier-nx-run-from-ssd/) (watch the video carefully).
 
 # WARNING: This is a destructive process and will wipe your SSD. 
 ### Note: This version is for an Xavier NX with a NVMe SSD located at /dev/nvme0n1, which is the standard device location
@@ -425,7 +397,7 @@ nvme0n1      259:0    0 465.8G  0 disk
 └─nvme0n1p1  259:1    0 465.8G  0 part /
 ```
 
-
+### 3.3 Set up swap (both Nano and Xavier)
 
 Use the `configure_jetson.sh` script in this repo to set up swap space after you have rebooted and verified that you are running your Operating System from the SSD:
 
