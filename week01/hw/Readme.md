@@ -287,6 +287,7 @@ sudo mkfs.ext4 /dev/sda1
 echo "/dev/sda1 /data ext4 defaults 0 1" | sudo tee -a /etc/fstab
 
 # Mount the ssd and set the permissions
+mkdir /data
 mount /data
 chmod go+rwx /data
 
