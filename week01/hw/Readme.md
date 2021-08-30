@@ -13,7 +13,7 @@ You will need the following:
  2. [128GB Micro SD](https://www.amazon.com/gp/product/B07G3H5RBT/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
  3. USB MicroSD card reader
  4. [WiFi/Bluetooth card](https://www.amazon.com/dp/B085M7VPDP?psc=1&ref=ppx_yo2_dt_b_product_details)
- 5. [Power adapter](https://www.amazon.com/gp/product/B08DXZ1MSY/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1) ### NOTE: ensure you set the jumper when using the power adapter. Reference [here](https://www.jetsonhacks.com/2019/04/10/jetson-nano-use-more-power/).
+ 5. [Power adapter](https://www.amazon.com/gp/product/B08DXZ1MSY/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1) ### NOTE: ensure you set the jumper when using the power adapter. Reference [here](https://www.jetsonhacks.com/2019/04/10/jetson-nano-use-more-power/).  Note: if you are using [the Nano 2GB](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-2gb-devkit), check out the [list of supported components](https://developer.nvidia.com/embedded/learn/jetson-nano-2gb-devkit-user-guide#id-.JetsonNano2GBDeveloperKitUserGuidevbatuu_v1.0-SupportedComponentList).  You could get [this 3.5 power supply.](https://www.amazon.com/CanaKit-Raspberry-Power-Supply-USB-C/dp/B07TYQRXTK/ref=sr_1_8?dchild=1&keywords=18W+power+supply+usb+c&qid=1595554849&sr=8-8)
  6. [1TB USB3 SSD](https://www.amazon.com/Samsung-T5-Portable-SSD-MU-PA2T0B/dp/B073H552FJ/ref=sr_1_3) ### NOTE: mount to the normal USB port; the USB-C port is needed for the power supply.
  7. [USB Webcam](https://www.amazon.com/Logitech-960-000637-HD-Webcam-C310/dp/B003PAIV2Q/ref=sr_1_6)
 
