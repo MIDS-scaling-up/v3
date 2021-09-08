@@ -67,7 +67,7 @@ You are scored based on the following:
 - 10 points for using a user defined network in the cloud (automatic if using k8s on the cloud side)
 - 10 points for using Kuberentes on your Jetson
 - 10 points for explaining the MQTT topics and the QoS that you used.
-- 10 points for storing your faces in object storage
+- 10 points for storing your faces in publicly reachable object storage
 - 10 bonus points for using Kubernetes instead of Docker on the cloud side.
 
 What to submit to ISVC:
