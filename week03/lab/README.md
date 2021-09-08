@@ -559,7 +559,7 @@ Run the command `kubectl get service mosquitto-service` and take note of the Nod
 
 Let us test and double theck that the service is working. We previously installed the mosquitto-clients package. So, let's start a listener in one terminal window, e.g.:
 ```
-mosquitto_sub -h localost -p <service port> -t my_topic
+mosquitto_sub -h localhost -p <service port> -t my_topic
 ```
 and submit a message to this topic:
 ```
