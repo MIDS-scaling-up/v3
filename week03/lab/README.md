@@ -472,7 +472,17 @@ On Alpine Linux, you would instead run:
 ```
 apk add mosquitto
 ```
+	
+Note, with the latest version of Alpine, you'll need to supply your own configuation file.  For our use case, this file should contain the following:
+	
+mosquitto.conf
+```
+allow_anonymous true
+listener 1883 0.0.0.0
+```
 
+See the documenation for ways to add and user user credintials.  In addition, when starting the broker, you'll need to use the -c option to specify the conf file.
+	
 To see what packages are available on Alpine linux for Mosquitto, you would do something like [this](https://pkgs.alpinelinux.org/packages?name=mosquitto&branch=edge)
 
 
@@ -496,6 +506,7 @@ You'll start by building a simple [Alpine Linux](https://alpinelinux.org/) based
 ```
 FROM alpine:latest
 RUN apk add mosquitto
+COPY mosquitto.conf /etc/mosquitto/mosquitto.conf
 CMD mosquitto
 ```
 
