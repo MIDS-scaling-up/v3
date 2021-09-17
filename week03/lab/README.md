@@ -482,6 +482,10 @@ listener 1883 0.0.0.0
 ```
 
 See the documenation for ways to add and user user credintials.  In addition, when starting the broker, you'll need to use the -c option to specify the conf file.
+
+```
+mosquitto -c mosquitto.conf
+```
 	
 To see what packages are available on Alpine linux for Mosquitto, you would do something like [this](https://pkgs.alpinelinux.org/packages?name=mosquitto&branch=edge)
 
@@ -507,7 +511,7 @@ You'll start by building a simple [Alpine Linux](https://alpinelinux.org/) based
 FROM alpine:latest
 RUN apk add mosquitto
 COPY mosquitto.conf /etc/mosquitto/mosquitto.conf
-CMD mosquitto
+CMD ["mosquitto","-c","/etc/mosquitto/mosquitto.conf"]
 ```
 
 Make sure that you specify a tag for your image!
@@ -570,7 +574,7 @@ Run the command `kubectl get service mosquitto-service` and take note of the Nod
 
 Let us test and double theck that the service is working. We previously installed the mosquitto-clients package. So, let's start a listener in one terminal window, e.g.:
 ```
-mosquitto_sub -h localost -p <service port> -t my_topic
+mosquitto_sub -h localhost -p <service port> -t my_topic
 ```
 and submit a message to this topic:
 ```
