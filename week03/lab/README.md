@@ -510,7 +510,9 @@ You'll start by building a simple [Alpine Linux](https://alpinelinux.org/) based
 ```
 FROM alpine:latest
 RUN apk add mosquitto
-COPY mosquitto.conf /etc/mosquitto/mosquitto.conf
+# Configure to allow remote access
+RUN echo "allow_anonymous true" > /etc/mosquitto/mosquitto.conf
+RUN echo "listener 1883 0.0.0.0" >> /etc/mosquitto/mosquitto.conf
 CMD ["mosquitto","-c","/etc/mosquitto/mosquitto.conf"]
 ```
 
