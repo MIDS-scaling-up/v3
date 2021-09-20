@@ -42,6 +42,13 @@ In this section, we will fill in the provided template and build an image classi
 ### 6. PyTorch - CINIC10 dataset
 The [CINIC](https://github.com/BayesWatch/cinic-10) dataset bridges us to the goal of our homework - training on ImageNet. These images are still 32x32, but you'll have to download this dataset separately -- we recommend pulling it from the [Kaggle Dataset](https://www.kaggle.com/mengcius/cinic10) because it's a lot faster. You'll need to uncompress it and then modify your code to use it instead of CIFAR10. Hint: use `datasets.ImageFolder`. Same as before, you don't need to run it forever, just run for a few epochs.
 
+Google Colab notes:
+* You will need your Google Drive account so that you can store the results of your work as well as some persistent files (such as creds)
+* make sure you set up your [Kaggle API](https://www.kaggle.com/docs/api). 
+* Download kaggle.json and store it in your Google Drive someplace (e.g. under MyDrive/.kaggle)
+* When you run in your Colab notebook, copy this file to /root/.kaggle/kaggle.json and make sure the permissions on it are 600
+* Now you should be able to use kaggle CLI commands (e.g. to download datasets). You can bake all these commands into your notebooks.
+
 ### 7. Run with papermill (Jetson NX only)
 In this step, we will test that our notebook can be invoked programmatically, e.g.
 ```
