@@ -3,9 +3,9 @@
 This week we will practice writing basic training loops. We will use our Jetson NX device for quick prototyping. Of course, it's far less powerful than the Cloud GPUs. But, it's little GPU is quite modern (compatible with the instruction set present in Volta GPUs), so it's likely faster than your CPU laptop. Also, the code you write will be compatible; you could just run it "as is" on more powerful machines.
 
 ### 1. Setup
-Pull the latest ml container for the jetson from NGC and start it, passing through the GPU, port 8888, the drive where you keep your data. Make sure that the version you pull matches your Jetpack. For instance, if you have 32.5 installed:
+Pull the latest ml container for the jetson from NGC and start it, passing through the GPU, port 8888, the drive where you keep your data. Make sure that the version you pull matches your Jetpack. For instance, if you have 32.6 installed:
 ```
-docker pull nvcr.io/nvidia/l4t-ml:r32.5.0-py3
+docker pull nvcr.io/nvidia/l4t-ml:r32.6.1-py3
 ```
 This default image contains TF2, PyTorch, Jupyter, as well a few common data science libraries. If you want to see how this image was build, look [here](https://github.com/dusty-nv/jetson-containers).
 
