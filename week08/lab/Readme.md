@@ -18,10 +18,10 @@ Please navigate to https://www.jpjodoin.com/urbantracker/dataset.html . Download
 Create the test directories:
 
 ```
-mkdir -p data/ffmepg
-mkdir -p data/ffmepg/test1
-mkdir -p data/ffmepg/test2
-mkdir -p data/ffmepg/test3
+mkdir -p data/ffmpeg
+mkdir -p data/ffmpeg/test1
+mkdir -p data/ffmpeg/test2
+mkdir -p data/ffmpeg/test3
 ```
 
 If you get errors in the following steps, you can extract to data/ and change the extracted image name pattern.
