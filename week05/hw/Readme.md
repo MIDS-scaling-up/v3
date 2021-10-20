@@ -2,7 +2,7 @@
 
 This is a graded homework.
 
-Due just before week 6 session
+Due just before week 5 session
 
 ### The goal
 The goal of the homework is to train an image classification network on the ImageNet dataset to the Top 1 accuracy of 60% or higher.
