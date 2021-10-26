@@ -1,5 +1,5 @@
 # ARG BASE_IMAGE=nvcr.io/nvidia/jetson-voice:r32.4.2
-ARG BASE_IMAGE=nvcr.io/nvidia/l4t-ml:r32.4.3-py3
+ARG BASE_IMAGE=nvcr.io/nvidia/l4t-ml:r32.6.1-py3
 
 FROM ${BASE_IMAGE} 
 
@@ -10,7 +10,7 @@ WORKDIR /tmp/pybox2d
 RUN python3 setup.py build
 RUN python3 setup.py install
 RUN pip3 install scikit-video keras==2.4.1
-RUN pip3 install gym
+RUN pip3 install gym pyglet
 
 #WORKDIR /tmp/videos
 
