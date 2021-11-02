@@ -11,7 +11,7 @@ You will see a button to create all the required resources:
 ![](GetStarted.png)
 
 ## Step 1
-Learn the basics of reinforcement learning (Required / ~10 mins)
+Learn the basics of reinforcement learning (Optional / ~10 mins)
 
 ![](StartLearningRL.png)
 
