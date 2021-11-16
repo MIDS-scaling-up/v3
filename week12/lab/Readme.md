@@ -17,7 +17,7 @@ Run the Conversational AI application (/tutorials/AudioTranslationSample.ipynb) 
 ### 3. Voice Swap application
 Try to voice swap application. Please explain how it works.
 
-### 4. ASR with Nemo
+### 4. ASR with Nemo (/tutorials/asr/ASR_with_NeMo.ipynb)
 We should now be ready to something more difficult. Run the 'ASR with Nemo' sample (sans the last, ONNX part). Notes:
 * Can you load and use Tensorboard? Please open port 6006 in your VM
 * Can you change the number of training epochs?
