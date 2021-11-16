@@ -4,7 +4,7 @@
 These labs will focus on NLP and Speech tasks using the Nemo framework
 
 ### 0. Setting up the environment
-Normally, Colab would be de rigeur here, but at the moment, Nemo Colab notebooks are broken.  Therefore, please provision a g4dn.2xlarge VM in AWS with the Nvidia Deep Learning AMI image.  Open port 8888.  Pull the container, e,g, ```docker pull nvcr.io/nvidia/nemo:1.4.0``` and then run it with jupyter inside, eg ```docker run --rm --gpus all -ti nvcr.io/nvidia/nemo:1.4.0 bash``` and then start jupyter lab inside the container, e.g. ```jupyter lab --allow-root --ip=0.0.0.0``` . Connect to the instance of jupyter in your browser.
+Normally, Colab would be de rigeur here, but at the moment, Nemo Colab notebooks are broken.  Therefore, please provision a g4dn.2xlarge VM in AWS with the Nvidia Deep Learning AMI image.  Open port 8888.  Pull the container, e,g, ```docker pull nvcr.io/nvidia/nemo:1.4.0``` and then run it with jupyter inside, eg ```docker run --rm --gpus all --net=host -ti nvcr.io/nvidia/nemo:1.4.0 bash``` and then start jupyter lab inside the container, e.g. ```jupyter lab --allow-root --ip=0.0.0.0``` . Connect to the instance of jupyter in your browser.
 
 While somewhat annoying, this approach is very flexible as you control the hardware you need as well as the exact version of the software
 
