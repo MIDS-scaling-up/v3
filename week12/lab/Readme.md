@@ -12,7 +12,7 @@ While somewhat annoying, this approach is very flexible as you control the hardw
 As you already learned in  async material, Nemo is a framework for ASR and NLP tasks.  Please review the list of [Nemo tutorials](https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/main/starthere/tutorials.html). The tutorials will be found under the tutorials folder in your Jupyter Lab environment. Review the Nemo Primer.  Note, since we are running from a Nemo container, there is no need to reinstall Nemo (please ignore the corresponding cells in the notebooks)
 
 ### 2. Conversational AI Application
-Run the Conversational AI application sample to see how to use Nemo for transcription. Try to load a different ASR model.. Does that work?
+Run the Conversational AI application (/tutorials/AudioTranslationSample.ipynb) sample to see how to use Nemo for transcription. Try to load a different ASR model.. Does that work?
 
 ### 3. Voice Swap application
 Try to voice swap application. Please explain how it works.
