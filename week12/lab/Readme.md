@@ -1,5 +1,10 @@
 # Labs 12.  NLP and Speech with Nvidia Nemo
 
+## Note
+Do not run the following line (and only this line) in each notebook
+```
+!python -m pip install git+https://github.com/NVIDIA/NeMo.git@$BRANCH#egg=nemo_toolkit[all]
+```
 
 These labs will focus on NLP and Speech tasks using the Nemo framework
 
