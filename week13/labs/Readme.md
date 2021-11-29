@@ -5,10 +5,10 @@ Triton Inference server is designed to help you create services out of your trai
 * First, provision a g4dn.2xlarge virtual machine in AWS. Use the Nvidia Deep Learning AMI
 * Go to your home diretory and clone the Triton IS server repo, e.g. ```https://github.com/triton-inference-server/server.git```
 * The current tag is 21.11, so the pull commands are:
-* ```
-* docker pull nvcr.io/nvidia/tritonserver:21.11-py3-sdk (client)
-* docker pull nvcr.io/nvidia/tritonserver:21.11-py3 (server)
-
+```
+docker pull nvcr.io/nvidia/tritonserver:21.11-py3-sdk (client)
+docker pull nvcr.io/nvidia/tritonserver:21.11-py3 (server)
+```
 A few quick questions:
 * is your server using the GPU?
 * Can you change the number of classes for scoring in the example?
