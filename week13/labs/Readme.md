@@ -1,4 +1,4 @@
-## Week 13 labs
+## Week 13 labs - everything accelerated!
 
 ### Triton Inference Server primer
 Triton Inference server is designed to help you create services out of your trained models.  In this lab, we will follow the [Triton IS QuickStart](https://github.com/triton-inference-server/server/blob/main/docs/quickstart.md). A few quick notes:
@@ -27,6 +27,11 @@ Try the following notebooks:
 * Under the same folder, run through the random forest example.  What is the speedup you get?
 * Under the xgboost folder, run the XGBoost demo. Repeat on the CPU. What is the speedup?
 
-### NVTabular primer
+### DALI primer
+DALI stands for Data Loading Library.  This Open Source project is another tool in our arsenal to eliminate or at least reduce CPU bottlenecks in our pipelines.  We did not cover DALI in the async material since it was very new, but now it's part of most Nvidia accelerated pipelines and is present in all Deep Learning NGC containers.
+
+* Please glance through the [DALI Documentation](https://docs.nvidia.com/deeplearning/dali/user-guide/docs/index.html)
+* Start the pytorch ngc container, e.g. ```docker run --rm --gpus all -p 8888:8888 --ipc=host -ti  nvcr.io/nvidia/pytorch:21.11-py3``` and then start jupyter lab , e.g. ```jupyter lab --ip=0.0.0.0 --allow-root```
+* Upload the [Getting Started](getting_started_dali.ipynb) example to your jupyter environment and run through it. What acceleration did you get in the last cell? Can you suggest what contributes to that number?
 
 
