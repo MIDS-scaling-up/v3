@@ -1,4 +1,4 @@
-# Lecture 1: Introduction to the class and Nvidia Jetson NX
+# Lecture 1: Introduction to the class and Nvidia Jetson Device (Nano, Nano 4G or NX)
 
 Cloud computing. Big Data. Artificial intelligence. Deep learning frameworks and hardware. Datasets. Edge computing. Course project overview and sample.
 
