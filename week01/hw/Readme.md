@@ -4,7 +4,7 @@
 ## 1. Nvidia JetPack SDK
 JetPack is an SDK that basically contains everything needed for deep learning and AI applications in a handy package bundle containing the OS for for the Nano. Installation on the Nano requires downloading and flashing the image to a MicroSD card.
 
-Due to supply shortages, we are recommending the Jetson Nano Developer Kit 4GB model over the Jetson Xaiver NX Developer Kit.  If you are able to find an NX, feel free to use that instead of the Nano.
+Due to supply shortages, we are recommending the Jetson Nano Developer Kit 2G / 4GB model or the Jetson Xaiver NX Developer Kit.  If you are able to find an NX, feel free to use that instead of the Nano as it is by far the most powerful device.
 
 
 You will need the following:
@@ -27,7 +27,7 @@ If you are able to find a Jetson NX, the following is needed:
 
 ### 1.1 Host (Computer) Installation
 
-On your Windows, Mac, or Ubuntu workstation, navigate to the [JetPack homepage](https://developer.nvidia.com/jetpack) (**NOTE that we are using JetPack 4.6 for this class**) and click on "Download SD Card Image" in the `JETSON XAVIER NX DEVELOPER KIT` box. Once it downloads, follow the steps at [Getting Started with Jetson Xavier NX Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit) to flash the SD card.
+On your Windows, Mac, or Ubuntu workstation, navigate to the [JetPack homepage](https://developer.nvidia.com/jetpack) (**NOTE that we shold be using JetPack 4.6 for this class as it is ATM the latest production version**) and click on "Download SD Card Image" in the `JETSON XAVIER NX DEVELOPER KIT` box. Once it downloads, follow the steps at [Getting Started with Jetson Xavier NX Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit) to flash the SD card.
 
 NVIDIA provides [flashing instructions](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#write) for Windows, Linux, and Mac. You will need to insert the MicroSD card into the card reader and connect it to the USB port on your computer.
 
