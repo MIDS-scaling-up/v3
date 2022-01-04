@@ -13,7 +13,7 @@ https://www.nvidia.com/en-us/autonomous-machines/embedded-systems-dev-kits-modul
 https://developer.nvidia.com/embedded/jetson-xavier-nx-devkit
 * Jetson Nano 2G User Guide
 https://developer.nvidia.com/embedded/learn/jetson-nano-2gb-devkit-user-guide
-* [Jetson Nano 4G User Guide](https://developer.download.nvidia.com/assets/embedded/secure/jetson/Nano/docs/NV_Jetson_Nano_Developer_Kit_User_Guide.pdf)
+* [Jetson Nano 4G User Guide](https://developer.nvidia.com/jetson-xavier-nx-developer-kit-user-guide)
 * NGC Containers for Linux for Tegra (l4t)
 https://catalog.ngc.nvidia.com/containers?filters=&orderBy=dateModifiedDESC&query=l4t
 * Two days to a demo (skim through)
