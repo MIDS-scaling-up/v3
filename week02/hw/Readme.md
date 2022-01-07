@@ -277,12 +277,14 @@ aws ec2 run-instances --image-id ami-0bcc094591f354be2 --instance-type t2.micro 
 ### Raise usage limits on your account
 Your AWS account has default quotas, formerly referred to as limits, for each AWS service. Unless otherwise noted, each quota is Region-specific. You can request increases for some quotas, and other quotas cannot be increased. Your starting quotas do not include the allowances required for later homeworks and labs, where we will be using more significant  GPU resources. Therefore we need to get the request in early.   
 
-We will be using Nvidia T4 GPUs later in the class which are delivered through g4dn.2xlarge AWS instances. Please raise a limit request for using 8 VCPUs which will enable these instances in the region of your choice (preferably your default region in AWS). You can request an on-demand instance. The `Limits` option can be found in the ec2 dashboard of AWS - it is the fourth option, just below `EC2 dashboard`.   
+We will be using Nvidia T4 GPUs later in the class which are delivered through g4dn.2xlarge AWS instances. Please raise a limit request for "Running On-Demand G and VT instances" at 32-64 VCPUs which will enable these instances in the region of your choice (preferably your default region in AWS). You can request an on-demand instance. The `Service Quotas` option can be found via the top search box.   
+
 If a quota increase via the service quota console is denied, please try submitting a service quota increase via the support console and provide the reason for the quota increase.   
+
 An approved request is not a prerequisite for completing this homework 02, but please have the request submitted in the `EC2 dashoard`.   
 Sample message : 
 ```
-Please update the limit for VCPU on my account to be 8 VCPU for the p3.2xlarge instance type. We are currently running a graded homework in our class at UC Berkeley for the Master in Data Science program about training a Transformer-based Machine Learing Neural network.
+Please update the limit for VCPU on my account to be 32 VCPUs for the g4dn.2xlarge instance type. We are expecting a graded homework in our class at UC Berkeley for the Masters in Data Science program on training large Deep Learning models.
 ```
 
 
