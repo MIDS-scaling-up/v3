@@ -158,7 +158,7 @@ aws ec2  terminate-instances --instance-ids i-0d0fd239ccae129e4
 ```
 
 
-By default, Amazon EC2 deletes all EBS volumes that were attached when the instance launched. Volumes attached after instance launch continue running.
+By default, Amazon EC2 deletes all EBS volumes that were attached when the instance is launched. Volumes attached after instance launch continue running.
 
 
 #### Monitor your billing
