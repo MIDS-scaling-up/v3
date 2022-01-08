@@ -114,15 +114,6 @@ aws ec2 authorize-security-group-ingress --group-id YOUR_PRIVATE_GROUP_ID --prot
 Use Ubuntu AMI on t2.large instance in the default VPC.  
 Replace the string `YOUR_KEY_NAME` with the name of your key pair created above. You can find it using the command `aws ec2 describe-key-pairs | grep KeyName`.
 
-```
-# Create the instance
-aws ec2 run-instances --image-id ami-0bcc094591f354be2 --instance-type t2.large --security-group-ids YOUR_PUBLIC_GROUP_ID --associate-public-ip-address --key-name YOUR_KEY_NAME
-
-# Retrieve the Public DNS name
-aws ec2 describe-instances | grep PublicDnsName
-```
-    
-If you get a message that the image is not available - `The image id '[ami-0bcc094591f354be2]' does not exist` - it could be that the image is not available in your conifgured region. 
 
 You can pick an image in your region, by running the below, 
 
@@ -130,9 +121,20 @@ You can pick an image in your region, by running the below,
 aws ec2 describe-images  --filters  Name=name,Values='ubuntu/images/hvm-ssd/ubuntu-bionic-18.04*' Name=architecture,Values=x86_64   | head -100
 ```
 
+Use this to create the instance. 
+
+```
+# Create the instance
+aws ec2 run-instances --image-id YOUR-AMI-ID --instance-type t2.large --security-group-ids YOUR_PUBLIC_GROUP_ID --associate-public-ip-address --key-name YOUR_KEY_NAME
+
+# Retrieve the Public DNS name
+aws ec2 describe-instances | grep PublicDnsName
+```
+   
+
 #### Launch Private EC2 instance into Private Security Group using Ubuntu
 ```
-aws ec2 run-instances --image-id ami-0bcc094591f354be2 --instance-type t2.micro --security-group-ids YOUR_PRIVATE_GROUP_ID --key-name YOUR_KEY_NAME
+aws ec2 run-instances --image-id YOUR-AMI-ID --instance-type t2.micro --security-group-ids YOUR_PRIVATE_GROUP_ID --key-name YOUR_KEY_NAME
 
 # Retrieve the PublicDnsName of the new instance
 aws ec2 describe-instances | grep PublicDnsName
