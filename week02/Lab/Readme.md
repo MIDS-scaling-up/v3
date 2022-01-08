@@ -147,7 +147,7 @@ ssh -A ubuntu@YOUR_PUBLIC_EC2_NAME.compute-1.amazonaws.com
 ssh ubuntu@YOUR_PRIVATE_EC2_NAME.compute-1.amazonaws.com
 ```
 
-#### Delete Private instance and Bastion Host and other resources for other homeworks and labs
+#### Delete Private instance and Bastion Host 
    
 ```
 aws ec2 describe-instances | grep InstanceId
