@@ -138,7 +138,7 @@ aws ec2 run-instances --image-id ami-0bcc094591f354be2 --instance-type t2.micro 
 aws ec2 describe-instances | grep PublicDnsName
 
 ```
-#### SSH into Baston Host first and then to the Private instance
+#### SSH into Baston Host first and then to the Private instance (This is only to demonstrate how you can keep your private instances behind a Bastion Host for better security)
 ```
 # From your workstation
 ssh -A ubuntu@YOUR_PUBLIC_EC2_NAME.compute-1.amazonaws.com
@@ -147,12 +147,12 @@ ssh -A ubuntu@YOUR_PUBLIC_EC2_NAME.compute-1.amazonaws.com
 ssh ubuntu@YOUR_PRIVATE_EC2_NAME.compute-1.amazonaws.com
 ```
 
-#### Delete Private instance but keep Bastion Host and other resources for other homeworks and labs
+#### Delete Private instance and Bastion Host and other resources for other homeworks and labs
    
 ```
 aws ec2 describe-instances | grep InstanceId
 ```
-A list of ids will appear. You can terminate the ID for your private instance with,
+A list of ids will appear. You can terminate the ID for your private instance and Bastion Host with,
 ```
 aws ec2  terminate-instances --instance-ids i-0d0fd239ccae129e4
 ```
