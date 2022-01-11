@@ -12,6 +12,8 @@ See https://forums.developer.nvidia.com/t/docker-isnt-working-after-apt-upgrade/
 docker run -it --rm --runtime nvidia --security-opt seccomp=unconfined --network host nvcr.io/nvidia/l4t-pytorch:r32.6.1-pth1.9-py3
 ```
 
+### Note: If you do note have a Jetson device.
+If you currently do not have a Jetson device, this homework can be done using a virtual machine running on your workstatation.  See lab3's labNoJetson.md for details.  In the instructions, replace Jetson with your local VM.  As OpenCV is most likely not installed in your VM, you may find the cascade file at https://github.com/opencv/opencv/tree/master/data/haarcascades. 
 
 ## Instructions
 
