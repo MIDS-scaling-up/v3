@@ -170,47 +170,8 @@ To stop your container, run the command `docker stop web`.
 You can use other ports as well, for example, you could also have used port 80, e.g. `docker run -d --name web --hostname web --rm -p 80:80 nginx`. You would then access the container via port 80.
 
 ### Using the GPU
-Nvidia has provided a runtime that enables Docker containers to leverage the GPU.  This runtime is not the default one, however for our use, let's make it the default.
-
-Edit the file `/etc/docker/daemon.json`, e.g. sudo `vi /etc/docker/daemon.json`, adding/setting the `default-runtime` to `nvidia`.
-```
-{
-    "runtimes": {
-        "nvidia": {
-            "path": "nvidia-container-runtime",
-            "runtimeArgs": []
-        }
-    },
-    "default-runtime": "nvidia"
-}
-```
-Reboot your Jetson and login when reboot is completed.
-
-This demo wants to use your display, so we'll need to do some additional setup to work.  Note, this requires that you are interacting your Jetson via an attached display or via VNC. If you have a display attached or are using VNC but accessing via an ssh session, you'll first need to run 
-```
-export DISPLAY=:0
-```
-To allow containers to communicate with X, run:  
-```
-sudo xhost +
-```
-Now run the command (assumes you are using JetPack 4.6):
-```
-docker run --rm --network host -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix nvcr.io/nvidia/l4t-base:r32.6.1
-```
+We are not covering GPU usage from your VM.
 	
-If you are running a different version of JetPack, you'll need to use the corresponding tag. 
-	
-Once in the shell, run the following commands:
-```
-apt-get update && apt-get install -y --no-install-recommends make g++
-cp -r /usr/local/cuda/samples /tmp
-cd /tmp/samples/5_Simulations/nbody
-make
-./nbody
-```
-This will display a GPU powered N-body simulation, running in a container and displaying on your UI.  Close the window and exit out of your container.
-
 ### Building containers
 Run existing containers from existing images is great, but you can also build your own container images. First you'll build a simple Jupyter Notebook container.  Change to the directory build_example_1 and look at the file `Dockerfile`.
 ```
