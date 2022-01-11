@@ -3,10 +3,12 @@ This lab will introduce containers, Docker, and the container orchestration syst
 
 This version of the lab will use Docker installed into a virtual machine running on your worksation.  Lab will not work with the Docker Desktop software commonally used as we'll require access to a web camera and leverage the display of the VM.  
 
+Unless noted, all commands are run from within your VM.
+
 
 ## Prerequisites
 The following prerequisites are required for this lab:
-- If you are using Windows or a Mac = workstaion, you will need to install a hybervisor, e.g. VMWare Workstation (windows), VMWare Fusion (Intel macs), or Parellels (Intel/Apple Silcon macs).  Note, you may find that Camera performance with VMWare Fusion is sub par; in this case, you can switch to Parallels,
+- If you are using Windows or a Mac workstaion, you will need to install a hybervisor, e.g. VMWare Workstation (windows), VMWare Fusion (Intel macs), or Parallels (Intel/Apple Silcon macs).  You may use the trial version of the Parallels or get VMWare via Berkely.  Note, you may find that Camera performance with VMWare Fusion is sub par; in this case, you can switch to Parallels,
 attempt to configure usb passthrough (https://superuser.com/questions/1648046/how-to-fix-low-webcam-fps-in-vmware-fusion), or use a recorded file from your workstation's web camera.  If you already use a Linux based workstation, you will just need to install Docker according to your distrubtions instructions.  Note, we'll assume the use Ubuntu for the rest of the lab.
 - For Windows and Mac workstations, you have created an Ubuntu based virtual machine.  For Intel based sytems, use https://ubuntu.com/download/desktop and download the LTS version.  For Apple Silcon based systems, download from here: https://cdimage.ubuntu.com/focal/daily-live/current/.  Make sure to install the 64-bit ARM image.
 - Your VM will need to have Docker installed, see https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository for details.
@@ -50,8 +52,8 @@ Not all commands may be covered in this lab.
 | docker rm <name> | Delete a container |
 | docker rmi image name | Delete an image from the local cache |
 	
-## Getting your Jetson's IP
-If your Jetson is wired, e.g. using ethernt, you can find its IP with the command `ifconfig eth0`. If it is wireless, replace eth0 with wlan0. 
+## Getting your VM's IP
+You will want to get your VM's IP address.  This can often be done via network settings in the VM or via the command line.  See https://itsfoss.com/check-ip-address-ubuntu/ for details.
 
 ## Part 1: Docker
 
@@ -113,7 +115,7 @@ The `-it` option enable interactive mode and allocates a pseudo-TTY.  This allow
 root@ubuntu:/# 
 ```
 
-From a separate shell on your Jetson, run the command:
+From a separate shell on your VM, run the command:
 ```
 docker ps
 ```
@@ -136,7 +138,7 @@ Run the command:
 docker run -d --name web --hostname web --rm -p 8080:80 nginx
 ```
 
-From your Jetson's diplsay, open a brower and go to http://localhost:8080.  You should be greeted with the Nginx welcome page.  You should notice two new options in with run command, `-d` and `-p`.  First, the `-d` option runs the container in the background. Next, the `-p` is used publish a container's port(s) to the host.  In this case, mapping the host's port 8080 to the container's port 80.  You can also access this container from outside your Jetson; if you were to open a browser on your workstation and to `http://<yourJetsonsIP>:8080`, replacing `<yourJetsonsIP>` with the IP address of your device, you'll once again see the welcome page. 
+From your VM's display, open a brower and go to http://localhost:8080.  You should be greeted with the Nginx welcome page.  You should notice two new options in with run command, `-d` and `-p`.  First, the `-d` option runs the container in the background. Next, the `-p` is used publish a container's port(s) to the host.  In this case, mapping the host's port 8080 to the container's port 80.  You can also access this container from outside your Jetson; if you were to open a browser on your workstation and to `http://<yourVMsIP>:8080`, replacing `<yourVMsIP>` with the IP address of your VM, you'll once again see the welcome page. 
 
 To stop your container, run the command `docker stop web`.
 
@@ -400,7 +402,7 @@ And you'll get something similar to:
 NAME    TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
 nginx   NodePort   10.106.179.170   <none>        80:30340/TCP   59s
 ```
-In this example, the exposed port is `30340`.  Open a brower to `http://<yourDeviceIP>:<NodePort>` and you should see a welcome page.
+In this example, the exposed port is `30340`.  Open a brower to `http://<yourVmIP>:<NodePort>` and you should see a welcome page.
 
 To find out which instance served your request, look at the Pod's logs:
 ```
@@ -583,7 +585,7 @@ local_mqttclient.on_message = on_message
 # go into a loop
 local_mqttclient.loop_forever()
 ```
-Set LOCAL_MQTT_PORT to be your NodePort value and if you are not running on your Jetson, set LOCAL_MQTT_HOST to your Jetson's IP address.
+Set LOCAL_MQTT_PORT to be your NodePort value and if you are not running in your VM, set LOCAL_MQTT_HOST to your VM's IP address.
 
 Run your listener.
 
@@ -607,7 +609,7 @@ local_mqttclient.connect(LOCAL_MQTT_HOST, LOCAL_MQTT_PORT, 60)
 local_mqttclient.publish(LOCAL_MQTT_TOPIC,"Hello MQTT...")
 ```
 
-Again, set LOCAL_MQTT_PORT to be your NodePort value and if you are not running on your Jetson, set LOCAL_MQTT_HOST to your Jetson's IP address.
+Again, set LOCAL_MQTT_PORT to be your NodePort value and if you are not running in your VM, set LOCAL_MQTT_HOST to your VM's IP address.
 
 Run `python3 publisher.py` and in the listener's shell you should see our message.  You may now stop the listener.
 
