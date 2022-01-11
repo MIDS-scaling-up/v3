@@ -142,7 +142,7 @@ Run the command:
 docker run -d --name web --hostname web --rm -p 8080:80 nginx
 ```
 
-From your Jetson's diplsay, open a brower and go to http://localhost:8080.  You should be greeted with the Nginx welcome page.  You should notice two new options in with run command, `-d` and `-p`.  First, the `-d` option runs the container in the background. Next, the `-p` is used publish a container's port(s) to the host.  In this case, mapping the host's port 8080 to the container's port 80.  You can also access this container from outside your Jetson; if you were to open a browser on your workstation and to `http://<yourJetsonsIP>:8080`, replacing `<yourJetsonsIP>` with the IP address of your device, you'll once again see the welcome page. 
+From your Jetson's display, open a brower and go to http://localhost:8080.  You should be greeted with the Nginx welcome page.  You should notice two new options in with run command, `-d` and `-p`.  First, the `-d` option runs the container in the background. Next, the `-p` is used publish a container's port(s) to the host.  In this case, mapping the host's port 8080 to the container's port 80.  You can also access this container from outside your Jetson; if you were to open a browser on your workstation and to `http://<yourJetsonsIP>:8080`, replacing `<yourJetsonsIP>` with the IP address of your device, you'll once again see the welcome page. 
 
 To stop your container, run the command `docker stop web`.
 
