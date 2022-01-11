@@ -2,6 +2,17 @@
 
 ## Please note that this homework is graded
 
+## Note 01/10/2022
+If you have upgraded (apt upgrade) your Jetson's installation and are getting an error similar to the following when running docker:
+```
+docker: Error response from daemon: failed to create shim: OCI runtime create failed: container_linux.go:380: starting container process caused: error adding seccomp filter rule for syscall clone3: permission denied: unknown.
+```
+See https://forums.developer.nvidia.com/t/docker-isnt-working-after-apt-upgrade/195213/3.  There you'll find the instructions to downgrade and pin the docker version at one that works.  As an alternative, you may add the following option to your run command, `-security-opt seccomp=unconfined`, e.g.
+```
+docker run -it --rm --runtime nvidia --security-opt seccomp=unconfined --network host nvcr.io/nvidia/l4t-pytorch:r32.6.1-pth1.9-py3
+```
+
+
 ## Instructions
 
 The objective of this homework is to buld a lightweight containerized application pipeline with components running on the edge, your Jetson, and in the the cloud, a VM in AWS.  The application should be writen in a modular/cloud native way so that it could be run on any edge devce or hub and any cloud VM, or even another type of device connected to some type of storage instead of cloud hosted VM.  In addition, the edge application should be deployed using Kubernetes (K3s for example) on your Jetson and the cloud VM components should run using Docker.
