@@ -2,7 +2,7 @@
 
 ## Please note that this homework is graded
 
-## Note 01/10/2022
+### Note: 01/10/2022
 If you have upgraded (apt upgrade) your Jetson's installation and are getting an error similar to the following when running docker:
 ```
 docker: Error response from daemon: failed to create shim: OCI runtime create failed: container_linux.go:380: starting container process caused: error adding seccomp filter rule for syscall clone3: permission denied: unknown.
