@@ -1,47 +1,19 @@
-# Lab 3: Containers, Docker, and Kubernetes
+# Lab 3 with no Jetson: Containers, Docker, and Kubernetes
 This lab will introduce containers, Docker, and the container orchestration system, Kubernetes.  We will use Docker to build and run containers, then explore running the containers with Kubernetes.
 
-If you currently do not have a Jetson device, you can run this lab using your local workstation.  
+This version of the lab will use Docker installed into a virtual machine running on your worksation.  Lab will not work with the Docker Desktop software commonally used as we'll require access to a web camera and leverage the display of the VM.  
 
-1. If you have a windows or mac workstation and are able to install software, you'll need to install a 
-hypervisor, e.g. VMWare Workstation (windows), VMWare Fusion (Intel macs), or Parellels (Intel/Apple Silcon macs).
-Note, you may find that Camera performance with VMWare Fusion is sub par; in this case, you can switch to Parallels,
-attempt to configure usb passthrough (link required), or use a recorded file from your workstation's web camera.
-2. Install Ubuntu.  For Intel based sytems, use https://ubuntu.com/download/desktop and download the LTS version.  For Apple Silcon based systems, download from here: https://cdimage.ubuntu.com/focal/daily-live/current/.  Make sure to install the 64-bit ARM image.
-3. Configure your camera to be used with linux (see your hypervision docs).  in the VM, run the program `Cheese` to validate that your VM can use your camera.
-4. Once your VM is running, install docker.  Follow the steps at https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository.
-
-
-Configure Docker group (optional). By default, Docker is owned by and runs as the user root. This requires commands to be executed with sudo. If you don't want to use sudo, a group may be used instead. This group group grants privileges equivalent to the root user. For details on how this impacts security in your system, see Docker Daemon Attack Surface (https://docs.docker.com/engine/security/#docker-daemon-attack-surface) . The examples will assume this has been done. If you do not do this, you'll need to prefix the docker commands with sudo.
-Create the group docker. Note, this group may already exist.
-
-sudo groupadd docker
-
-Add your user to the docker group.
-sudo usermod -aG docker $USER
-
-
-
-This lab is run on the Jetson device using the desktop (via VNC or display); unless noted, all commands are run on your Jetson.
-
-Ensure that you cloned this github repo and are in the directory for this lab (v2/week03/lab/).
-
-This lab may take up to 60 minutes to complete.
-
-Note, if you have upgraded (apt upgrade) your Jetson's installation and are getting an error similar to the following when running docker:
-```
-docker: Error response from daemon: failed to create shim: OCI runtime create failed: container_linux.go:380: starting container process caused: error adding seccomp filter rule for syscall clone3: permission denied: unknown.
-```
-See https://forums.developer.nvidia.com/t/docker-isnt-working-after-apt-upgrade/195213/3.  There you'll find the instructions to downgrade and pin the docker version at one that works.  As an alternative, you may add the following option to your run command, `-security-opt seccomp=unconfined`, e.g.
-```
-docker run -it --rm --runtime nvidia --security-opt seccomp=unconfined --network host nvcr.io/nvidia/l4t-pytorch:r32.6.1-pth1.9-py3
-```
 
 ## Prerequisites
 The following prerequisites are required for this lab:
-- Docker is installed on your Jetson device.  This should have been done as part of your Jetpack install.
-- USB camera is plugged in and available.
+- If you are using Windows or a Mac = workstaion, you will need to install a hybervisor, e.g. VMWare Workstation (windows), VMWare Fusion (Intel macs), or Parellels (Intel/Apple Silcon macs).  Note, you may find that Camera performance with VMWare Fusion is sub par; in this case, you can switch to Parallels,
+attempt to configure usb passthrough (https://superuser.com/questions/1648046/how-to-fix-low-webcam-fps-in-vmware-fusion), or use a recorded file from your workstation's web camera.  If you already use a Linux based workstation, you will just need to install Docker according to your distrubtions instructions.  Note, we'll assume the use Ubuntu for the rest of the lab.
+- For Windows and Mac workstations, you have created an Ubuntu based virtual machine.  For Intel based sytems, use https://ubuntu.com/download/desktop and download the LTS version.  For Apple Silcon based systems, download from here: https://cdimage.ubuntu.com/focal/daily-live/current/.  Make sure to install the 64-bit ARM image.
+- Your VM will need to have Docker installed, see https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository for details.
+- USB camera is plugged in and available or use your workstation's integrated camera.
 - A DockerHub account.  DockerHub will be used as your registry, a place to publish and share images.  You may register for the account at https://hub.docker.com.
+- Install a SSH server (optiona).  Run the command `apt update && apt install opensssh-server`.  This will allow you to ssh into your VM directly from y
+- Configure Docker group (optional). By default, Docker is owned by and runs as the user root. This requires commands to be executed with sudo. If you don't want to use sudo, a group may be used instead. This group group grants privileges equivalent to the root user. For details on how this impacts security in your system, see Docker Daemon Attack Surface (https://docs.docker.com/engine/security/#docker-daemon-attack-surface) . The examples will assume this has been done. If you do not do this, you'll need to prefix the docker commands with sudo.our workstaion.
 - Configure Docker group (optional). By default, Docker is owned by and runs as the user root. This requires commands to be executed with sudo. If you don't want to use sudo, a group may be used instead. This group group grants privileges equivalent to the root user. For details on how this impacts security in your system, see Docker Daemon Attack Surface (https://docs.docker.com/engine/security/#docker-daemon-attack-surface) . The examples will assume this has been done. If you do not do this, you'll need to prefix the docker commands with sudo.
 
 Create the group docker. Note, this group may already exist.
@@ -54,6 +26,7 @@ Add your user to the docker group.
 sudo usermod -aG docker $USER
 ```
 Log out and log back in so that your group membership is re-evaluated.
+
 
 ## Useful Docker commands
 Not all commands may be covered in this lab.
