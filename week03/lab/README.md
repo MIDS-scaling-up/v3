@@ -7,6 +7,15 @@ Ensure that you cloned this github repo and are in the directory for this lab (v
 
 This lab may take up to 60 minutes to complete.
 
+Note, if you have upgraded (apt upgrade) your Jetson's installation and are getting an error similar to the following when running docker:
+```
+docker: Error response from daemon: failed to create shim: OCI runtime create failed: container_linux.go:380: starting container process caused: error adding seccomp filter rule for syscall clone3: permission denied: unknown.
+```
+See https://forums.developer.nvidia.com/t/docker-isnt-working-after-apt-upgrade/195213/3.  There you'll find the instructions to downgrade and pin the docker version at one that works.  As an alternative, you may add the following option to your run command, `-security-opt seccomp=unconfined`, e.g.
+```
+docker run -it --rm --runtime nvidia --security-opt seccomp=unconfined --network host nvcr.io/nvidia/l4t-pytorch:r32.6.1-pth1.9-py3
+```
+
 ## Prerequisites
 The following prerequisites are required for this lab:
 - Docker is installed on your Jetson device.  This should have been done as part of your Jetpack install.
