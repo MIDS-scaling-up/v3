@@ -12,6 +12,7 @@ The following prerequisites are required for this lab:
 attempt to configure usb passthrough (https://superuser.com/questions/1648046/how-to-fix-low-webcam-fps-in-vmware-fusion), or use a recorded file from your workstation's web camera.  If you already use a Linux based workstation, you will just need to install Docker according to your distrubtions instructions.  Note, we'll assume the use Ubuntu for the rest of the lab.
 - For Windows and Mac workstations, you have created an Ubuntu based virtual machine.  For Intel based sytems, use https://ubuntu.com/download/desktop and download the LTS version.  For Apple Silcon based systems, download from here: https://cdimage.ubuntu.com/focal/daily-live/current/.  Make sure to install the 64-bit ARM image.
 - Your VM will need to have Docker installed, see https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository for details.
+- Pip3 is installed in your VM. This can be done via the command  `sudo apt install python3-pip`.
 - USB camera is plugged in and available or use your workstation's integrated camera.
 - A DockerHub account.  DockerHub will be used as your registry, a place to publish and share images.  You may register for the account at https://hub.docker.com.
 - Install a SSH server (optiona).  Run the command `apt update && apt install opensssh-server`.  This will allow you to ssh into your VM directly from y
@@ -138,7 +139,7 @@ Run the command:
 docker run -d --name web --hostname web --rm -p 8080:80 nginx
 ```
 
-From your VM's display, open a brower and go to http://localhost:8080.  You should be greeted with the Nginx welcome page.  You should notice two new options in with run command, `-d` and `-p`.  First, the `-d` option runs the container in the background. Next, the `-p` is used publish a container's port(s) to the host.  In this case, mapping the host's port 8080 to the container's port 80.  You can also access this container from outside your Jetson; if you were to open a browser on your workstation and to `http://<yourVMsIP>:8080`, replacing `<yourVMsIP>` with the IP address of your VM, you'll once again see the welcome page. 
+From your VM's display, open a brower and go to http://localhost:8080.  You should be greeted with the Nginx welcome page.  You should notice two new options in with run command, `-d` and `-p`.  First, the `-d` option runs the container in the background. Next, the `-p` is used publish a container's port(s) to the host.  In this case, mapping the host's port 8080 to the container's port 80.  You can also access this container from outside your VM; if you were to open a browser on your workstation and to `http://<yourVMsIP>:8080`, replacing `<yourVMsIP>` with the IP address of your VM, you'll once again see the welcome page. 
 
 To stop your container, run the command `docker stop web`.
 
@@ -551,7 +552,7 @@ mosquitto_pub -h localhost -p <service port> -t my_topic -m "hello mqtt"
 You should see the message delivered to the listener.  Now you can Control-C out of the listener.
 
 
-To use the service programmatically, you'll create 2 simple python applications. This can be done using your Jetson device or your local workstation (your choice), but this will assume that you are using your Jetson.  You may want to setup a python virtual env (e.g. python3 -m venv /path/to/new/virtual/environment) for this, but the choice is yours.  To install the MQTT client libraries, run the following, `pip3 install paho-mqtt`.
+To use the service programmatically, you'll create 2 simple python applications. This can be done using your VM or your local workstation (your choice), but this will assume that you are using your VM.  You may want to setup a python virtual env (e.g. python3 -m venv /path/to/new/virtual/environment) for this, but the choice is yours.  To install the MQTT client libraries, run the following, `pip3 install paho-mqtt`.
 
 To create a listener, use the following code in a file named listener.py:
 ```
