@@ -127,7 +127,8 @@ Use this to create the instance.
 
 ```
 # Create the instance
-aws ec2 run-instances --image-id YOUR-AMI-ID --instance-type t2.large --security-group-ids YOUR_PUBLIC_GROUP_ID --associate-public-ip-address --key-name YOUR_KEY_NAME
+# note that 'your_keypair' is the name of your key you created above without the .pem extension
+aws ec2 run-instances --image-id YOUR-AMI-ID --instance-type t2.large --security-group-ids YOUR_PUBLIC_GROUP_ID --associate-public-ip-address --key-name your_keypair
 
 # Retrieve the Public DNS name
 aws ec2 describe-instances | grep PublicDnsName
@@ -136,7 +137,8 @@ aws ec2 describe-instances | grep PublicDnsName
 
 #### Launch Private EC2 instance into Private Security Group using Ubuntu
 ```
-aws ec2 run-instances --image-id YOUR-AMI-ID --instance-type t2.micro --security-group-ids YOUR_PRIVATE_GROUP_ID --key-name YOUR_KEY_NAME
+# note that 'your_keypair' is the name of your key you created above without the .pem extension
+aws ec2 run-instances --image-id YOUR-AMI-ID --instance-type t2.micro --security-group-ids YOUR_PRIVATE_GROUP_ID --key-name your_keypair
 
 # Retrieve the PublicDnsName of the new instance
 aws ec2 describe-instances | grep PublicDnsName
