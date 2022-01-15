@@ -35,7 +35,9 @@ to enable CLI and API access.
 
 -   Goto Services -- Select IAM
 
--   Click on Add User
+-   Click on Users (in the access management option)
+
+-   Then click on Add users
 
     -   Set the User Name
     -   Select both Access Types (`Programmatic` and `AWS Management Console`)
