@@ -1,3 +1,11 @@
+## No Device Draft
+Install sudo apt-get install -y v4l-utils
+install gstreamer
+
+Camera: gst-launch-1.0 v4l2src device=/dev/video0 ! videoconvert ! xvimagesink -v 
+
+Ignore nvidia by default
+
 ## VNC 
 You may use VNC for this lab; if VNC is used, it is strongly recommended to us a reslution less than 4k as resolutions at 4k or higher can cause additional lag.
 For example, a resolution of 1600x900 typically decent performance (you may adjust as needed).
