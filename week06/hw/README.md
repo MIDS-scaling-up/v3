@@ -1,5 +1,9 @@
 # Homework 6
 
+
+This homework requires a Jetson device.  If you do not have a device, please just sumbit the HW answering just questions 2, 3, and 4 from Part 1.
+
+
 This homework covers some use of GStreamer and model optimization.  It builds on the week 6 lab and completing the lab first is hightly recommended.   
 
 This is an ungraded assignment
