@@ -208,10 +208,7 @@ gst-launch-1.0 filesrc location=test.mp4 ! qtdemux ! queue ! h264parse ! nvv4l2d
 
 This is a simple streaming example, with both sides running on the NX.  This will require two shell windows.
 
-Note, the following is no longer working after the latest update.  See "Working" for a working example.
-The following is no longer working with my latest update.
-
-Broken 
+This works with the latest Jetpack.
 
 In the first window, run the following: 
 ```
@@ -221,24 +218,10 @@ This starts the "server" broadcasting the packets (udp) to the IP Address 127.0.
 
 In the second window, run the following: 
 ```
- gst-launch-1.0 udpsrc address=127.0.0.1 port=8001 caps='application/x-rtp, encoding-name=(string)H264, payload=(int)96' ! rtph264depay ! queue ! h264parse ! nvv4l2decoder ! nv3dsink -e
+ gst-launch-1.0 udpsrc address=127.0.0.1 port=8001 caps='application/x-rtp, encoding-name=(string)H264, payload=(int)96' ! rtph264depay ! queue ! h264parse ! nvv4l2decoder ! nv3dsink sync=false -e
 ```
 This listens for the packets and decodes the RTP stream and displays it on the screen.
 
-Working
-
-In the first window, run the following: 
-```
-gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw,framerate=30/1,width=640,height=480  ! nvvidconv ! omxh265enc insert-vui=1 ! h265parse ! rtph265pay config-interval=1 ! udpsink host=127.0.0.1 port=5000 sync=false -e 
-```
-
-This starts the "server" broadcasting the packets (udp) to the IP Address 127.0.01 on port 8001. The server broadcasts the stream using RTP that hs h265 ecnoded.
-
-In the second window, run the following: 
-```
- gst-launch-1.0 udpsrc port=5000 ! application/x-rtp, media=video, encoding-name=H265 ! rtph265depay ! h265parse ! nvv4l2decoder ! nvvidconv ! nv3dsink -e
-```
-This listens for the packets and decodes the RTP stream and displays it on the screen.
 
 
 ## Part 6: Python and OpenCV
