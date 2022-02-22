@@ -8,8 +8,8 @@ Videos are made up of frames, and each frame is an image.  But, extracting image
 ```
 docker run -ti ubuntu bash
 # now, run 
-# apt update 
-# apt install -y ffmpeg
+apt update 
+apt install -y ffmpeg
 ```
 Note, if you are using Docker, you'll want to use a volume on the host system to make it easier to see your output. This can be done by adding `-v <hostDir>:<containerDir>`.
 
