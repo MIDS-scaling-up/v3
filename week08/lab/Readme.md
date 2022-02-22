@@ -11,7 +11,7 @@ docker run -ti ubuntu bash
 apt update 
 apt install -y ffmpeg
 ```
-Note, if you are using Docker, you'll want to use a volume on the host system to make it easier to see your output. This can be done by adding `-v <hostDir>:<containerDir>`.
+Note, if you are using Docker, you'll want to use a volume on the host system to make it easier to see your output. This can be done by adding `-v <hostDir>:<containerDir>` (example: sudo docker run -ti -v ~/videos-output:/var/log/video ubuntu /bin/bash ).
 
 Please navigate to https://www.jpjodoin.com/urbantracker/dataset.html . Download sherbrooke_video.avi. This is a 2 min and 13 second video filmed from a traffic camera located at at the Sherbrooke/Amherst intersection in Montreal. 
 
