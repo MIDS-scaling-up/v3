@@ -23,16 +23,17 @@ pip3 install numpy opencv-python tqdm tensorboard tensorboardX pyyaml webcolors 
 apt-get update && apt-get install -y python3-opencv
 `
 ### Run through the  logo example
-* Open the jupyter lab / jupyter notebook and navigate to the tutorial folder and run the train_logo.ipynb . 
+* Open the jupyter lab / jupyter notebook and navigate to the tutorial folder and run through the `train_logo.ipynb` . 
 * Understand the notebook and read through every cell before executing.
+* What exactly are we training?
 * Observe the Average precision values. What are they? What do they mean? 
 
 Note: `You may need to modify the first line in the notebook from !pip install pycocotools numpy==1.16.0 opencv-python tqdm tensorboard tensorboardX pyyaml webcolors matplotlib to !pip install pycocotools numpy opencv-python tqdm tensorboard tensorboardX pyyaml webcolors matplotlib`
 
 ### Modify the code to run on a different dataset
-* Register on roboflow and download the public dataset (with coco label format) chess inside the docker container : 
+* Register on roboflow and download the public `chess` dataset (in the coco label format) chess inside the docker container. Search for the dataset and ask for a download link. Then paste it below : 
 
-`!curl -L <link from roboflow> > roboflow.zip; mkdir -p Yet-Another-EfficientDet-Pytorch/datasets/chess ; unzip roboflow.zip -d Yet-Another-EfficientDet-Pytorch/datasets/chess ; rm roboflow.zip
+`!curl -L <link from roboflow> > roboflow.zip; mkdir -p Yet-Another-EfficientDet-Pytorch/datasets/chess ; unzip roboflow.zip -d Yet-Another-EfficientDet-Pytorch/datasets/chess ; rm roboflow.zip`
 
 * Now please copy over the train_logo.ipynb to train_chess.ipynb in  the same folder and run the notebook after making necessary changes. 
 
