@@ -3,7 +3,8 @@
 ### Create and setup your env in AWS
 1. Start AWS with nvidia deep learning ami (g4dn.2x.large) , open the port required for jupyter notebook. 
 2. ssh to the AWS EC2 server 
-3. Download the git repository :
+3. Make sure port 8888 is open using your security group settings
+4. Download the git repository :
 ` git clone https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch.git`
 
 3a. start a tmux session 
