@@ -31,18 +31,22 @@ apt-get update && apt-get install -y python3-opencv
 Note: `You may need to modify the first line in the notebook from !pip install pycocotools numpy==1.16.0 opencv-python tqdm tensorboard tensorboardX pyyaml webcolors matplotlib to !pip install pycocotools numpy opencv-python tqdm tensorboard tensorboardX pyyaml webcolors matplotlib`
 
 ### Modify the code to run on a different dataset
-* Register on roboflow and download the public `chess` dataset (in the coco label format) chess inside the docker container. Search for the dataset and ask for a download link. Then paste it below : 
-
-`!curl -L <link from roboflow> > roboflow.zip; mkdir -p Yet-Another-EfficientDet-Pytorch/datasets/chess ; unzip roboflow.zip -d Yet-Another-EfficientDet-Pytorch/datasets/chess ; rm roboflow.zip`
 
 * Now please copy over the train_logo.ipynb to train_chess.ipynb in  the same folder and run the notebook after making necessary changes. 
 
-* We need to create a folder called annotations inside the chess data directory and move the annotations to that folder .
+* Register on roboflow and download the public `chess` dataset (in the coco label format) chess inside the docker container/jupyter notebook train_chess.ipynb. Search for the dataset and ask for a download link. Then paste it below : 
 
+`!curl -L <link from roboflow> > roboflow.zip; mkdir -p Yet-Another-EfficientDet-Pytorch/datasets/chess ; unzip roboflow.zip -d Yet-Another-EfficientDet-Pytorch/datasets/chess ; rm roboflow.zip`
+
+* We need to create a folder called annotations inside the chess data directory and move the annotations to that folder . Commands like this should help : 
+`! mv datasets/chess/valid datasets/chess/val
+! mkdir datasets/chess/annotations
+! mv datasets/chess/train/_annotations.coco.json  datasets/chess/annotations/instances_train.json
+! mv datasets/chess/test/_annotations.coco.json datasets/chess/annotations/instances_test.json
+! mv datasets/chess/val/_annotations.coco.json  datasets/chess/annotations/instances_val.json
+`
 * We also need to create projects/chess.yml . Everything can be the same as logo.yml except the project name and the obj_list. 
 * The new obj_list for the chess dataset is : [ 'bishop', 'black-bishop', 'black-king', 'black-knight',  'black-pawn', 'black-queen', 'black-rook', 'white-bishop', 'white-king',  'white-knight', 'white-pawn', 'white-queen',  'white-rook' ] >
-
-
 
 * After running the notebook, observe the Average precision values. Is it better or worse than in the logo notebook. What does this tell us ?
 
@@ -52,9 +56,9 @@ Note: `You may need to modify the first line in the notebook from !pip install p
 * Clone the git repository 
 `git clone https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch.git`
 
-* Copy over the notebook train_chess_jetson.ipynb and the file coco_eval.py to the appropriate directories. 
-* Start the docker container
-* Once inside the docker container : run the jupyter notebook
+* Copy over a version of the notebook from the cloud (train_chess.ipynb) to the Jetson and the file coco_eval.py to the appropriate directories. 
+* Start the docker container (pytorch container) - `docker pull nvcr.io/nvidia/l4t-pytorch:r32.6.1-pth1.9-py3` 
+* Once inside the docker container : run the jupyter notebook (only the setup and evaluation part) 
 * Download the best model from the cloud into the corresponding directories in the Jetson
 * Run the inference
 
