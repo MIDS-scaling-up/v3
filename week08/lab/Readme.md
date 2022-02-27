@@ -28,22 +28,22 @@ If you get errors in the following steps, you can extract to data/ and change th
 
 The first step is to extract a single image from the video.
 
-`ffmpeg -i sherbrooke_video.avi -frames:v 1 data/ffmepg/test1/extracted.jpg`
+`ffmpeg -i sherbrooke_video.avi -frames:v 1 data/ffmpeg/test1/extracted.jpg`
 the option -frames:v specifies the number of frames to extract and data/ffmepg/test1/extracted.jpg is the output file.
 When complete, browser your data directory from your workstation and open up data/ffmepg/test1/extracted.jpg and confirm that extract.
 
 
-Now you wille extract 100 images from the file using the command `ffmpeg -i sherbrooke_video.avi -frames:v 100 data/ffmepg/test2/extract%04d.jpg`
+Now you wille extract 100 images from the file using the command `ffmpeg -i sherbrooke_video.avi -frames:v 100 data/ffmpeg/test2/extract%04d.jpg`
 With this command, %04d tells ffmpeg to name the extracted images with the serices with a 4 digit pattern, extract0001.jpg, extract0002.jpg, etc. Other numbers may be used, e.g. to use 2 numbers, the pattern would be %02d.
 
 
 Review the images. How much did the scence change?
 Now we'll adjust the frames per second used with the -r option, in this case with 1 frame per second.
-`ffmpeg -i sherbrooke_video.avi -frames:v 100 -r 1 data/ffmepg/test2/extract%04d.jpg`
+`ffmpeg -i sherbrooke_video.avi -frames:v 100 -r 1 data/ffmpeg/test2/extract%04d.jpg`
 
 
 What's different? What happens if you change r?
-Finally, we'll extract all the images with the command `ffmpeg -i sherbrooke_video.avi data/ffmepg/test3/extract%04d.jpg`
+Finally, we'll extract all the images with the command `ffmpeg -i sherbrooke_video.avi data/ffmpeg/test3/extract%04d.jpg`
 
 
 How long did it take?
