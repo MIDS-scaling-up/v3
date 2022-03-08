@@ -11,6 +11,8 @@ Questions to keep you on track:
 * What is the size of the dataset? What are the image dimensions?
 * What is the batch size during training? Can you increase it?
 * How are the weights initialized?
-* How are the losses calculated? What is the ideal discriminator loss? What is the ideal generator loss?
+* How are the losses calculated? What is the ideal discriminator D(x) loss? D(G(x)) loss? 
+* What are the two D(G(z)) losses?
+* What is the ideal G(z) generator loss?
 * What is the intuition for the nz?
 * What would be the 'bag of tricks' approaches that could be used to improve results?
