@@ -1,10 +1,10 @@
 # GANs refined
 In this week's lab, you used a GAN to generate images of people that look like celebrities.
 
-For this homework, you will explore either one of the following basic GAN, Super Resolution GAN and GauGAN. Look over the concepts, try to modify the parameters and observe the output. 
+For this homework, you will explore either one of the following: DCGan (the lab), Super Resolution GAN (SRGAN) and GauGAN. Look over the concepts, try to modify the parameters and observe the output. You will likely need to provision a T4-powered VM in the cloud to complete this work.
 
 ### Submission:
-1. What changes did you make to the notebook? Did your changes result in lower losses?
+1. What changes did you make to the notebook[s]? Did your changes result in lower losses?
 2. In your own words, how does the Discriminator improve its ability to detect fakes?
 3. Share a copy of the output image from the last step in the notebook (can be an upload to the ISVC Portal, or a link to the file in AWS Object Store).
 
