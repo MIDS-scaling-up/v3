@@ -1,7 +1,7 @@
 # GANs refined
 In this week's lab, you used a GAN to generate images of people that look like celebrities.
 
-For this homework, you will explore either one of the following: DCGan (the lab), Super Resolution GAN (SRGAN) and GauGAN. Look over the concepts, try to modify the parameters and observe the output. You will likely need to provision a T4-powered VM in the cloud to complete this work.
+For this homework, you will pick one of the GAN notebooks in this GitHub repo and modify it to improve the quality of the output: DCGan (the lab), Super Resolution GAN (SRGAN) and GauGAN. Look over the concepts, try to modify the parameters and observe the output. You will likely need to provision a T4-powered VM in the cloud to complete this work.
 
 ### Submission:
 1. What changes did you make to the notebook[s]? Did your changes result in lower losses?
