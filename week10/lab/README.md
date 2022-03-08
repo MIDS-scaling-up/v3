@@ -6,3 +6,11 @@ Load the Python Notebook from Github (dcgan_faces.ipynb) into Colab. Ensure that
 Follow the notebook to create a set of celebrity faces. Observe how the Generator and Discriminator neural networks are built. Discuss differences between the two neural network designs.
 
 ![](GAN_neural_networks.png)
+
+Questions to keep you on track:
+* What is the size of the dataset? What are the image dimensions?
+* What is the batch size during training? Can you increase it?
+* How are the weights initialized?
+* How are the losses calculated? What is the ideal discriminator loss? What is the ideal generator loss?
+* What is the intuition for the nz?
+* What would be the 'bag of tricks' approaches that could be used to improve results?
