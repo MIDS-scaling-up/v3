@@ -20,7 +20,15 @@ As of March 27th, 2022, Colab is OK.
 Navigate to [Nemo tutorials](https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/main/starthere/tutorials.html) and click one of the tutorials. Make sure that you are using your UC Berkeley Google account in your browser. Ensure that the Colab instance uses the GPU. Observe the value of the $BRANCH variable in the script. If the script breaks you may need to adjust it.
 
 #### Option B. Setup in AWS
-please provision a g4dn.2xlarge VM in AWS with the Nvidia Deep Learning AMI image.  Open port 8888.  Pull the container, e,g, ```docker pull nvcr.io/nvidia/nemo:1.4.0``` and then run it with jupyter inside, eg ```docker run --rm --gpus all --net=host -ti nvcr.io/nvidia/nemo:1.4.0 bash``` and then start jupyter lab inside the container, e.g. ```jupyter lab --allow-root --ip=0.0.0.0``` . Connect to the instance of jupyter in your browser.
+Please provision a g4dn.2xlarge VM in AWS with the Nvidia Deep Learning AMI image.  Open port 8888. Clone the NeMo repo and build the latest docker image, e.g.
+
+```
+git clone git clone https://github.com/NVIDIA/NeMo
+cd NeMo
+DOCKER_BUILDKIT=1 docker build -f Dockerfile -t nemo:latest .
+```
+
+Now run the container with jupyter inside, eg ```docker run --rm --gpus all --net=host --ipc=host -ti nemo:latest bash``` and then start jupyter lab inside the container, e.g. ```jupyter lab --allow-root --ip=0.0.0.0``` . Connect to the instance of jupyter in your VM via browser.
 
 You will need option B for your homework.
 
