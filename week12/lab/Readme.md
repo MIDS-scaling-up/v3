@@ -1,17 +1,28 @@
 # Labs 12.  NLP and Speech with Nvidia Nemo
 
 ## Note
-Do not run the following line (and only this line) in each notebook
+When executing Jupyter or Colab notebooks, avoid repeatedly executing the line below
+as it will reinstall NeMo:
 ```
+# Observe the value of the $BRANCH variable
+# Tutorial samples may set it to diffent values
+# The latest is 'main' and should generally work. Unless it does not.
 !python -m pip install git+https://github.com/NVIDIA/NeMo.git@$BRANCH#egg=nemo_toolkit[all]
 ```
 
-These labs will focus on NLP and Speech tasks using the Nemo framework
+### These labs will focus on NLP and Speech tasks using the Nemo framework
 
 ### 0. Setting up the environment
-Normally, Colab would be de rigeur here, but at the moment, Nemo Colab notebooks are broken.  Therefore, please provision a g4dn.2xlarge VM in AWS with the Nvidia Deep Learning AMI image.  Open port 8888.  Pull the container, e,g, ```docker pull nvcr.io/nvidia/nemo:1.4.0``` and then run it with jupyter inside, eg ```docker run --rm --gpus all --net=host -ti nvcr.io/nvidia/nemo:1.4.0 bash``` and then start jupyter lab inside the container, e.g. ```jupyter lab --allow-root --ip=0.0.0.0``` . Connect to the instance of jupyter in your browser.
+Colab is de rigeur here (Option A), but if / when Nemo Colab notebooks are broken Option B is the safest. 
+As of March 27th, 2022, Colab is OK.
 
-While somewhat annoying, this approach is very flexible as you control the hardware you need as well as the exact version of the software
+#### Option A. Setup in Colab
+Navigate to [Nemo tutorials](https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/main/starthere/tutorials.html) and click one of the tutorials. Make sure that you are using your UC Berkeley Google account in your browser. Ensure that the Colab instance uses the GPU. Observe the value of the $BRANCH variable in the script. If the script breaks you may need to adjust it.
+
+#### Option B. Setup in AWS
+please provision a g4dn.2xlarge VM in AWS with the Nvidia Deep Learning AMI image.  Open port 8888.  Pull the container, e,g, ```docker pull nvcr.io/nvidia/nemo:1.4.0``` and then run it with jupyter inside, eg ```docker run --rm --gpus all --net=host -ti nvcr.io/nvidia/nemo:1.4.0 bash``` and then start jupyter lab inside the container, e.g. ```jupyter lab --allow-root --ip=0.0.0.0``` . Connect to the instance of jupyter in your browser.
+
+You will need option B for your homework.
 
 ### 1. Introduction to Nemo
 As you already learned in  async material, Nemo is a framework for ASR and NLP tasks.  Please review the list of [Nemo tutorials](https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/main/starthere/tutorials.html). The tutorials will be found under the tutorials folder in your Jupyter Lab environment. Review the Nemo Primer.  Note, since we are running from a Nemo container, there is no need to reinstall Nemo (please ignore the corresponding cells in the notebooks)
