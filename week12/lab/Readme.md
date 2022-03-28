@@ -13,7 +13,7 @@ as it will reinstall NeMo:
 ### These labs will focus on NLP and Speech tasks using the Nemo framework
 
 ### 0. Setting up the environment
-Colab is de rigeur here (Option A), but if / when Nemo Colab notebooks are broken Option B is the safest. 
+Colab is *de rigeur* here (Option A), but if / when Nemo Colab notebooks are broken Option B is the safest. 
 As of March 27th, 2022, Colab is OK.
 
 #### Option A. Setup in Colab
@@ -33,17 +33,17 @@ Now run the container with jupyter inside, eg ```docker run --rm --gpus all --ne
 You will need option B for your homework.
 
 ### 1. Introduction to Nemo
-As you already learned in  async material, Nemo is a framework for ASR and NLP tasks.  Please review the list of [Nemo tutorials](https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/main/starthere/tutorials.html). The tutorials will be found under the tutorials folder in your Jupyter Lab environment. Review the Nemo Primer.  Note, since we are running from a Nemo container, there is no need to reinstall Nemo (please ignore the corresponding cells in the notebooks)
+As you already learned in  async material, Nemo is a framework for ASR and NLP tasks.  Please review the list of [Nemo tutorials](https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/main/starthere/tutorials.html). The tutorials will be found under the tutorials folder in your Jupyter Lab environment. Review the Nemo Primer (aka Nemo Fundamentals).  Note, if you are running from a Nemo container / AWS VM, there is no need to reinstall Nemo (please ignore the corresponding cells in the notebooks)
 
 ### 2. Conversational AI Application
-Run the Conversational AI application (/tutorials/AudioTranslationSample.ipynb) sample to see how to use Nemo for transcription. Try to load a different ASR model.. Does that work?
+Run the Conversational AI application tutorial to see how to use Nemo for transcription. Try to load a different ASR model.. Does that work?
 
 ### 3. Voice Swap application
 Try to voice swap application. Please explain how it works.
 
-### 4. ASR with Nemo (/tutorials/asr/ASR_with_NeMo.ipynb)
-We should now be ready to something more difficult. Run the 'ASR with Nemo' sample (sans the last, ONNX part). Notes:
-* Can you load and use Tensorboard? Please open port 6006 in your VM
+### 4. ASR with Nemo
+We should now be ready to something more difficult. Run the 'ASR with Nemo' tutorial (sans the last, ONNX part). Notes:
+* Can you load and use Tensorboard? If using AWS VM, please open port 6006
 * Can you change the number of training epochs?
 * Please take a look at your model config file.  Are you augmenting the dataset?
 * Are you using pre-trained weights? If so, what are they?
@@ -53,4 +53,4 @@ We should now be ready to something more difficult. Run the 'ASR with Nemo' samp
 * On what dataset[s] was the pre-trained QuartzNet model originally trained?
 
 ### 5. (If there is time) - Voice commands with Nemo
-Examine the Speech Command sample. What is the size of the dataset? How many parameters does the model have? how long does it take to fine tune?
+Examine the Speech Command tutorial. What is the size of the dataset? How many parameters does the model have? how long does it take to fine tune?
