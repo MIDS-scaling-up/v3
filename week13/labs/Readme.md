@@ -27,6 +27,8 @@ jupyter-lab --allow-root --ip=0.0.0.0 --no-browser
 ```
 Try the following notebooks:
 * Download the [Colab example](https://colab.research.google.com/drive/1rY7Ln6rEE1pOlfSHCYOVaqt8OvDO35J0#forceEdit=true&offline=true&sandboxMode=true) and run it in your Jupyter notebook.  Skip the cells that deal with RAPIDS installation. Note how easy it is to use CuDF and CuML
+* Open up a terminal and clone the examples repo: `git clone https://github.com/rapidsai/notebooks.git`
+* go to the notebooks directory and pull the submodules: `sh update.sh`
 * Under the cuml folder, run through the K-means demo example. What is the speedup you get?
 * Under the same folder, run through the random forest example.  What is the speedup you get?
 * Under the xgboost folder, run the XGBoost demo. Repeat on the CPU. What is the speedup?
