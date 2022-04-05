@@ -17,9 +17,13 @@ A few quick questions:
 
 ### RAPIDS primer
 RAPIDS is an open source project that targets to bring GPU acceleration to typical data science tasks.  Please refer to the async materials for more information on the project or visit [The RAPIDS homepage](https://rapids.ai/)
-For this lab, we'll be using the latest rapids container. From your home directory in your VM, pull and start the rapids container.  Note that this will start Jupyter by default and you will need to open port 8888 to connect to it.
+For this lab, we'll be using the latest rapids container. From your home directory in your VM, pull and start the rapids container.
 ```
 docker run -p 8888:8888 --gpus=all -ti nvcr.io/nvidia/rapidsai/rapidsai:22.02-cuda11.4-base-ubuntu20.04 
+# the latest rapids container no longer has jupyter lab, sigh
+conda install -y -c conda-forge jupyterlab
+# start jupyter lab
+jupyter-lab --allow-root --ip=0.0.0.0 --no-browser
 ```
 Try the following notebooks:
 * Download the [Colab example](https://colab.research.google.com/drive/1rY7Ln6rEE1pOlfSHCYOVaqt8OvDO35J0#forceEdit=true&offline=true&sandboxMode=true) and run it in your Jupyter notebook.  Skip the cells that deal with RAPIDS installation. Note how easy it is to use CuDF and CuML
