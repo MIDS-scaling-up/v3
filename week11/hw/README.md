@@ -139,7 +139,7 @@ Submit a write-up of the tweaks you made to the model and the effect they had on
 Questions to answer:
 1) What parameters did you change, and what values did you use? 
 2) Did you try any other changes (like adding layers or changing the epsilon value) that made things better or worse?
-3) Did your changes improve or degrade the model? How close did you get to a test run with 100% of the scores above 200?
+3) Describe how your changes improve or degrade the model? How close did you get to a test run with 100% of the scores above 200?
 4) Based on what you observed, what conclusions can you draw about the different parameters and their values? 
 5) What is the purpose of the epsilon value?
 6) Describe "Q-Learning".
