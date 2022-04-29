@@ -4,12 +4,12 @@
 ## 1. Nvidia JetPack SDK
 JetPack is an SDK that basically contains everything needed for deep learning and AI applications in a handy package bundle containing the OS for for the Nano. Installation on the Nano requires downloading and flashing the image to a MicroSD card.
 
-Due to supply shortages, we are recommending the Jetson Nano Developer Kit 2G / 4GB model or the Jetson Xaiver NX Developer Kit.  If you are able to find an NX, feel free to use that instead of the Nano as it is by far the most powerful device.
+Due to supply shortages, we are recommending the Jetson Nano Developer Kit 4GB model (will be provided by the school free of charge) or the Jetson Xavier NX Developer Kit.  If you are able to find a reasonably priced NX, feel free to use that instead of the Nano as it is by far the more powerful device. The original pricing on it is $399; there's no need to pay much more than that.  Also, a 2GB Nano would work, although it would be the least preferred option due to the very small memory footprint.
 
 
-You will need the following:
+So, you will need the following:
 
- 1. [Jetson Nano Developer Ki: ideally 4GB, but 2GB if that is all you can find](https://shop.nvidia.com/en-us/jetson/store/?page=1&limit=9&locale=en-us)
+ 1. [Jetson Nano Developer Ki: 4GB](https://shop.nvidia.com/en-us/jetson/store/?page=1&limit=9&locale=en-us) - but will be provided free of charge.
  2. [128GB Micro SD](https://www.amazon.com/gp/product/B07G3H5RBT/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
  3. USB MicroSD card reader
  4. [WiFi/Bluetooth card](https://www.amazon.com/dp/B085M7VPDP?psc=1&ref=ppx_yo2_dt_b_product_details)
