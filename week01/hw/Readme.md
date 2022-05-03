@@ -16,6 +16,7 @@ So, you will need the following:
  5. [Power adapter](https://www.amazon.com/gp/product/B08DXZ1MSY/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1) ### NOTE: ensure you set the jumper when using the power adapter. Reference [here](https://www.jetsonhacks.com/2019/04/10/jetson-nano-use-more-power/).  Note: if you are using [the Nano 2GB](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-2gb-devkit), check out the [list of supported components](https://developer.nvidia.com/embedded/learn/jetson-nano-2gb-devkit-user-guide#id-.JetsonNano2GBDeveloperKitUserGuidevbatuu_v1.0-SupportedComponentList).  You could get [this 3.5A power supply.](https://www.amazon.com/CanaKit-Raspberry-Power-Supply-USB-C/dp/B07TYQRXTK/ref=sr_1_8?dchild=1&keywords=18W+power+supply+usb+c&qid=1595554849&sr=8-8)
  6. [1TB USB3 SSD](https://www.amazon.com/Samsung-T5-Portable-SSD-MU-PA2T0B/dp/B073H552FJ/ref=sr_1_3) ### NOTE: mount to the normal USB port; the USB-C port is needed for the power supply.
  7. [USB Webcam](https://www.amazon.com/Logitech-960-000637-HD-Webcam-C310/dp/B003PAIV2Q/ref=sr_1_6)
+ 8. You will also typically need a USB 3.0 hub (ideally, a powered one), a mouse, a keyboard, and a monitor.
 
 If you are able to find a Jetson NX, the following is needed:
  1. MicroSD card (64GB minimum size)
