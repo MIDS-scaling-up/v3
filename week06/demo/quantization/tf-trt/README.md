@@ -1,6 +1,6 @@
 # TensorFlow with TensorRT (TF-TRT)
 
-This is a very simple image classification example based on https://github.com/tensorflow/tensorrt/tree/master/tftrt/examples/image-classification updated to run on the Jetson Xavier NX.   You'll learn how to use TensorFlow 2.x to convert a Keras model to three tf-trt models, a fp32, fp16, and int8.  A simple set of test images will be used to both validate and benchmark both the native model and the three tf-trt ones.
+This is a very simple image classification example based on https://github.com/tensorflow/tensorrt/tree/master/tftrt/examples/image_classification updated to run on the Jetson Xavier NX.   You'll learn how to use TensorFlow 2.x to convert a Keras model to three tf-trt models, a fp32, fp16, and int8.  A simple set of test images will be used to both validate and benchmark both the native model and the three tf-trt ones.
 
 ## Jetpack Version
 If using Jetpack 4.5, you'll need to build with the file Dockerfile.jp45.  Note, at this time, JP4.5 is giving about 1/2 the performance as the JP4.4.1 version.
