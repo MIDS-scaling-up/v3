@@ -3,7 +3,7 @@ This lab will introduce containers, Docker, and the container orchestration syst
 
 This lab is run on the Jetson device using the desktop (via VNC or display); unless noted, all commands are run on your Jetson.
 
-Ensure that you cloned this github repo and are in the directory for this lab (v2/week03/lab/).
+Ensure that you cloned this github repo and are in the directory for this lab (v3/week03/lab/).
 
 This lab may take up to 60 minutes to complete.
 
