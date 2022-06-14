@@ -1,4 +1,4 @@
-### Lecture 4: Deep Learning 201
+### Lecture 7: Deep Learning 201
 In this lecture, we talk about more advanced concepts of DL, like convolutional neural networks, pooling, transfer learning, learning rate scheduling, hyper parameter tuning, etc. 
 
 #### Reading :
