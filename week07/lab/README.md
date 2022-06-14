@@ -8,7 +8,7 @@
   
 We will demonstrate a few concepts from [this](https://arxiv.org/abs/1812.01187?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+arxiv%2FQSXk+%28ExcitingAds%21+cs+updates+on+arXiv.org%29) paper, please try to read it over the next week.  
     
-Before starting, if you do not have it, you need to sign up to the kaggle platform and sign up to the [competition page](https://www.kaggle.com/c/bird-watch-spring-2022/overview) - see data tab.
+Before starting, if you do not have it, you need to sign up to the kaggle platform and sign up to the [competition page](https://www.kaggle.com/competitions/bird-watch-summer-2022) - see the data tab.
     
 In [this](https://www.kaggle.com/dmitryrekesh/week07-lab-fork-me?scriptVersionId=87863149) notebook we cover a few of the concepts to improve training in Image classification. You will need to copy and edit the [linked notebook](https://www.kaggle.com/dmitryrekesh/week07-lab-fork-me?scriptVersionId=87863149) (menu in top right corner). 
   
