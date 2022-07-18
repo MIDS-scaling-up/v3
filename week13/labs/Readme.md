@@ -44,7 +44,7 @@ DALI stands for Data Loading Library.  This Open Source project is another tool 
 GFP-GAN stands for "Generative Facial Prior Generative Adversarial Network". It is used for blind face restoration. GFP is incorporated into the face restoration process via channel-split spatial feature transform layers, which allow for a good balance between realness and fidelity. The goal of this lab is to experiment with the model(s) and evaluate the GAN performance against a baseline of your own photo, taken with the camera on your device and artificially converted into a retro image. 
 
 Try the following:
-* minimal setup: deploy and run CPU-based model on your desktop or laptop, levaraging the provided Jupyter notebook for generating a photo collage
+* minimal setup: deploy and run CPU-based model on your desktop or laptop, levaraging the provided [Jupyter notebook](https://github.com/alsavelv/v3/blob/main/week13/labs/GFPGAN_demo_w251.ipynb) for generating a photo collage
 * more advanced: do the same on your Jetson 
 * extra bonus: deploy and run GPU-based model with colorization (either on Jetson or on your device, if it has GPU)
 
