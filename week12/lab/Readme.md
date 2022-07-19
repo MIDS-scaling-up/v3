@@ -14,7 +14,7 @@ as it will reinstall NeMo:
 
 ### 0. Setting up the environment
 Colab is *de rigeur* here (Option A), but if / when Nemo Colab notebooks are broken Option B is the safest. 
-As of March 27th, 2022, Colab is OK.
+As of July 18th, 2022, Colab is OK.
 
 #### Option A. Setup in Colab
 Navigate to [Nemo tutorials](https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/main/starthere/tutorials.html) and click one of the tutorials. Make sure that you are using your UC Berkeley Google account in your browser. Ensure that the Colab instance uses the GPU. Observe the value of the $BRANCH variable in the script. If the script breaks you may need to adjust it.
