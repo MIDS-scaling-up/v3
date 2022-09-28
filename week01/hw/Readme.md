@@ -293,7 +293,7 @@ mount /data
 chmod go+rwx /data
 
 # Move the Docker repo to /data
-sudo systemctl start docker
+sudo systemctl stop docker
 sudo mv /var/lib/docker /data/
 sudo ln -s /data/docker/ /var/lib/docker
 sudo systemctl start docker
