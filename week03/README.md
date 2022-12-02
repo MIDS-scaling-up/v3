@@ -1,5 +1,5 @@
 # Lecture 3
-DETR model, virtual machines, containers, orchestration and Kubernetes, edge, and cloud native.
+Object detection, COCO dataset, DETR model, virtual machines, containers, orchestration and Kubernetes, edge, and cloud native.
 
 ## Reading
 
