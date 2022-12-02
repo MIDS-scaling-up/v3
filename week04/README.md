@@ -7,3 +7,4 @@ The definition: how is it different from AI and ML? Artificial Neurons, Neural L
 -  Bag of Tricks for Image Classification with Convolutional Neural Networks, Tong He, Zhi Zhang, Hang Zhang, Zhongyue Zhang, Junyuan Xie, Mu Li  
 -  The [1Cycle Policy](https://sgugger.github.io/the-1cycle-policy.html), Sylvain Gugger  
 -  Pytorch [documentation](https://pytorch.org/docs/stable/index.html ) 
+-  [Jigsaw toxicity dataset (for the homework)](https://huggingface.co/datasets/jigsaw_toxicity_pred)
