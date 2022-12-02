@@ -46,10 +46,10 @@ for score, label, box in zip(results["scores"], results["labels"], results["boxe
             f"{round(score.item(), 3)} at location {box}"
         )
 ```
-You can learn more details about DETR in (this original article)[https://arxiv.org/abs/2005.12872].
+You can learn more details about DETR in [this original article](https://arxiv.org/abs/2005.12872).
 
 ### Overall architecture / flow
-Your overall application flow / architecture should be something like: ![this](pipeline.png). 
+Your overall application flow / architecture should be something like: ![this](https://github.com/alsavelv/v3/blob/MIDS-scaling-up/v4/week03/hw/Pipeline.PNG). 
 
 ### Hints
 - To make storing in Object Store easier, look at https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-configure-bucket.html
