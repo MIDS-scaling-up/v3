@@ -1,5 +1,5 @@
 # Lecture 3
-Object detection, COCO dataset, DETR model, virtual machines, containers, orchestration and Kubernetes, edge, and cloud native.
+Object detection, COCO dataset, DETR model, ML pipelines, virtual machines, containers, orchestration and Kubernetes, edge, and cloud native.
 
 ## Reading
 
@@ -11,7 +11,7 @@ https://cocodataset.org/#download
 
 https://paperswithcode.com/task/object-detection
 
-### DETR
+### DETR model
 
 https://huggingface.co/runwayml/stable-diffusion-v1-5
 
@@ -19,6 +19,11 @@ https://huggingface.co/docs/transformers/model_doc/detr
 
 https://arxiv.org/abs/2005.12872
 
+### Building ML pipelines
+
+https://aws.amazon.com/blogs/machine-learning/architect-and-build-the-full-machine-learning-lifecycle-with-amazon-sagemaker/
+
+https://azure.github.io/ACE_Azure_ML/slides/AML_service.pptx
 
 ### Virtual Machines
 
