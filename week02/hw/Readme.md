@@ -1,4 +1,4 @@
-# HW02: Docker, Cloud ML Services(Sagemaker) and Pricing
+# HW02: Docker, Cloud ML Services (Sagemaker) and Pricing
 
 *Complete Lab02 before starting HW02*
 
