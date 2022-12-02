@@ -1,5 +1,5 @@
 # Lecture 3
-Object detection, COCO dataset, DETR model, ML pipelines, virtual machines, containers, orchestration and Kubernetes, edge, and cloud native.
+Object detection, COCO dataset, DETR model, ML pipelines,  edge, and cloud native.
 
 ## Reading
 
@@ -24,41 +24,6 @@ https://arxiv.org/abs/2005.12872
 https://aws.amazon.com/blogs/machine-learning/architect-and-build-the-full-machine-learning-lifecycle-with-amazon-sagemaker/
 
 https://azure.github.io/ACE_Azure_ML/slides/AML_service.pptx
-
-### Virtual Machines
-
-https://www.ibm.com/cloud/learn/hypervisors
-
-https://www.stratoscale.com/blog/hyperconvergence/cloud-101-what-is-a-hypervisor/
-
-https://www.redhat.com/en/topics/virtualization/what-is-KVM
-
-
-### Containers
-
-https://avatao.com/life-before-docker-and-beyond-a-brief-history-of-container-security/
-
-https://docs.docker.com/get-started/overview/
-
-https://mkdev.me/en/posts/the-tool-that-really-runs-your-containers-deep-dive-into-runc-and-oci-specifications
-
-https://www.docker.com/blog/what-is-containerd-runtime/
-
-
-### Installing Docker
-
-https://docs.docker.com/get-docker/ 
-
-
-### Kubernetes
-
-https://kubernetes.io/docs/concepts/
-
-https://kubernetes.io/docs/tutorials/kubernetes-basics/
-
-https://rancher.com/docs/k3s/latest/en/architecture/
-
-https://thenewstack.io/how-k3s-portworx-and-calico-can-serve-as-a-foundation-of-cloud-native-edge-infrastructure/
 
 ### Miscellaneous
 
