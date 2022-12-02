@@ -17,4 +17,6 @@ After you are happy with the results, download the notebook as a html and submit
 You can get started [here](https://colab.research.google.com/drive/1kqbgfc1Lv3DXP6EdbpfQtMCsTHFR3wHA?usp=sharing).  
 
 ## Turn-in
-Run the notebook, make sure that execution of all cells is complete, then save as PDF and upload to ISVC. We highly encourage you to create well structured and self-documented notebooks, with explanations in code  comments and markdown.
+- Run the notebook, make sure that execution of all cells is complete, then save as HTML or PDF and upload to ISVC. We highly encourage you to create well structured and self-documented notebooks, with explanations in code  comments and markdown.
+- Complete the quiz  https://huggingface.co/course/chapter2/8?fw=pt and download the results as well. 
+
