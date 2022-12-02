@@ -15,3 +15,6 @@ Try things like,
 After you are happy with the results, download the notebook as a html and submit it to ISVC, together with the highest AUC score you achieved.  
   
 You can get started [here](https://colab.research.google.com/drive/1kqbgfc1Lv3DXP6EdbpfQtMCsTHFR3wHA?usp=sharing).  
+
+## Turn-in
+Run the notebook, make sure that execution of all cells is complete, then save as PDF and upload to ISVC. We highly encourage you to create well structured and self-documented notebooks, with explanations in code  comments and markdown.
