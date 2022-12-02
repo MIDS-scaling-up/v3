@@ -1,7 +1,15 @@
 # Lecture 3
-Virtual machines, containers, orchestration and Kubernetes, edge, and cloud native.
+DETR model, virtual machines, containers, orchestration and Kubernetes, edge, and cloud native.
 
 ## Reading
+
+### DETR
+
+https://huggingface.co/runwayml/stable-diffusion-v1-5
+
+https://huggingface.co/docs/transformers/model_doc/detr
+
+https://arxiv.org/abs/2005.12872
 
 ### Virtual Machines
 
