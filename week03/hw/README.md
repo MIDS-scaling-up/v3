@@ -1,4 +1,4 @@
-# Homework 3 - Containers, Kubernetes, and IoT/Edge
+# Homework 3 - ML pipelines and IoT/Edge
 
  :warning: **Please note that this homework is graded**
 
