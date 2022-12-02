@@ -48,16 +48,8 @@ for score, label, box in zip(results["scores"], results["labels"], results["boxe
 ```
 You can learn more details about DETR in (this original article)[https://arxiv.org/abs/2005.12872].
 
-
-### Linking containers
-On the Jetson, your containers should communicate via Kubernetes services, see Lab 3 for details.  On the cloud side, you should use a user defined network to enable your containers to easily communicate.  Please review the [docker networking tutorial](https://docs.docker.com/network/network-tutorial-standalone/#use-user-defined-bridge-networks).  The idea is that you will need to create a local bridge network and then the containers you will create will join it.
-
 ### Overall architecture / flow
-Your overall application flow / architecture should be something like: ![this](hw3.png).
-
-### Bonus Points
-You can receive an extra 10 bonus points for using Kubernetes on the cloud side rather than Docker.
-
+Your overall application flow / architecture should be something like: ![this](pipeline.png). 
 
 ### Hints
 - To make storing in Object Store easier, look at https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-configure-bucket.html
@@ -65,7 +57,6 @@ You can receive an extra 10 bonus points for using Kubernetes on the cloud side 
 
 ![flash](https://media.tenor.com/lWXg5ivpQUQAAAAC/zootopia-flash.gif)
  
-
 ### Grading/Submission
 You are scored based on the following:
 
@@ -74,7 +65,7 @@ You are scored based on the following:
 - 50 points for end-to-end ML pipeline.
 - 15 points for storing your faces in publicly reachable object storage.
 - 10 points for the write-up about the pipeline output.
-- 10 bonus points for trying other object detection models and comparing results.
+- 10 bonus points 🎉🎉 for trying other object detection models and comparing results.
 
 # Turn In
 What to submit to ISVC:
