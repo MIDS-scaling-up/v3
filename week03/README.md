@@ -3,6 +3,14 @@ DETR model, virtual machines, containers, orchestration and Kubernetes, edge, an
 
 ## Reading
 
+### Object detection 
+
+https://huggingface.co/docs/api-inference/detailed_parameters#object-detection-task
+
+https://cocodataset.org/#download
+
+https://paperswithcode.com/task/object-detection
+
 ### DETR
 
 https://huggingface.co/runwayml/stable-diffusion-v1-5
@@ -10,6 +18,7 @@ https://huggingface.co/runwayml/stable-diffusion-v1-5
 https://huggingface.co/docs/transformers/model_doc/detr
 
 https://arxiv.org/abs/2005.12872
+
 
 ### Virtual Machines
 
