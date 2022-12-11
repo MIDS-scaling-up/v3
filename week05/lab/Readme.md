@@ -1,6 +1,6 @@
 # Lab 5 - Deep Learning Frameworks. Training image classifiers
 
-This week we will practice writing basic training loops. We need GPUs for this and will use Google Colab.
+This week we will practice writing basic training loops. We need GPUs for this and will use Google Colab. To enable GPU in your notebook, select the following menu options − "Runtime -> Change runtime type". In the dropdown of "None/GPU/CPU", select "GPU" so that your notebook can use free GPU during processing. 
  
 ### 1. Setup  
 The easiest way to use Google Colab is to install the [Google Colab Chrome plugin](https://chrome.google.com/webstore/detail/open-in-colab/iogfkhleblhcpcekbiedikdehleodpjo?hl=en_). Once installed, you can navigate to the desired Jupyter notebook in Github, and then click the Extensions icon to the right of the URL location in the browser and select 'Open in Colab'
