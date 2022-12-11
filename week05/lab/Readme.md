@@ -16,7 +16,7 @@ The [CINIC](https://github.com/BayesWatch/cinic-10) dataset bridges us to the go
 
 Google Colab notes:
 * You will need your Google Drive account so that you can store the results of your work as well as some persistent files (such as creds)
-* make sure you set up your [Kaggle API](https://www.kaggle.com/docs/api). 
+* Make sure you set up your [Kaggle API](https://www.kaggle.com/docs/api). 
 * Download kaggle.json and store it in your Google Drive someplace (e.g. under MyDrive/.kaggle)
 * When you run in your Colab notebook, copy this file to /root/.kaggle/kaggle.json and make sure the permissions on it are 600
 * Now you should be able to use kaggle CLI commands (e.g. to download datasets). You can bake all these commands into your notebooks.
