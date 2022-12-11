@@ -35,11 +35,9 @@ The steps are roughly as follows:
 
 ### Please note
 * Please do not attempt to spend more than 3 days training your model on a single T4 GPU. If your estimate gives you a longer training time, pick a different approach.
-* You might want to prototype your work using Jupyter and then submit it using [papermill](https://papermill.readthedocs.io/en/latest/usage-cli.html)
 
 ### Extra credit
 Create your own model architecture. You can draw your inspiration from the [PyTorch Resnet github](https://github.com/pytorch/vision/blob/master/torchvision/models/resnet.py), for instance.
-
 
 ### To turn in
 Please turn in your training logs. They should obviously display that you have achieved the Top 1 accuracy.  Also, please save / download the trained weights to your jetson device for evaluation later.
