@@ -4,6 +4,7 @@ Types of datasets. Key public datasets. Cloud platforms for hosting and processi
 
 ### Suggested Reading:
 
+* [🤗 Datasets](https://huggingface.co/course/chapter5/1?fw=pt)
 * [Albumentations](https://github.com/albumentations-team/albumentations)
 * [Nvidia DALI](https://github.com/NVIDIA/DALI)
 * [ImageNet](https://image-net.org/)

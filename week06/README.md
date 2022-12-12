@@ -3,6 +3,8 @@ GStreamer and model optizations
 
 
 ### GStreamer
+GStreamer is an extremely powerful and versatile framework for creating streaming media applications. Many of the virtues of the GStreamer framework come from its modularity: GStreamer can seamlessly incorporate new plugin modules. But because modularity and power often come at a cost of greater complexity, writing new applications is not always easy.
+
 
 https://gstreamer.freedesktop.org/documentation/tutorials/basic/gstreamer-tools.html?gi-language=c
 
@@ -17,8 +19,6 @@ https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Overview.html#nv
 
 ### Quantization and model optizmation
 
-https://github.com/dusty-nv/jetson-inference
-
 https://www.tensorflow.org/model_optimization/guide/quantization/training
 
 https://www.tensorflow.org/lite/performance/model_optimization
@@ -27,9 +27,7 @@ https://www.tensorflow.org/lite/performance/post_training_quantization
 
 https://www.tensorflow.org/lite/performance/post_training_float16_quant
 
-https://www.tensorflow.org/lite/performance/post_training_quant
-
-https://docs.nvidia.com/deeplearning/tensorrt/install-guide/index.html
+https://www.tensorflow.org/lite/performance/post_training_quant 
 
 https://pytorch.org/blog/introduction-to-quantization-on-pytorch/
 

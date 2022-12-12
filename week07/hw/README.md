@@ -14,7 +14,7 @@ The goal of the homework is to develop a model in kaggle (referencing the [Bench
    
 You can see an overview of how to use kaggle in the overview page.  
   
-There is a public leaderboard which will be visible through the competition. On the deadline (`Midnight UTC, March 2nd`), the challenge will close and the private leaderboard rankings will be revealed!! 
+# Turn in
 
 To submit your homework, you need to submit two things to ISVC.  
 1. A screen shot of your score on the leaderboard (public leaderboard is ok).  

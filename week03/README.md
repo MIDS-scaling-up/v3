@@ -1,42 +1,29 @@
 # Lecture 3
-Virtual machines, containers, orchestration and Kubernetes, edge, and cloud native.
+Object detection, COCO dataset, DETR model, ML pipelines,  edge, and cloud native.
 
 ## Reading
 
-### Virtual Machines
+### Object detection 
 
-https://www.ibm.com/cloud/learn/hypervisors
+https://huggingface.co/docs/api-inference/detailed_parameters#object-detection-task
 
-https://www.stratoscale.com/blog/hyperconvergence/cloud-101-what-is-a-hypervisor/
+https://cocodataset.org/#download
 
-https://www.redhat.com/en/topics/virtualization/what-is-KVM
+https://paperswithcode.com/task/object-detection
 
+### DETR model
 
-### Containers
+https://huggingface.co/runwayml/stable-diffusion-v1-5
 
-https://avatao.com/life-before-docker-and-beyond-a-brief-history-of-container-security/
+https://huggingface.co/docs/transformers/model_doc/detr
 
-https://docs.docker.com/get-started/overview/
+https://arxiv.org/abs/2005.12872
 
-https://mkdev.me/en/posts/the-tool-that-really-runs-your-containers-deep-dive-into-runc-and-oci-specifications
+### Building ML pipelines
 
-https://www.docker.com/blog/what-is-containerd-runtime/
+https://aws.amazon.com/blogs/machine-learning/architect-and-build-the-full-machine-learning-lifecycle-with-amazon-sagemaker/
 
-
-### Installing Docker
-
-https://docs.docker.com/get-docker/ 
-
-
-### Kubernetes
-
-https://kubernetes.io/docs/concepts/
-
-https://kubernetes.io/docs/tutorials/kubernetes-basics/
-
-https://rancher.com/docs/k3s/latest/en/architecture/
-
-https://thenewstack.io/how-k3s-portworx-and-calico-can-serve-as-a-foundation-of-cloud-native-edge-infrastructure/
+https://azure.github.io/ACE_Azure_ML/slides/AML_service.pptx
 
 ### Miscellaneous
 
