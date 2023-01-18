@@ -128,6 +128,12 @@ You can have a keyboard, mouse, and monitor attached to your Jetson; but it is a
 
 On your Nano, open a terminal (or ssh to your Nano from another computer). 
 
+Note, with the recent Jetpack for the Nano, I did the following:
+- Follow steps 1 and 2  here: https://developer.nvidia.com/embedded/learn/tutorials/vnc-setup.  
+- Configure automatic login as documented below.
+- reboot.
+
+
 ```
 mkdir ~/.config/autostart
 ```
