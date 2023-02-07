@@ -42,3 +42,5 @@ https://towardsdatascience.com/pruning-neural-networks-1bb3ab5791f9
 https://blog.tensorflow.org/2020/08/tensorflow-model-optimization-toolkit-weight-clustering-api.html
 
 https://blog.tensorflow.org/2019/05/tf-model-optimization-toolkit-pruning-API.html
+
+https://blog.tensorflow.org/2021/01/leveraging-tensorflow-tensorrt-integration.html
